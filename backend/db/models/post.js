@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const postSchema= mongoose.Schema({
     user:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
-    body:{type:String ,require:true},
+    body:{type:String ,required:true},
     date:{type:Date ,default:Date.now()},
     img:{type:String},
     likes:[{type:mongoose.Schema.Types.ObjectId,ref:"User"}],
