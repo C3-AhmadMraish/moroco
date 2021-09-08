@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./db/db');
-
+const postsRouter=require("./routers/routes/posts");
 const app = express();
 
 //routers
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 //app routers
-
+app.use("/posts",postsRouter);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
 	console.log(`Server On ${PORT}`);
