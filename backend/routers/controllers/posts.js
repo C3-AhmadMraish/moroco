@@ -1,2 +1,24 @@
-const Post=require("../../db/models/posts");
+const Post = require("../../db/models/posts");
 
+const getAllPosts = (req, res) => {
+  Post.find({})
+    .then((result) => {
+      if (!result.data || !result.data.length) {
+        return res.status(404).json({
+          success: true,
+          message: "No posts yet",
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: "all the posts",
+        posts: result.data,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+      });
+    });
+};
