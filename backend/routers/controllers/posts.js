@@ -22,6 +22,7 @@ const getAllPosts = (req, res) => {
         message: "server error",err:err
       });
     });
+    console.log("test")
 };
 
 const createNewPost=(req,res)=>{
