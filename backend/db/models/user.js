@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 const userSchema= mongoose.Schema({
-
     firstName:{type:String,required:true} ,
     lastName: {type:String}  ,
     joinDate: {type:Date ,default:Date.now()} ,
@@ -19,7 +17,6 @@ const userSchema= mongoose.Schema({
     followersCount:{type:Number},
     folowees: [{type:mongoose.Schema.Types.ObjectId,ref:"User"}],
     foloweesCount: {type:Number}
-
 });
 module.exports=mongoose.model("User",userSchema);
 
