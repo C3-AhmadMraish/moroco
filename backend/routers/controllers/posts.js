@@ -15,4 +15,4 @@ const createNewPost=(req,res)=>{
 }
 
 
-module.exports=createNewPost;
+module.exports={createNewPost};
