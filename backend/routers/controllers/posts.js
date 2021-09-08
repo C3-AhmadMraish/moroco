@@ -1,10 +1,10 @@
-const Post = require("../../db/models/posts");
+const Post = require("../../db/models/post");
 
 
 const getAllPosts = (req, res) => {
   Post.find({})
     .then((result) => {
-      if (!result.length) {
+      if (!result.length) {   
         return res.status(404).json({
           success: false,
           message: "No posts yet",
