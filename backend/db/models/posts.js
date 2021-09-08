@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 
 const postSchema= mongoose.Schema({
-    User:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
-    Body:{type:String},
+    user:{type:mongoose.Schema.Types.ObjectId,ref:"User"},
+    body:{type:String},
     date:{type:date},
     img:{type:String},
     likes:[{type:mongoose.Schema.Types.ObjectId,ref:"User"}],
