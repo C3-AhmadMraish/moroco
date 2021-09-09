@@ -32,7 +32,6 @@ const login = (req, res) => {
           expiresIn: "60m",
         };
 
-        // console.log(payload);
         const token = await jwt.sign(payload, process.env.SECRET, options);
         res.status(200).json({
           success: true,
