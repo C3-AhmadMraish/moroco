@@ -166,4 +166,4 @@ const searchUsersByName = (req, res) => {
 };
 
 
-module.exports = { getUserById, register, follwoUnfollwo, searchUsersByNameوupdateUserById,,checkIsFollower };
+module.exports = { getUserById, register, follwoUnfollwo, searchUsersByName,updateUserById,checkIsFollower };
