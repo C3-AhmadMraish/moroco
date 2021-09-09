@@ -86,6 +86,27 @@ const createNewComment = (req, res) => {
 
 const deleteCommentById = (req, res) => {
 
+  const _id = req.params.id;
+  Comment.findByIdAndDelete(_id)
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The comment with id: ${_id} Not Found comment`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `Success Delete comment:  ${_id}`,
+      });
+    })
+    .catch((err) => {
+      res.status(404).json({
+        success: false,
+        message: `Server Error`,
+        err: err
+      });
+    });
 
 }
 
