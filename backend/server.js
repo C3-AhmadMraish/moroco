@@ -1,13 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const db = require("./db/db");
+
+//routers
 const postsRouter = require("./routers/routes/posts");
 const usersRouter = require("./routers/routes/users");
 const authRouter = require("./routers/routes/authentication");
 
-const app = express();
 
-//routers
+const app = express();
 
 //built-in middleware
 app.use(express.json());
