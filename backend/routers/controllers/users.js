@@ -1,13 +1,16 @@
 const User = require("../../db/models/user");
 
 const register = (req, res) => {
-    const { firstName, email, password } = req.body;
+    const { firstName, gender, email, password } = req.body;
     const user = new User({
       firstName,
       email,
+      gender,
       password
     });
   
+    console.log(gender);
+
     user
       .save()
       .then((result) => {
