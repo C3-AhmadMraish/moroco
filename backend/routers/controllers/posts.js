@@ -1,4 +1,5 @@
 const Post = require("../../db/models/posts");
+const Comment = require("../../db/models/comments")
 
 const getAllPosts = (req, res) => {
   Post.find({})
