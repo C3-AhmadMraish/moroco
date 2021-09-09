@@ -33,7 +33,7 @@ postsRouter.put("/:id/like", likeDislikeToPost);
 postsRouter.delete("/deletepost/:id", deletePostById);
 
 //edit the routes
-postsRouter.post("/comment", createNewComment);
+postsRouter.post("/:id/comment", createNewComment);
 //postsRouter.get("/:id/comment", getAllComments);//by post :id
 postsRouter.put("/:id/comment", updateCommentById);
 postsRouter.delete("/:id/comment", deleteCommentById);
