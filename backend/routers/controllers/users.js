@@ -73,6 +73,34 @@ const follwoUnfollwo = (req, res) => {
   });
 };
 
+
+const updateUserById = (req, res) => {
+  const _id = req.params.id;
+  User
+    .findByIdAndUpdate(_id, req.body, { new: true })
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The User => ${_id} not found`,
+        });
+      }
+     res.status(200).json({
+        success: true,
+        message: `The post with ${_id}`,
+        post: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err,
+      });
+    });
+};
+
+
 const searchUsersByName = (req, res) => {
   const name = req.query.name;
   User.find({
@@ -106,9 +134,11 @@ const searchUsersByName = (req, res) => {
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "server error",
+        message: `Server Error`,
       });
     });
 };
 
-module.exports = { getUserById, register, follwoUnfollwo, searchUsersByName };
+
+module.exports = { getUserById, register, follwoUnfollwo, searchUsersByNameوupdateUserById };
+
