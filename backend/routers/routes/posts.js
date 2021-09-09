@@ -8,6 +8,7 @@ const {
   updatePostById,
   deletePostById,
   likeDislikeToPost,
+  getAllFriendsPosts
 } = require("../controllers/posts");
 const {
   getAllComments,
@@ -27,6 +28,7 @@ postsRouter.get("/", getAllPosts);
 postsRouter.get("/getpostbyid/:id", getPostById);
 postsRouter.post("/", createNewPost);
 postsRouter.put("/", updatePostById);
+postsRouter.get("/timeline/:id",getAllFriendsPosts);
 postsRouter.put("/:id/like", likeDislikeToPost);
 postsRouter.delete("/deletepost/:id", deletePostById);
 
