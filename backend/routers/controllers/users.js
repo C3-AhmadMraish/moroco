@@ -40,5 +40,25 @@ const getUserById = (req, res) => {
 
 }
 
+const follwoUnfollwo=(req,res)=>{
+  const _id = req.params.id;
+  const curruntuser=req.body.user
+ User.findById(_id).then(result=>
+    {
 
-module.exports={getUserById,register};
+      if(!result.followers.includes(curruntuser)){
+        User.updateOne({_id:_id},{$push:{followers:curruntuser}}).exec();
+        res.status(200).json("follow sccesfully")
+      }else{
+        User.updateOne({_id:_id},{$pull:{followers:curruntuser}}).exec();
+        res.status(200).json("unfollow sccesfully")
+    }
+  }
+    )
+
+  
+
+}
+
+
+module.exports={getUserById,register,follwoUnfollwo};
