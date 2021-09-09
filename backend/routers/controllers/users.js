@@ -74,6 +74,32 @@ const follwoUnfollwo = (req, res) => {
 };
 
 
+const checkIsFollower = (req, res) => {
+  const _idU = req.params.idU
+  const _idF = req.params.idF
+  User.findById(_idU ).then ((result) => {
+    if(result.followers.includes(_idF)){
+    return  res.status(200).json({
+        success: true,
+        message:`User of id: ${_idF} is following User of id: ${_idU}`
+      })
+    }
+    res.status(402).json(
+      {
+        success: false,
+        message:`User of id: ${_idF} is NOT FOLLOWING User of id: ${_idU}`
+      });
+  })
+  .catch((err) => {
+    res.status(500).json({
+      success: false,
+      message: `Server Error Mraish`,
+      err: err
+    });
+  });
+  }
+
+
 const updateUserById = (req, res) => {
   const _id = req.params.id;
   User
@@ -140,5 +166,4 @@ const searchUsersByName = (req, res) => {
 };
 
 
-module.exports = { getUserById, register, follwoUnfollwo, searchUsersByNameوupdateUserById };
-
+module.exports = { getUserById, register, follwoUnfollwo, searchUsersByNameوupdateUserById,,checkIsFollower };
