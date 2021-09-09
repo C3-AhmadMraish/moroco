@@ -1,9 +1,7 @@
 const Comment =require("../../db/models/comments");
 
 
-const getAllComments = (req, res) => {
-  
-}
+
 
 const getCommentById = (req, res) => {
   const _id = req.params.id;
@@ -39,8 +37,31 @@ const createNewComment = (req, res) => {
 
 
 
-const updateCommentById = (req, res) => {
+ const updateCommentById = (req, res) => {
 
+  const _id = req.params.id;
+
+  Comment.findByIdAndUpdate(_id, req.body, { new: true })
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The Comment with id ${_id} was not found`,
+        });
+      }
+      res.status(202).json({
+        success: true,
+        message: `Comment with id ${_id} has been updated`,
+        article: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
 
 }
 
@@ -54,9 +75,9 @@ const deleteCommentById = (req, res) => {
 
 
 module.exports = {
-    getAllComments,
     createNewComment,
     updateCommentById,
     deleteCommentById,
+    getCommentById
   };
   
