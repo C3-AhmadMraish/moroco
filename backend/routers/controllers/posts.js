@@ -3,7 +3,7 @@ const Comment = require("../../db/models/comments");
 
 const getAllFriendsPosts = (req, res) => {
   console.log("Need to be done");
-}
+};
 
 const getAllPosts = (req, res) => {
   Post.find({})
@@ -30,10 +30,9 @@ const getAllPosts = (req, res) => {
 };
 
 const createNewPost = (req, res) => {
-  const { body, img, user } = req.body;
+  const { body, user } = req.body;
   const newPost = new Post({
     body,
-    img,
     user,
   });
 
@@ -120,18 +119,19 @@ const getPostById = (req, res) => {
     });
 };
 
-const likeDislikeToPost=(req,res)=>{
-  const postid=req.params.id;
-  const post=Post.findById({_id:id});
-  if(!post.likes.includes(req.body.userId)){
-    post.updateOne({$push:{likes:req.body.userId}});
-    res.status(200).json("like sccesfully")
-  }else{
-    post.updateOne({$pull:{likes:req.body.userId}});
-    res.status(200).json("Dislike sccesfully")
-  }
-
-}
+const likeDislikeToPost = (req, res) => {
+  const _id = req.params.id;
+  const curruntuser = req.body.user;
+  Post.findById(_id).then((result) => {
+    if (!result.likes.includes(curruntuser)) {
+      Post.updateOne({ _id: _id }, { $push: { likes: curruntuser } }).exec();
+      res.status(200).json("like sccesfully");
+    } else {
+      Post.updateOne({ _id: _id }, { $pull: { likes: curruntuser } }).exec();
+      res.status(200).json("Dislike sccesfully");
+    }
+  });
+};
 
 module.exports = {
   createNewPost,
@@ -139,9 +139,6 @@ module.exports = {
   getPostById,
   updatePostById,
   deletePostById,
-  likeDislikeToPost
-  getAllFriendsPosts
-
+  likeDislikeToPost,
+  getAllFriendsPosts,
 };
-
-
