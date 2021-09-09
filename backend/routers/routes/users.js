@@ -4,7 +4,8 @@ const {
   register,
   follwoUnfollwo,
   searchUsersByName,
-  updateUserById
+  updateUserById,
+  checkIsFollower
 } = require("../controllers/users");
 const { login } = require("../middlewares/authentication");
 const usersRouter = express.Router();
