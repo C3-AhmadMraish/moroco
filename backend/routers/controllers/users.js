@@ -8,8 +8,6 @@ const register = (req, res) => {
       gender,
       password
     });
-  
-    console.log(gender);
 
     user
       .save()
@@ -28,40 +26,50 @@ const register = (req, res) => {
           });
         }
         res.status(500).json({
-          success: false,
-          message: `Server Error`,
-          err: err,
-        });
+        success: false,
+        message: `Server Error`,
+        err: err,
       });
-  };
+    });
+};
 
+const getUserById = (req, res) => {
+  const id = req.params.id;
+  User.findById({_id:id})
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `the user with id =>${id}`,
+        posts: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err,
+      });
+    });
+};
 
-
-
-const getUserById = (req, res) => { 
-
-
-}
-
-const follwoUnfollwo=(req,res)=>{
+const follwoUnfollwo = (req, res) => {
   const _id = req.params.id;
-  const curruntuser=req.body.user
- User.findById(_id).then(result=>
-    {
-
-      if(!result.followers.includes(curruntuser)){
-        User.updateOne({_id:_id},{$push:{followers:curruntuser}}).exec();
-        res.status(200).json("follow sccesfully")
-      }else{
-        User.updateOne({_id:_id},{$pull:{followers:curruntuser}}).exec();
-        res.status(200).json("unfollow sccesfully")
+  const curruntuser = req.body.user;
+  User.findById(_id).then((result) => {
+    if (!result.followers.includes(curruntuser)) {
+      User.updateOne(
+        { _id: _id },
+        { $push: { followers: curruntuser } }
+      ).exec();
+      res.status(200).json("follow sccesfully");
+    } else {
+      User.updateOne(
+        { _id: _id },
+        { $pull: { followers: curruntuser } }
+      ).exec();
+      res.status(200).json("unfollow sccesfully");
     }
-  }
-    )
+  });
+};
 
-  
-
-}
-
-
-module.exports={getUserById,register,follwoUnfollwo};
+module.exports = { getUserById, register, follwoUnfollwo };
