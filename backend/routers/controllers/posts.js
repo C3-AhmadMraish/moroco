@@ -39,6 +39,7 @@ const createNewPost=(req,res)=>{
     .catch((err)=>res.status(500).json({success:false,message:"Server Error"}));
 }
 
+
 /*
 const deletePostById = (req, res) => {
   const _id = req.params.id;
