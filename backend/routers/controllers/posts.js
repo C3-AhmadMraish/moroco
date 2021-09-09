@@ -39,5 +39,31 @@ const createNewPost=(req,res)=>{
     .catch((err)=>res.status(500).json({success:false,message:"Server Error"}));
 }
 
+const updatePostById = (req, res) => {
+  const _id = req.params.id;
 
-module.exports={createNewPost,getAllPosts};
+  Post
+    .findByIdAndUpdate(_id, req.body, { new: true }) //req.body is what you send via frontend
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The Post with id ${_id} was not found`,
+        });
+      }
+      res.status(202).json({
+        success: true,
+        message: `Post with id ${_id} has been updated`,
+        article: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
+};
+
+module.exports={createNewPost,getAllPosts,updatePostById};
