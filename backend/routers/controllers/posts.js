@@ -39,5 +39,28 @@ const createNewPost=(req,res)=>{
     .catch((err)=>res.status(500).json({success:false,message:"Server Error"}));
 }
 
-
-module.exports={createNewPost,getAllPosts};
+const deletePostById = (req, res) => {
+  const _id = req.params.id;
+  Post
+    .findByIdAndDelete(_id)
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The post with id: ${_id} was not found`,
+        });
+      }
+      res.status(200).json({
+        success: true,
+        message: `Deleted post with the id of:  ${_id}`,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
+};
+module.exports={createNewPost,getAllPosts,deletePostById};
