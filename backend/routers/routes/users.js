@@ -10,6 +10,7 @@ const { login } = require("../middlewares/authentication");
 const usersRouter = express.Router();
 
 usersRouter.post("/", register);
+usersRouter.get("/:idU/:idF",checkIsFollower)
 usersRouter.post("/search", searchUsersByName);
 usersRouter.post("/login", login);
 usersRouter.get("/:id", getUserById);
