@@ -10,6 +10,7 @@ const login = (req, res) => {
     .findOne({ email })
     .exec()
     .then(async (result) => {
+      console.log(result);
       if (!result) {
         return res.status(404).json({
           success: false,
