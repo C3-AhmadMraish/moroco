@@ -1,5 +1,9 @@
 const Post = require("../../db/models/posts");
-const Comment = require("../../db/models/comments")
+const Comment = require("../../db/models/comments");
+
+const getAllFriendsPosts = (req, res) => {
+
+}
 
 const getAllPosts = (req, res) => {
   Post.find({})
@@ -122,4 +126,7 @@ module.exports = {
   getPostById,
   updatePostById,
   deletePostById,
+  getAllFriendsPosts
 };
+
+
