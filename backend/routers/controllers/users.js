@@ -72,4 +72,29 @@ const follwoUnfollwo = (req, res) => {
   });
 };
 
-module.exports = { getUserById, register, follwoUnfollwo };
+const updateUserById = (req, res) => {
+  const _id = req.params.id;
+  User
+    .findByIdAndUpdate(_id, req.body, { new: true })
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The User => ${_id} not found`,
+        });
+      }
+      res.status(202).json({
+        success: true,
+        message: ` Success User updated`,
+        user: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+      });
+    });
+};
+
+module.exports = { getUserById, register, follwoUnfollwo,updateUserById };
