@@ -2,7 +2,10 @@ const Comment =require("../../db/models/comments");
 
 
 const getAllComments = (req, res) => {
+  
+}
 
+const getCommentById = (req, res) => {
   const _id = req.params.id;
   Comment.findById(_id)
     .then((result) => {
