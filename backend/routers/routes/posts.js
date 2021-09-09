@@ -6,7 +6,7 @@ const {
   getPostById,
   updatePostById,
   deletePostById,
-  likeDislikeToPost
+  likeDislikeToPost,
   getAllfrinsPosts
 } = require("../controllers/posts");
 const {
