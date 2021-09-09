@@ -1,4 +1,6 @@
+// const { findByIdAndUpdate } = require("../../db/models/comments");
 const Comment =require("../../db/models/comments");
+const Post = require("../../db/models/posts");
 
 
 
@@ -32,6 +34,22 @@ const getCommentById = (req, res) => {
 
 const createNewComment = (req, res) => {
 
+  const id = req.params.id
+  const { comment, commenter } = req.body;
+  const newComment = new Comment({
+    comment,
+    commenter,
+  });
+// 
+  newComment
+    .save()
+    .then((result) =>Post.findByIdAndUpdate(id , {$push:{comments:result._id}}))
+    .then( res.status(201).json({ success: true, message: "seccess add comment" }))
+    .catch((err) =>
+      res.status(404).json({ success: false, message: "something went wrong while creating a new comment" })
+    );
+
+    
 
 }
 
