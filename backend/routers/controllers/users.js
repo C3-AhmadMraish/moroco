@@ -1,31 +1,32 @@
 const User = require("../../db/models/user");
 
 const register = (req, res) => {
-    const { firstName, gender, email, password } = req.body;
-    const user = new User({
-      firstName,
-      email,
-      gender,
-      password
-    });
+  const { firstName, gender, email, password } = req.body;
+  const user = new User({
+    firstName,
+    email,
+    gender,
+    password,
+  });
 
-    user
-      .save()
-      .then((result) => {
-        res.status(201).json({
-          success: true,
-          message: `User Created Successfully`,
-          User: result,
+  user
+    .save()
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `User Created Successfully`,
+        User: result,
+      });
+    })
+    .catch((err) => {
+      if (err.keyPattern) {
+        // <---- what is this ?
+        return res.status(409).json({
+          success: false,
+          message: `The email already exists`,
         });
-      })
-      .catch((err) => {
-        if (err.keyPattern) {             // <---- what is this ?
-          return res.status(409).json({
-            success: false,
-            message: `The email already exists`,
-          });
-        }
-        res.status(500).json({
+      }
+      res.status(500).json({
         success: false,
         message: `Server Error`,
         err: err,
@@ -35,7 +36,7 @@ const register = (req, res) => {
 
 const getUserById = (req, res) => {
   const id = req.params.id;
-  User.findById({_id:id})
+  User.findById({ _id: id })
     .then((result) => {
       res.status(200).json({
         success: true,
@@ -72,4 +73,42 @@ const follwoUnfollwo = (req, res) => {
   });
 };
 
-module.exports = { getUserById, register, follwoUnfollwo };
+const searchUsersByName = (req, res) => {
+  const name = req.query.name;
+  User.find({
+    $or: [
+      {
+        firstName: {
+          $regex: name,
+          $options: "i",
+        },
+      },
+      {
+        lastName: {
+          $regex: name,
+          $options: "i",
+        },
+      },
+    ],
+  })
+    .then((result) => {
+      if (!result.length) {
+        return res.status(400).json({
+          success: false,
+          message: "Name doesn't exist",
+        });
+      }
+      res.status(200).json({
+        success: true,
+        users: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+      });
+    });
+};
+
+module.exports = { getUserById, register, follwoUnfollwo, searchUsersByName };
