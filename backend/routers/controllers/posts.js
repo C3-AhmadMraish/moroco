@@ -40,6 +40,33 @@ const createNewPost=(req,res)=>{
 }
 
 
+const updatePostById = (req, res) => {
+  const _id = req.params.id;
+
+  Post
+    .findByIdAndUpdate(_id, req.body, { new: true }) //req.body is what you send via frontend
+    .then((result) => {
+      if (!result) {
+        return res.status(404).json({
+          success: false,
+          message: `The Post with id ${_id} was not found`,
+        });
+      }
+      res.status(202).json({
+        success: true,
+        message: `Post with id ${_id} has been updated`,
+        article: result,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error`,
+        err: err,
+      });
+    });
+};
+
 /*
 const deletePostById = (req, res) => {
   const _id = req.params.id;
@@ -94,4 +121,4 @@ res.status(200).json({
   });
 }
 
-module.exports={createNewPost,getAllPosts,getPostById};
+module.exports={createNewPost,getAllPosts,getPostById,updatePostById};
