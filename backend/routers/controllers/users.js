@@ -72,4 +72,25 @@ const follwoUnfollwo = (req, res) => {
   });
 };
 
-module.exports = { getUserById, register, follwoUnfollwo };
+const checkIsFollower = (req, res) => {
+const _idU = req.params.id
+const _idF = req.params.id
+User.findById(_idU ).then ((result) => {
+  if(result.folowers.includes(_idF)){
+    res.status(200).json(`User of id: ${_idF} is following User of id: ${_idU}`);
+  }
+  res.status(200).json(`User of id: ${_idF} is NOT FOLLOWING User of id: ${_idU}`);
+})
+
+}
+
+
+module.exports = { getUserById, register, follwoUnfollwo,checkIsFollower };
+
+/*findonebyid (_id) (req,res)
+
+--> res.folowers --> look inside the array
+if(found){
+return "follower", found
+}
+return " Not follower " */
