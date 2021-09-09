@@ -1,6 +1,5 @@
 const User = require("../../db/models/user");
 
-
 const register = (req, res) => {
     const { firstName, email, password } = req.body;
     const user = new User({
@@ -32,6 +31,7 @@ const register = (req, res) => {
         });
       });
   };
+
 
 
 
