@@ -40,6 +40,7 @@ const createNewPost=(req,res)=>{
 }
 
 
+<<<<<<< HEAD
 /*
 const deletePostById = (req, res) => {
   const _id = req.params.id;
@@ -96,3 +97,6 @@ res.status(200).json({
 
 module.exports={createNewPost,getAllPosts,getPostById};
 
+=======
+module.exports={createNewPost,getAllPosts};
+>>>>>>> parent of 0997afa (Merge pull request #13 from C3-AhmadMraish/deletePostById)
