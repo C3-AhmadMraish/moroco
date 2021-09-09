@@ -1,5 +1,6 @@
 const express = require("express");
 
+
 const {
   createNewPost,
   getAllPosts,
@@ -15,6 +16,10 @@ const {
   updateCommentById,
   deleteCommentById,
 } =require("../controllers/comments")
+
+// middlewares
+const authentication = require("../middlewares/authentication");
+
 //router:
 const postsRouter = express.Router();
 
