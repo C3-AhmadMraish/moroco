@@ -1,5 +1,9 @@
 const Post = require("../../db/models/posts");
-const Comment = require("../../db/models/comments")
+const Comment = require("../../db/models/comments");
+
+const getAllFriendsPosts = (req, res) => {
+  console.log("Need to be done");
+}
 
 const getAllPosts = (req, res) => {
   Post.find({})
@@ -136,4 +140,8 @@ module.exports = {
   updatePostById,
   deletePostById,
   likeDislikeToPost
+  getAllFriendsPosts
+
 };
+
+
