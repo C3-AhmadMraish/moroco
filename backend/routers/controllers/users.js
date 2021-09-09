@@ -1,4 +1,4 @@
-const Post = require("../../db/models/user");
+const User = require("../../db/models/user");
 
 const getUserById = (req, res) => { 
 

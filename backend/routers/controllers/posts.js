@@ -39,7 +39,7 @@ const createNewPost=(req,res)=>{
     .catch((err)=>res.status(500).json({success:false,message:"Server Error"}));
 }
 
-<<<<<<< HEAD
+
 /*
 const deletePostById = (req, res) => {
   const _id = req.params.id;
@@ -67,7 +67,32 @@ const deletePostById = (req, res) => {
 };
 ,deletePostById
 */
-=======
 
->>>>>>> parent of 0997afa (Merge pull request #13 from C3-AhmadMraish/deletePostById)
-module.exports={createNewPost,getAllPosts};
+const getPostById = (req,res) => {
+  const _id = req.params.id;
+  Post.findById(_id).then((result)=>{
+    
+if(!result){
+  return res.status(404).json({
+    success: false,
+    message: `No Post Found with this ${_id}`,
+  });
+}
+res.status(200).json({
+  success: true,
+  message: `The post with ${_id}`,
+  post: result,
+});
+
+  })
+  .catch((err) => {
+    res.status(500).json({
+      success: false,
+      message: "server error",
+      err:err
+    });
+  });
+}
+
+module.exports={createNewPost,getAllPosts,getPostById};
+
