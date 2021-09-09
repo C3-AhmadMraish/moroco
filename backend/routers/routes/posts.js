@@ -5,6 +5,7 @@ const postsRouter=express.Router();
 
 postsRouter.get('/',getAllPosts)
 postsRouter.post("/",createNewPost);
+//postsRouter.delete("/deletepost/:id",deletePostById);   //deletePostById
 
 
 module.exports=postsRouter;
