@@ -2,7 +2,7 @@ const Post = require("../../db/models/posts");
 const Comment = require("../../db/models/comments");
 
 const getAllFriendsPosts = (req, res) => {
-
+  console.log("Need to be done");
 }
 
 const getAllPosts = (req, res) => {
@@ -120,13 +120,28 @@ const getPostById = (req, res) => {
     });
 };
 
+const likeDislikeToPost=(req,res)=>{
+  const postid=req.params.id;
+  const post=Post.findById({_id:id});
+  if(!post.likes.includes(req.body.userId)){
+    post.updateOne({$push:{likes:req.body.userId}});
+    res.status(200).json("like sccesfully")
+  }else{
+    post.updateOne({$pull:{likes:req.body.userId}});
+    res.status(200).json("Dislike sccesfully")
+  }
+
+}
+
 module.exports = {
   createNewPost,
   getAllPosts,
   getPostById,
   updatePostById,
   deletePostById,
+  likeDislikeToPost
   getAllFriendsPosts
+
 };
 
 
