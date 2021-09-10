@@ -14,9 +14,9 @@ const usersRouter = express.Router();
 const authentication = require('../middlewares/authentication')
 
 usersRouter.post("/", register);
+usersRouter.post("/login", login);
 usersRouter.get("/:idU/:idF", authentication, checkIsFollower)
 usersRouter.post("/search", authentication, searchUsersByName);
-usersRouter.post("/login", authentication, login);
 usersRouter.get("/:id", authentication, getUserById);
 usersRouter.put("/:id/follow", authentication, follwoUnfollwo);
 usersRouter.put("/:id",authentication, updateUserById);
