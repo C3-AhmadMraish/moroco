@@ -13,7 +13,6 @@ const Navigation = () => {
       {/* todo rest of them if needed i dont see a need for other links since we are just rendering in the userbody section 
 	     IMPORTANt !!  I did not pass token yet because I am not sure if you want to use context or param way to pass it.. 
 	  */}
-
 	</div>;
 };
 
