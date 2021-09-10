@@ -11,7 +11,7 @@ const userSchema= mongoose.Schema({
     password: {type:String,required:true},
     avatar:{type:String} ,
     cover:  {type:String},
-    gender: {type:String, required:true},
+    gender: {type:String},
     album: [{type:String}],
     followers: [{type:mongoose.Schema.Types.ObjectId,ref:"User"}],
     followersCount:{type:Number},
