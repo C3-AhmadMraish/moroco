@@ -3,6 +3,7 @@ import React, { useState} from "react";
 import {useHistory } from "react-router-dom";
 
 const Register = () => {
+    const history = useHistory();
   const [firstName, setfirstName] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
