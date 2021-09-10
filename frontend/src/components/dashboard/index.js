@@ -1,17 +1,20 @@
 import React from 'react';
+import Header from '../header';
 
 const Dashboard = () => {
-	return (<div className="App">
+	return (
+	<div className="App">
 		
-        <Navigation> </Navigation>
-		<left/>
-		<Switch>
+        <Header/>
+		{/* <left/> */}
+		{/* <Switch>
             <Route exact path="/timeline" component={Dashboard} />
             <Route exact path="/album" component={Dashboard} />
             <Route exact path="/follwers" component={Dashboard} />
             <Route exact path="/updateUserInfo" component={Dashboard} />
         </Switch>
-		<right/>		
+		<right/>		 */}
+
 		</div>
 		);
 };

@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+  }
+.headercontaner{
+    height: 50px;
+    width: 100%;
+    background-color: #1877f2;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.leftHeader{
+    flex:3
+}
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+.centerHeader{
+    flex:6
+}
+.seachArea{
+    width: 100%;
+    height: 35px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+.seachArea input{
+    border: none;
+    width: 70%;
+}
+.searchIcon{
+    font-size: 35px !important;
+    margin-left: 14px;
+}
+.seachArea input:focus{
+    outline: none;
+}
+.rightHeader{
+    flex:3; 
+}
+
+.rightHeader img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    float: right;
+    object-fit: cover;
+    cursor: pointer;
+
+}
