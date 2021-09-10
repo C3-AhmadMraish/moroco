@@ -56,7 +56,7 @@ const getUserById = (req, res) => {
 
 const follwoUnfollwo = (req, res) => {
   const _id = req.params.id;
-  const curruntuser = req.body.user;
+  const curruntuser =  req.token.userId;
   User.findById(_id).then((result) => {
     if (!result.followers.includes(curruntuser)) {
       User.updateOne(
@@ -76,7 +76,7 @@ const follwoUnfollwo = (req, res) => {
 
 
 const checkIsFollower = (req, res) => {
-  const _idU = req.params.idU
+  const _idU =  req.token.userId;
   const _idF = req.params.idF
   User.findById(_idU ).then ((result) => {
     if(result.followers.includes(_idF)){

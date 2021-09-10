@@ -129,7 +129,7 @@ const getPostById = (req, res) => {
 
 const likeDislikeToPost = (req, res) => {
   const _id = req.params.id;
-  const curruntuser = req.body.user;
+  const curruntuser = req.token.userId;;
   Post.findById(_id).then((result) => {
     if (!result.likes.includes(curruntuser)) {
       Post.updateOne({ _id: _id }, { $push: { likes: curruntuser } }).exec();
