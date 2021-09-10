@@ -40,7 +40,7 @@ const createNewComment = (req, res) => {
     comment,
     commenter,
   });
-// 
+  
   newComment
     .save()
     .then((result) =>Post.findByIdAndUpdate(id , {$push:{comments:result._id}}))
@@ -50,7 +50,6 @@ const createNewComment = (req, res) => {
     );
 
     
-
 }
 
 
@@ -85,21 +84,17 @@ const createNewComment = (req, res) => {
 
 
 const deleteCommentById = (req, res) => {
-
-  const _id = req.params.id;
-  Comment.findByIdAndDelete(_id)
+const id=req.body.id;
+const postId=req.params.postId;
+  Comment.findByIdAndDelete({_id:id})
     .then((result) => {
       if (!result) {
-        return res.status(404).json({
-          success: false,
-          message: `The comment with id: ${_id} Not Found comment`,
-        });
-      }
-      res.status(200).json({
-        success: true,
-        message: `Success Delete comment:  ${_id}`,
-      });
+        return res.status(404).json({  success: false, message: `The comment with id: ${id} Not Found comment`, });
+      }   
+      Post.findByIdAndUpdate(postId ,{$pull:{comments:result._id}} , { new: true })
     })
+    .then(resul => res.status(200).json({success: true, message: `Success Delete comment:` }))
+    
     .catch((err) => {
       res.status(404).json({
         success: false,
@@ -107,10 +102,9 @@ const deleteCommentById = (req, res) => {
         err: err
       });
     });
+ 
 
 }
-
-
 
 
 module.exports = {

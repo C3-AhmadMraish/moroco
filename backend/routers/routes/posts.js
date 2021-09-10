@@ -11,7 +11,7 @@ const {
   getAllFriendsPosts
 } = require("../controllers/posts");
 const {
-  getAllComments,
+  getCommentById,
   createNewComment,
   updateCommentById,
   deleteCommentById,
@@ -34,9 +34,9 @@ postsRouter.delete("/deletepost/:id", deletePostById);
 
 //edit the routes
 postsRouter.post("/:id/comment", createNewComment);
-//postsRouter.get("/:id/comment", getAllComments);//by post :id
+postsRouter.get("/comment/:id", getCommentById);
 postsRouter.put("/:id/comment", updateCommentById);
-postsRouter.delete("/:id/comment", deleteCommentById);
+postsRouter.delete("/:postId/comment", deleteCommentById);
 
 
 module.exports = postsRouter;
