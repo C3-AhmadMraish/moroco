@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState} from "react";
 import {useHistory } from "react-router-dom";
 
-const Register = () => {
+const SignUp = () => {
     const history = useHistory();
   const [firstName, setfirstName] = useState("");
   const [gender, setGender] = useState("");
@@ -15,4 +15,4 @@ const Register = () => {
 
   return
 };
-  export default Register;
+  export default SignUp;
