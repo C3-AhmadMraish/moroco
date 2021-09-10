@@ -7,16 +7,19 @@ const {
   updateUserById,
   checkIsFollower
 } = require("../controllers/users");
-const { login } = require("../middlewares/authentication");
+
+const { login } = require("../controllers/auth/login");
 const usersRouter = express.Router();
 
+const authentication = require('../middlewares/authentication')
+
 usersRouter.post("/", register);
-usersRouter.get("/:idU/:idF",checkIsFollower)
-usersRouter.post("/search", searchUsersByName);
-usersRouter.post("/login", login);
-usersRouter.get("/:id", getUserById);
-usersRouter.put("/:id/follow", follwoUnfollwo);
-usersRouter.put("/:id",updateUserById);
+usersRouter.get("/:idU/:idF", authentication, checkIsFollower)
+usersRouter.post("/search", authentication, searchUsersByName);
+usersRouter.post("/login", authentication, login);
+usersRouter.get("/:id", authentication, getUserById);
+usersRouter.put("/:id/follow", authentication, follwoUnfollwo);
+usersRouter.put("/:id",authentication, updateUserById);
 
 
 module.exports = usersRouter;

@@ -37,6 +37,7 @@ const register = (req, res) => {
 const getUserById = (req, res) => {
   const id = req.params.id;
   User.findById({ _id: id })
+    .populate("followers")
     .then((result) => {
       res.status(200).json({
         success: true,

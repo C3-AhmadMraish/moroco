@@ -3,13 +3,11 @@ const Comment = require("../../db/models/comments");
 const User = require("../../db/models/user");
 
 const getAllFriendsPosts = async (req, res) => {
-  const id = req.params.id;
-  //let timeLine = []// await Post.find({user:id});
+  const id = req.token.userId;
   await User.findById(id).then((result) => {
     result.folowees.forEach(async (f) => {
       const frindPost = await Post.find({ user: f });
       await res.json({success:true,message:frindPost});
-      // timeLine.push(frindPost);
     });
   });
 };
@@ -39,10 +37,11 @@ const getAllPosts = (req, res) => {
 };
 
 const createNewPost = (req, res) => {
-  const { body, user } = req.body;
+  const userId = req.token.userId;
+  const { body } = req.body;
   const newPost = new Post({
     body,
-    user,
+    userId,
   });
 
   newPost

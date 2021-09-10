@@ -1,9 +1,5 @@
-// const { findByIdAndUpdate } = require("../../db/models/comments");
 const Comment =require("../../db/models/comments");
 const Post = require("../../db/models/posts");
-
-
-
 
 const getCommentById = (req, res) => {
   const _id = req.params.id;
@@ -33,9 +29,9 @@ const getCommentById = (req, res) => {
 
 
 const createNewComment = (req, res) => {
-
+  const commenter = req.token.userId;
   const id = req.params.id
-  const { comment, commenter } = req.body;
+  const { comment } = req.body;
   const newComment = new Comment({
     comment,
     commenter,
