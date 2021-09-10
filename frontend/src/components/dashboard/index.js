@@ -1,4 +1,5 @@
 import React from 'react';
+import Cover from '../cover/cover';
 import Header from '../header';
 
 const Dashboard = () => {
@@ -6,6 +7,7 @@ const Dashboard = () => {
 	<div className="App">
 		
         <Header/>
+		<Cover/>
 		{/* <left/> */}
 		{/* <Switch>
             <Route exact path="/timeline" component={Dashboard} />
