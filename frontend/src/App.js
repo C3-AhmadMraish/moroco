@@ -3,7 +3,7 @@ import { Route ,Switch} from "react-router-dom";
 // import Navigation from "./components/Navigation/Navigation";
 // import SignUp from "./components/auth/Signup/Signup";
 // import Login from "./components/auth/login/Login";
-import AuthProvider from "./contexts/context";
+// import AuthProvider from "./contexts/context";
 import Dashboard from "./components/dashboard";
 const App = () => {
   return (
