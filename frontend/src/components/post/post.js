@@ -11,7 +11,18 @@ import CommentIcon from "@material-ui/icons/Comment";
 const Post = () => {
   const [posts, setPosts] = useState([]);
   const { value } = useContext(postContext);
+  const choose=(body)=>{
+    const arraybody=body.split(" ");
+    console.log(arraybody);
+    return<span>{ arraybody.map(x=>{
+      if(x.startsWith("http")){
+        console.log(x.toString());
+        return <img src={x} />
+      }
+      return x+" ";
+    })}</span>
 
+  }
   useEffect(() => {
     axios
     .get("http://localhost:5000/posts")
@@ -44,25 +55,8 @@ const Post = () => {
               </div>
               <div className="postCenter">
 
-
-                <span>
-                  {p.body}
-                {/* {p.body.split(" ").filter((a) =>!a.startsWith("http")) && (
-                p.body.split(" ").filter((a) =>!a.startsWith("http").join(""))
-                )} */}
-                </span>
-                  {/* {p.body.split(" ").filter((a) => a.startsWith("http")) && ( */}
-                    <img
-                      className="postImg"
-                      src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1868&q=80"
-                      // {p.body
-                      //   .split(" ")
-                      //   .filter((a) => a.startsWith("http"))}
-                      alt=""
-                    />
-                  {/* )} */}
+{choose(p.body)}
                 
-                {/* <span>{value&&value.map(v=>v.body)}</span> */}
               </div>
               <div className="postBottom">
                 <div className="postBottomLeft">
