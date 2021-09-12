@@ -1,29 +1,21 @@
 import React from "react";
-import { Route ,Switch} from "react-router-dom";
-import Cover from "./components/cover/cover";
-import Header from "./components/header/index";
-// import Navigation from "./components/Navigation/Navigation";
-// import SignUp from "./components/auth/Signup/Signup";
-// import Login from "./components/auth/login/Login";
-// import AuthProvider from "./contexts/context";
-
+import { Route, Switch } from "react-router-dom";
+import Main from "./components/main/index";
+import SignUp from "./components/auth/signUp/Signup";
+import "./App.css";
+import Login from "./components/auth/login/Login";
 const App = () => {
   return (
-	  <>
-		  {/* <AuthProvider> */}
-    <div className="App">
-	      <Header/>
-		  <Cover/>
+    <>
+      <div>
         <Switch>
-        {/* <Route exact path="/" render={() => <Login />} />
-        <Route exact path="/SignUp" component={SignUp} /> */}
-          {/* <Route exact path="/" component={Dashboard} /> */}
-        {/* <Route path="*" component={() => "404 Page Not Found"} /> */}
-
-      </Switch>
-    </div>
-        {/* </AuthProvider> */}
-		</>
+          <Route exact path="/" component={Main} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={SignUp} />
+          <Route path="*" component={() => "404 Page Not Found"} />
+        </Switch>
+      </div>
+    </>
   );
 };
 
