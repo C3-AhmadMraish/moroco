@@ -1,25 +1,41 @@
-import React from 'react';
-import './main.css'
+import React, { useContext, useState, useEffect, createContext } from "react";
+import { useHistory } from "react-router-dom";
+import "./main.css";
+import Post from "../post/post";
+import Feed from "../feed/feed";
+import Header from "../header";
+import Cover from "../cover/cover";
+import LeftSideBar from "../leftSideBar/leftSideBar";
+import RightSideBar from "../rightSideBar/rightSideBar";
+import "../main/main.css";
+import "../../App.css";
+import { AuthContext } from "../../contexts/context";
+export const postContext = createContext({ value: [], setValue: () => {} });
 const Main = () => {
-	return(
-		
-		<div className="main">
-		
-		<div class="post_area">
-                <div class="user_Info_PA">
-					<img src="/assest/avatar2.jpg" alt=""/>
-                    <div>
-                        <p id="post_user">Naif</p>
-                    </div>
-                </div>
-                <div class="post_input">
-                    <textarea id="posts" rows="3"></textarea>
-                    <button id="create_post">Post</button>
-                </div>
+  let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
+  const history = useHistory();
+  const [value, setValue] = useState([]);
+  return (
+    <>
+      {isLoggedIn ? (
+        <>
+          <Header />
+          <Cover />
+          <div className="App">
+            <LeftSideBar />
+            <div className="main">
+              <postContext.Provider value={{ value, setValue }}>
+                <Feed />
+                <Post />
+              </postContext.Provider>
             </div>
-		</div>
-
-	) 
+            <RightSideBar />
+          </div>
+        </>
+      ) : (
+        history.push("/login")
+      )}
+    </>
+  );
 };
-
 export default Main;
