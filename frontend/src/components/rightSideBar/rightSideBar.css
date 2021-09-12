@@ -1,6 +1,14 @@
 .rightSideBar{
     flex: 3;
-    height: 100vh;
-    background-color:green;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    
+}
 
+.trindingIcon{
+    width: 42px;
+    height: 42px;
 }
