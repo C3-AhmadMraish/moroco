@@ -1,6 +1,5 @@
 import React, { useContext, useState,createContext } from "react";
 import {useHistory,Route,Switch,useLocation} from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 import Header from "./components/header/header";
 import Cover from "./components/cover/cover";
 import Search from "./components/Search/search"
@@ -17,12 +16,14 @@ import "./App.css";
 import { AuthContext } from "./contexts/context";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
+export const searchContext = createContext({ value: [], setValue: () => {} });
 
 const App = () => {
   let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
   const location = useLocation();
   const history = useHistory();
   const [value, setValue] = useState([]);
+  const [svalue, setsValue] =useState([])
   return (
     
     <>
@@ -42,6 +43,7 @@ const App = () => {
               <LeftSideBar />
               <div className="main">
                 <Switch>
+                <searchContext.Provider value={{ svalue, setsValue }}>
                   <Route exact path="/search">
                     <Search />
                   </Route>
@@ -51,6 +53,7 @@ const App = () => {
                       <Post />
                     </postContext.Provider>
                   </Route>
+                  </searchContext.Provider>
                 </Switch>
               </div>
               <RightSideBar />
