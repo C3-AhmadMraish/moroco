@@ -96,7 +96,7 @@ const Post = () => {
                     <span className="postLikeIcon">
                       <ThumbUpAltIcon onClick={()=>Likeit(p._id)} />
                     </span>
-                    <span className="postLikeCounter">32 people like it</span>
+                    <span className="postLikeCounter">{p.likes.length}  people like it</span>
                   </div>
                   <div className="postBottomRight">
                     <span className="postCommentIcom">
