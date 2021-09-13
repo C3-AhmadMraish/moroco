@@ -4,13 +4,14 @@ import { ReactComponent as Search } from "@material-design-icons/svg/filled/sear
 import { searchContext } from "../../App";
 import { AuthContext } from "../../contexts/context";
 import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import "./header.css";
 
 const Header = () => {
   const history = useHistory();
   const { setsValue } = useContext(searchContext);
-  const { token } = useContext(AuthContext);
+  const { token,logout } = useContext(AuthContext);
 
   const [data, setData] = useState("");
   const [error, setError] = useState("");
@@ -77,7 +78,10 @@ const Header = () => {
         {/*-------------------------------search---------------------------------*/}
       </div>
       <div className="rightHeader">
-        <img src="/assets/avatar2.jpg" alt="" />
+        <img src="/assets/avatar3.png" alt="" />
+        <div className="dropdown-content">
+          <Link className="logout" onClick={logout} >LogOut</Link>
+        </div>
       </div>
     </div>
   );
