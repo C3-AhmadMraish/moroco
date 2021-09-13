@@ -9,6 +9,7 @@ import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
 import LeftSideBar from "./components/leftSideBar/leftSideBar";
 import RightSideBar from "./components/rightSideBar/rightSideBar";
+import EditProfile from "./components/editProfile/editProfile";
 
 import "./components/main/main.css";
 import "./App.css";
@@ -45,6 +46,9 @@ const App = () => {
                   <Switch>
                     <Route exact path="/search">
                       <Search />
+                    </Route>
+                    <Route exact path="/edit">
+                      <EditProfile/>
                     </Route>
                     <Route exact path="/">
                       <postContext.Provider value={{ value, setValue }}>

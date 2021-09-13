@@ -1,5 +1,4 @@
 import React,{useState,useContext, useEffect} from "react";
-import EdiText from 'react-editext';
 import './editProfile.css';
 import { AuthContext } from "../../contexts/context.js";
 import axios from "axios";
