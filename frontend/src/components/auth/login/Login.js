@@ -39,36 +39,36 @@ const Login = () => {
         <>
           <div className="logIncontener">
             <div className="logInleft">
-              <div class="login-form">
+              <div className="login-form">
                 <form onSubmit={login}>
                   <h1>Login</h1>
-                  <div class="form-group">
+                  <div className="form-group">
                     <input
                       type="email"
                       onChange={(e) => setEmail(e.target.value)}
                       name="email"
                       placeholder="E-mail Address"
                     />
-                    <span class="input-icon">
-                      <i class="fa fa-envelope"></i>
+                    <span className="input-icon">
+                      <i className="fa fa-envelope"></i>
                     </span>
                   </div>
-                  <div class="form-group">
+                  <div className="form-group">
                     <input
                       type="password"
                       onChange={(e) => setPassword(e.target.value)}
                       name="psw"
                       placeholder="Password"
                     />
-                    <span class="input-icon">
-                      <i class="fa fa-lock"></i>
+                    <span className="input-icon">
+                      <i className="fa fa-lock"></i>
                     </span>
                   </div>
-                  <button class="login-btn">Login</button>
-                  <div class="seperator">
+                  <button className="login-btn">Login</button>
+                  <div className="seperator">
                     <b>or</b>
                   </div>
-                  <div class="social-icon">
+                  <div className="social-icon">
                     <button type="button">Register</button>
                   </div>
                 </form>

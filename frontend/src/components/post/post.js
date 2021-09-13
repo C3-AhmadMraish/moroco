@@ -4,22 +4,26 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 import axios from "axios";
-import { postContext } from "../main";
+import { postContext } from "../../App";
 
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import CommentIcon from "@material-ui/icons/Comment";
 const Post = () => {
   const [posts, setPosts] = useState([]);
   const { value } = useContext(postContext);
+
   const choose=(body)=>{
+
     const arraybody=body.split(" ");
-    console.log(arraybody);
+
     return<span>{ arraybody.map(x=>{
+      
       if(x.startsWith("http")){
-        console.log(x.toString());
-        return <img src={x} />
+        // console.log(x.toString());
+        return <img className="postImg" src={x} />
       }
       return x+" ";
+
     })}</span>
 
   }

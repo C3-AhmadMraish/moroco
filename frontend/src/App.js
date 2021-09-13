@@ -1,31 +1,30 @@
-import React, { useContext, useState, useEffect, createContext } from "react";
-import {
-  useHistory,
-  Route,
-  Switch,
-  BrowserRouter,
-  useLocation,
-} from "react-router-dom";
-import SignUp from "./components/auth/signUp/Signup";
-import "./App.css";
+import React, { useContext, useState,createContext } from "react";
+import {useHistory,Route,Switch,useLocation} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import Header from "./components/header/header";
+import Cover from "./components/cover/cover";
+import Search from "./components/Search/search"
+import SignUp from "./components/auth/Signup/Signup"
 import Login from "./components/auth/login/Login";
-import Search from "./components/search/search";
 import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
-import Header from "./components/header";
-import Cover from "./components/cover/cover";
 import LeftSideBar from "./components/leftSideBar/leftSideBar";
 import RightSideBar from "./components/rightSideBar/rightSideBar";
+
 import "./components/main/main.css";
 import "./App.css";
+
 import { AuthContext } from "./contexts/context";
+
 export const postContext = createContext({ value: [], setValue: () => {} });
+
 const App = () => {
   let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
   const location = useLocation();
   const history = useHistory();
   const [value, setValue] = useState([]);
   return (
+    
     <>
       <div>
         {!isLoggedIn ? (

@@ -2,6 +2,17 @@ import React from 'react';
 import './header.css';
 import { ReactComponent as Search } from '@material-design-icons/svg/filled/search.svg';
 const Header = () => {
+
+
+
+
+
+
+
+
+
+
+	
 	return <div className="headercontaner">
 		<div className="leftHeader">
 			<span className="logo">Moroco</span>
