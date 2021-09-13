@@ -1,6 +1,6 @@
-import React from "react";
+import {React} from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router,Route } from "react-router-dom";
 import App from "./App";
 
 //context providers
@@ -9,7 +9,11 @@ import AuthProvider from "./contexts/context"
 ReactDOM.render(
   <Router>
     <AuthProvider>
-      <App />
+    {/* <Route path="/login"> */}
+    <App />
+    {/* </Route> */}
+      
+      
     </AuthProvider>
   </Router>,
   document.getElementById("root")
