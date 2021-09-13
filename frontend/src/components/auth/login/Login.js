@@ -17,9 +17,11 @@ const Login = () => {
         password,
       });
       if (res.data.success) {
+        
         setMessage("");
         saveToken(res.data.token);
         setIsLoggedIn(true);
+        history.push("/Home");
       } else throw Error;
     } catch (error) {
       if (error.response && error.response.data) {
@@ -30,7 +32,8 @@ const Login = () => {
   };
   useEffect(() => {
     if (isLoggedIn) {
-      history.push("/");
+      // console.log("farhan",isLoggedIn)
+      
     }
   });
   return (

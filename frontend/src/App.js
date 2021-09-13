@@ -3,33 +3,34 @@ import { useHistory, Route, Switch, useLocation } from "react-router-dom";
 import Header from "./components/header/header";
 import Cover from "./components/cover/cover";
 import Search from "./components/search/search";
-import SignUp from "./components/auth/signUp/Signup";
+import SignUp from "./components/auth/Signup/Signup"
 import Login from "./components/auth/login/Login";
 import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
 import LeftSideBar from "./components/leftSideBar/leftSideBar";
 import RightSideBar from "./components/rightSideBar/rightSideBar";
 import EditProfile from "./components/editProfile/editProfile";
-
+import Main from "./components/main/main";
 import "./components/main/main.css";
 import "./App.css";
 
 import { AuthContext } from "./contexts/context";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
-export const searchContext = createContext({ sValue: [], setsValue: () => {} });
+export const searchContext = createContext({});
 
 const App = () => {
   let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
   const location = useLocation();
   const history = useHistory();
   const [value, setValue] = useState([]);
-  const [svalue, setsValue] = useState([]);
+  const [sValue, setsValue] = useState([]);
   return (
     <>
       <div>
         {!isLoggedIn ? (
           <Switch>
+            <Route exact path="/" component={Main} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={SignUp} />
             {/* <Route path="*" component={() => "404 Page Not Found"} /> */}
@@ -37,7 +38,7 @@ const App = () => {
           </Switch>
         ) : (
           <>
-            <searchContext.Provider value={{ svalue, setsValue }}>
+            <searchContext.Provider value={{ sValue, setsValue }}>
               <Header />
               <Cover />
               <div className="App">
@@ -50,7 +51,7 @@ const App = () => {
                     <Route exact path="/edit">
                       <EditProfile/>
                     </Route>
-                    <Route exact path="/">
+                    <Route exact path="/Home">
                       <postContext.Provider value={{ value, setValue }}>
                         <Feed />
                         <Post />

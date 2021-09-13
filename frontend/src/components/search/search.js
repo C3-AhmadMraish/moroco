@@ -3,20 +3,18 @@ import { searchContext } from "../../App";
 const Search = () => {
   const [ssValue, setssValue] = useState();
   const { sValue } = useContext(searchContext);
+  console.log("ff",sValue)
   useEffect(() => {
     async function test() {
       setssValue(sValue);
     }
     test();
   }, [sValue]);
-
-  console.log(ssValue);
   return (
     <div>
-      <h1>asdasdasdad</h1>
-      {/* map here to loop on users */}
-      {/* {ssValue &&
-        ssValue.map((e, i) => {
+      {sValue &&
+        sValue.map((e, i) => {
+            console.log("x")
           return (
             <div key={i}>
               <img src={e.avatar} />
@@ -25,7 +23,8 @@ const Search = () => {
               </p>
             </div>
           );
-        })} */}
+        })}
+
     </div>
   );
 };

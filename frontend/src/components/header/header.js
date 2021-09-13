@@ -22,7 +22,7 @@ const Header = () => {
 
     axios
       .post(
-        `http://localhost:5000/users/search/${data}`,
+        `http://localhost:5000/users/search?name=${data}`,
         {},
         {
           headers: {
@@ -31,6 +31,7 @@ const Header = () => {
         }
       )
       .then((result) => {
+		  console.log("frontend",result.data.users)
         console.log(result.data.users.length);
         setsValue(result.data.users);
         // send query via axios to backend
