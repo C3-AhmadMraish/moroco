@@ -43,7 +43,6 @@ const Feed = () => {
                     <img src="/assets/avatar3.png" alt=""/>
                     <div>
                         <p id="post_user">{nameUserFeed}</p>
-                        <p id="post_user">naif</p>
                     </div>
                 </div>
                 <div className="post_input">
