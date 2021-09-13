@@ -51,6 +51,18 @@ const Post = () => {
       console.log(error);
     }
   };
+  const Likeit=async (id)=>{
+    try {
+      await axios.put(`http://localhost:5000/posts/${id}/like`,{}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then(resu=>console.log(resu))
+      getAllPosts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="colreverse">
@@ -82,7 +94,7 @@ const Post = () => {
                 <div className="postBottom">
                   <div className="postBottomLeft">
                     <span className="postLikeIcon">
-                      <ThumbUpAltIcon />
+                      <ThumbUpAltIcon onClick={()=>Likeit(p._id)} />
                     </span>
                     <span className="postLikeCounter">32 people like it</span>
                   </div>
