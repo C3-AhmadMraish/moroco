@@ -1,9 +1,9 @@
-import React, { useContext, useState,createContext } from "react";
-import {useHistory,Route,Switch,useLocation} from "react-router-dom";
+import React, { useContext, useState, createContext } from "react";
+import { useHistory, Route, Switch, useLocation } from "react-router-dom";
 import Header from "./components/header/header";
 import Cover from "./components/cover/cover";
-import Search from "./components/Search/search"
-import SignUp from "./components/auth/Signup/Signup"
+import Search from "./components/search/search";
+import SignUp from "./components/auth/Signup/Signup";
 import Login from "./components/auth/login/Login";
 import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
@@ -16,16 +16,15 @@ import "./App.css";
 import { AuthContext } from "./contexts/context";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
-export const searchContext = createContext({ value: [], setValue: () => {} });
+export const searchContext = createContext({ sValue: [], setsValue: () => {} });
 
 const App = () => {
   let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
   const location = useLocation();
   const history = useHistory();
   const [value, setValue] = useState([]);
-  const [svalue, setsValue] =useState([])
+  const [svalue, setsValue] = useState([]);
   return (
-    
     <>
       <div>
         {!isLoggedIn ? (
@@ -37,27 +36,27 @@ const App = () => {
           </Switch>
         ) : (
           <>
-            <Header />
-            <Cover />
-            <div className="App">
-              <LeftSideBar />
-              <div className="main">
-                <Switch>
-                <searchContext.Provider value={{ svalue, setsValue }}>
-                  <Route exact path="/search">
-                    <Search />
-                  </Route>
-                  <Route exact path="/">
-                    <postContext.Provider value={{ value, setValue }}>
-                      <Feed />
-                      <Post />
-                    </postContext.Provider>
-                  </Route>
-                  </searchContext.Provider>
-                </Switch>
+            <searchContext.Provider value={{ svalue, setsValue }}>
+              <Header />
+              <Cover />
+              <div className="App">
+                <LeftSideBar />
+                <div className="main">
+                  <Switch>
+                    <Route exact path="/search">
+                      <Search />
+                    </Route>
+                    <Route exact path="/">
+                      <postContext.Provider value={{ value, setValue }}>
+                        <Feed />
+                        <Post />
+                      </postContext.Provider>
+                    </Route>
+                  </Switch>
+                </div>
+                <RightSideBar />
               </div>
-              <RightSideBar />
-            </div>
+            </searchContext.Provider>
           </>
         )}
       </div>

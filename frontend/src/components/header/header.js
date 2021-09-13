@@ -1,21 +1,41 @@
-import React from "react";
-import "./header.css";
+import { React, useContext, useState } from "react";
+import axios from "axios";
 import { ReactComponent as Search } from "@material-design-icons/svg/filled/search.svg";
-import { searchContext } from "../main";
+import { searchContext } from "../../App";
+import { AuthContext } from "../../contexts/context";
+import { useHistory } from "react-router-dom";
+
+import "./header.css";
+
 const Header = () => {
-  const {setsValue}  = useContext(searchContext)
+  const history = useHistory();
+  const { setsValue } = useContext(searchContext);
+  const { token } = useContext(AuthContext);
+
   const [data, setData] = useState("");
   const [error, setError] = useState("");
   // useState for userName
   // useState for userImg
   const searchSend = (e) => {
     //  e.preventDefault();
-    let savedData = data;
+
     axios
-      .post("http://localhost:5000/search", savedData)
+      .post(
+        `http://localhost:5000/users/search/${data}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((result) => {
-       setsValue(result)
+        console.log(result.data.users.length);
+        setsValue(result.data.users);
         // send query via axios to backend
+      })
+      .then(() => {
+        history.push("/search");
       })
       .catch((err) => {
         if (err.message == "Name doesn't exist") {
@@ -41,7 +61,7 @@ const Header = () => {
         <span className="logo">Moroco</span>
       </div>
       <div className="centerHeader">
-    {/*-------------------------------search---------------------------------*/}
+        {/*-------------------------------search---------------------------------*/}
         <div className="seachArea">
           <Search className="searchIcon" />
           <input
@@ -54,7 +74,7 @@ const Header = () => {
           ></input>
           <button type="button" onClick={searchSend}></button>
         </div>
-    {/*-------------------------------search---------------------------------*/}
+        {/*-------------------------------search---------------------------------*/}
       </div>
       <div className="rightHeader">
         <img src="/assets/avatar2.jpg" alt="" />
