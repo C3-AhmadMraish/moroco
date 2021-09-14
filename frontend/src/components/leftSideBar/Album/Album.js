@@ -1,4 +1,3 @@
-import { ImageList } from "@material-ui/core";
 import React,{useState} from "react";
 import "./Album.css"
 import Images from "./Images";
