@@ -1,16 +1,10 @@
 import { ImageList } from "@material-ui/core";
 import React,{useState} from "react";
 import "./Album.css"
-import Images from "./Images"
+import Images from "./Images";
 
 const Album = () => {
 const [selectedImg, setSelectedImg]= useState(Images[0])
-
-const Images =[]
-
-
-
-
 
     return (
 
