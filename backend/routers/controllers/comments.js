@@ -80,7 +80,7 @@ const createNewComment = (req, res) => {
 
 
 const deleteCommentById = (req, res) => {
-const id=req.body.id;
+const id=req.params.id;
 const postId=req.params.postId;
   Comment.findByIdAndDelete({_id:id})
     .then((result) => {
