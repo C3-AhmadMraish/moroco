@@ -40,12 +40,14 @@ const createNewComment = (req, res) => {
   newComment
     .save()
     .then((result) =>Post.findByIdAndUpdate(id , {$push:{comments:result._id}}))
-    .then( res.status(201).json({ success: true, message: "seccess add comment" }))
+    .then( res.status(201).json({ 
+      success: true,
+      message: "seccess add comment",
+      commentAdded: newComment
+     }))
     .catch((err) =>
       res.status(404).json({ success: false, message: "something went wrong while creating a new comment" })
-    );
-
-    
+    );    
 }
 
 
