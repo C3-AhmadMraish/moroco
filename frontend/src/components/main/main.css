@@ -2,5 +2,5 @@
   display: flex;
   flex: 7;
   flex-direction: column;
-  
+  align-content: center;
 }

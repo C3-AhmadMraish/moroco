@@ -40,7 +40,7 @@ const App = () => {
           <>
             <searchContext.Provider value={{ sValue, setsValue }}>
               <Header />
-              <Cover />
+              {/* <Cover /> */}
               <div className="App">
                 <LeftSideBar />
                 <div className="main">
