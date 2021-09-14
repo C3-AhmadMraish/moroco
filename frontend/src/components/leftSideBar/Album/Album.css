@@ -1,10 +1,11 @@
 .Album {
+    
     width: 100%;
     min-height: 50vh;
     display: flex;
 }
-.img{
-    display:block;
+img{
+    /* display:block; */
     cursor: pointer;
 }
 .container{
@@ -20,11 +21,11 @@
 
 .container .imgContainer{
     display: flex;
-    justify-content: space-evenly;
+    justify-items: center;
     flex-wrap: wrap;
-    justify-content:stretch;
+    
 }
 
-.container .imgContainer img {
-    margin: 5px 0 ;
+.imgu {
+    margin: 0px 25px 0px 0px;
 }
