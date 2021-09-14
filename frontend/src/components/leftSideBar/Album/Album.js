@@ -9,9 +9,11 @@ const [selectedImg, setSelectedImg]= useState(Images[0])
 // buttons will not render on image area
 // dont use vertical images!
 
- //  const getAllImgs = async () => {
- //  const updateUserCover = async () => {
- //  const updateUserAvatar = async () => {
+ //  const getAllImgs = async () => {         // album
+ //  const updateUserCover = async () => {   // cover
+ //  const updateUserAvatar = async () => {  // avatar
+
+
 
 
 //add on click events to buttons bellow and propper mapping to db
@@ -19,7 +21,8 @@ const [selectedImg, setSelectedImg]= useState(Images[0])
 
         <div className="Album">
             <div className="container">
-                <img src = {selectedImg} alt="Selected" ClassName="selected"/>
+                <img src = {selectedImg} width= "1400px" height="600px" alt="Selected" ClassName="selected"/>
+                <br/>
                 <button>Upload Image</button>
                 <button>Change Profile Photo</button>
                 <button>Change Cover Photo</button>

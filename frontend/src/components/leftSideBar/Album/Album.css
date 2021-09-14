@@ -1,31 +1,24 @@
-
-
 .Album {
     width: 100%;
     min-height: 50vh;
-    background: #1c1e27;
     display: flex;
 }
 .img{
     display:block;
     cursor: pointer;
-    /* width: 250px;
-    height: 250px; */
 }
 .container{
     margin: auto;
+    object-fit: contain;
 }
 
 .container .selected{
-   width: 100%;
-    /* height: 150px;  */
     margin: 0 auto;
     border: 4px solid blue;
     
 }
 
 .container .imgContainer{
-    
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -33,7 +26,5 @@
 }
 
 .container .imgContainer img {
-    width: 20px;
-    height: 20px;
     margin: 5px 0 ;
 }
