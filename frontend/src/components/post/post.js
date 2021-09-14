@@ -7,7 +7,7 @@ import { postContext } from "../../App";
 import { AuthContext } from "../../contexts/context";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import CommentIcon from "@material-ui/icons/Comment";
-import Comments from "../comments/Comments";
+// import Comments from "../comments/Comments";
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
@@ -117,9 +117,9 @@ const Post = () => {
               </div>
             </div>
           ))}
-         {openCModal && (
-        <Comments closeModal={setOpenCModal} postId={postComments} />
-         )}  
+         {/* {openCModal && (
+        <Comments closeModal={setOpenCModal} postId={postComments} /> */}
+         {/* )}   */}
     </div>
    </>
   );
