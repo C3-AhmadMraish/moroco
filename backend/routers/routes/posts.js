@@ -27,7 +27,7 @@ const postsRouter = express.Router();
 postsRouter.get("/", getAllPosts);
 postsRouter.get("/getpostbyid/:id",authentication, getPostById);
 postsRouter.post("/",authentication ,createNewPost);
-postsRouter.put("/",authentication, updatePostById);
+postsRouter.put("/:id",authentication, updatePostById);
 postsRouter.get("/timeline", authentication, getAllFriendsPosts);
 postsRouter.put("/:id/like",authentication, likeDislikeToPost);
 postsRouter.delete("/deletepost/:id",authentication, deletePostById);
@@ -36,7 +36,7 @@ postsRouter.delete("/deletepost/:id",authentication, deletePostById);
 postsRouter.post("/:id/comment",authentication, createNewComment);
 postsRouter.get("/comment/:id", authentication, getCommentById);
 postsRouter.put("/:id/comment", authentication, updateCommentById);
-postsRouter.delete("/:postId/comment", authentication, deleteCommentById);
+postsRouter.delete("/:postId/comment/:id", authentication, deleteCommentById);
 
 
 module.exports = postsRouter;
