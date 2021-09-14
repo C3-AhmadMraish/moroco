@@ -11,6 +11,9 @@ const Post = () => {
   const [posts, setPosts] = useState([]);
   const { value, setValue } = useContext(postContext);
   const { token } = useContext(AuthContext);
+  const [openCModal, setOpenCModal] = useState(false);
+  const [postComments, setpostComments] = useState();
+  
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -100,15 +103,23 @@ const Post = () => {
                   </div>
                   <div className="postBottomRight">
                     <span className="postCommentIcom">
-                      <CommentIcon />
+                      <CommentIcon
+                        onClick={() => {
+                          setOpenCModal(true);
+                          setpostComments(p._id);
+                        }}
+                      />
                     </span>
                   </div>
                 </div>
               </div>
             </div>
           ))}
-      </>
+         {openCModal && (
+        <Comments closeModal={setOpenCModal} postId={postComments} />
+         )}  
     </div>
+   </>
   );
 };
 
