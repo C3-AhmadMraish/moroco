@@ -21,14 +21,14 @@ const [selectedImg, setSelectedImg]= useState(Images[0])
 
         <div className="Album">
             <div className="container">
-                <img src = {selectedImg} width= "1400px" height="600px" alt="Selected" ClassName="selected"/>
+                <img src = {selectedImg} width= "1400px" height="700px" alt="Selected" ClassName="selected"/>
                 <br/>
                 <button>Upload Image</button>
                 <button>Change Profile Photo</button>
                 <button>Change Cover Photo</button>
                 <div classname="imgContainer">
                     {Images.map((img, index)=> (
-                        <img
+                        <img className="imgu"
                         width= "250px"
                         height="250px"
                         style={{border:selectedImg === img ? "4px solid purple" : "" }}
