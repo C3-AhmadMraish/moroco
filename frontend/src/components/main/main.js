@@ -6,7 +6,7 @@ function Main() {
     history.push("/Login");
     return (
         <div>
-            <h1>Hi Mai </h1>
+        
         </div>
     )
 }

@@ -42,10 +42,10 @@ const LeftSideBar = () => {
                 <span>{nameUser}</span>
             </div>
             <ul className="listIcon">
-            <Link style={{textDecoration:"none"}} to="/"><li><RssFeedIcon/> timeline</li></Link>
+            <Link style={{textDecoration:"none"}} to="/Home"><li><RssFeedIcon/> timeline</li></Link>
                 <Link style={{textDecoration:"none"}} to="/edit"><li><EditIcon/> Edit profile</li></Link>
-                <li><PhotoAlbumIcon/> Album</li>
-                <li><PeopleIcon/> Followers</li>
+                <Link style={{textDecoration:"none"}} to="/Album"><li><PhotoAlbumIcon/> Album</li></Link>
+                <Link style={{textDecoration:"none"}} to="/Followers"><li><PeopleIcon/> Followers</li></Link>
             </ul>
         </div>
     )
