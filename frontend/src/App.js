@@ -3,7 +3,7 @@ import { useHistory, Route, Switch, useLocation } from "react-router-dom";
 import Header from "./components/header/header";
 import Cover from "./components/cover/cover";
 import Search from "./components/search/search";
-import SignUp from "./components/auth/Signup/Signup"
+import SignUp from "./components/auth/signUp/Signup"
 import Login from "./components/auth/login/Login";
 import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
