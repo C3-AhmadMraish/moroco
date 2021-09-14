@@ -11,6 +11,7 @@ import { AuthContext } from "../../contexts/context";
 const LeftSideBar = () => {
     const {token ,userId} = useContext(AuthContext);
     const [nameUser, setNameUser] = useState("");
+    const [profimg, setProfimg] = useState();
 
     const getNameUser = async () => {
 
@@ -25,7 +26,7 @@ const LeftSideBar = () => {
             )
             console.log(res.data.posts.firstName);
             setNameUser(res.data.posts.firstName)
-
+            setProfimg(res.data.posts.album)
         } catch (error) {
             console.log(error);
         }
@@ -33,12 +34,12 @@ const LeftSideBar = () => {
     }; 
     useEffect(() => {
         getNameUser();
-      }, []);
+      }, [profimg]);
 
     return (
         <div className="leftSideBar">
             <div className="img_name">
-                <img src="/assets/avatar3.png" alt=""/>
+                <img src={profimg} alt=""/>
                 <span>{nameUser}</span>
             </div>
             <ul className="listIcon">
