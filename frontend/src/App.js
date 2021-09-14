@@ -34,7 +34,6 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={SignUp} />
             {/* <Route path="*" component={() => "404 Page Not Found"} /> */}
-            {/* <Route exact path="/search" component={Search} /> */}
           </Switch>
         ) : (
           <>

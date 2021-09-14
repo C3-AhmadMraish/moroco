@@ -1,6 +1,6 @@
 import React,{useState,useContext, useEffect} from "react";
 import './editProfile.css';
-import { AuthContext } from "../../contexts/context.js";
+import { AuthContext } from "../../contexts/context";
 import axios from "axios";
 const EditProfile=()=>{
   let { userId,token } = useContext(AuthContext);

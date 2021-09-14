@@ -12,8 +12,6 @@ ReactDOM.render(
     {/* <Route path="/login"> */}
     <App />
     {/* </Route> */}
-      
-      
     </AuthProvider>
   </Router>,
   document.getElementById("root")
