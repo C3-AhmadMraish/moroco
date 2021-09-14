@@ -105,6 +105,8 @@ const deletePostById = (req, res) => {
 const getPostById = (req, res) => {
   const _id = req.params.id;
   Post.findById(_id)
+   .populate("comments")
+    .exec()
     .then((result) => {
       if (!result) {
         return res.status(404).json({
