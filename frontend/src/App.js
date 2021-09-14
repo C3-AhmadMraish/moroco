@@ -15,6 +15,7 @@ import "./components/main/main.css";
 import "./App.css";
 
 import { AuthContext } from "./contexts/context";
+import Album from "./components/leftSideBar/Album/Album";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
@@ -50,6 +51,9 @@ const App = () => {
                     <Route exact path="/edit">
                       <EditProfile/>
                     </Route>
+                    <Route exact path="/Album">
+                      <Album/>
+                      </Route>
                     <Route exact path="/Home">
                       <postContext.Provider value={{ value, setValue }}>
                         <Feed />
