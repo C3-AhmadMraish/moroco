@@ -3,7 +3,7 @@ import { useHistory, Route, Switch, useLocation } from "react-router-dom";
 import Header from "./components/header/header";
 import Cover from "./components/cover/cover";
 import Search from "./components/search/search";
-import SignUp from "./components/auth/signUp/Signup"
+import SignUp from "./components/auth/Signup/Signup"
 import Login from "./components/auth/login/Login";
 import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
@@ -19,6 +19,7 @@ import Album from "./components/leftSideBar/Album/Album";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
+export const imgContext = createContext()
 
 const App = () => {
   let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
@@ -26,6 +27,8 @@ const App = () => {
   const history = useHistory();
   const [value, setValue] = useState([]);
   const [sValue, setsValue] = useState([]);
+  const [img, setImg] = useState();
+
   return (
     <>
       <div>
@@ -39,6 +42,8 @@ const App = () => {
         ) : (
           <>
             <searchContext.Provider value={{ sValue, setsValue }}>
+            <imgContext.Provider value={{ img, setImg }}>
+
               <Header />
               {/* <Cover /> */}
               <div className="App">
@@ -64,6 +69,7 @@ const App = () => {
                 </div>
                 <RightSideBar />
               </div>
+            </imgContext.Provider>
             </searchContext.Provider>
           </>
         )}
