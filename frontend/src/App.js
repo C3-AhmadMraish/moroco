@@ -13,9 +13,9 @@ import EditProfile from "./components/editProfile/editProfile";
 import Main from "./components/main/main";
 import "./components/main/main.css";
 import "./App.css";
-
 import { AuthContext } from "./contexts/context";
 import Album from "./components/leftSideBar/Album/Album";
+import Comments from "./components/comments/Comments";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
@@ -59,6 +59,9 @@ const App = () => {
                     </Route>
                     <Route exact path="/edit">
                       <EditProfile/>
+                    </Route>
+                    <Route exact path="/:postId/comments">
+                      <Comments/>
                     </Route>
                     <Route exact path="/Album">
                       <Album/>
