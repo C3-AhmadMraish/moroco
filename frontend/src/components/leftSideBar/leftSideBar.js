@@ -9,8 +9,10 @@ import EditIcon from "@material-ui/icons/Edit";
 import { AuthContext } from "../../contexts/context";
 
 const LeftSideBar = () => {
-  const { token, userId } = useContext(AuthContext);
+
+  const {token ,userId} = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
+  const [profimg, setProfimg] = useState();
 
   const getNameUser = async () => {
     try {
@@ -19,45 +21,30 @@ const LeftSideBar = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res.data.posts.firstName);
       setNameUser(res.data.posts.firstName);
+      setProfimg(res.data.posts.album)
     } catch (error) {
       console.log(error);
     }
   };
+  
   useEffect(() => {
     getNameUser();
   }, []);
-
+        
   return (
     <div className="leftSideBar">
-      <div className="img_name">
-        <img src="/assets/avatar3.png" alt="" />
-        <span>{nameUser}</span>
-      </div>
-      <ul className="listIcon">
-        <Link style={{ textDecoration: "none" }} to="/Home">
-          <li>
-            <RssFeedIcon /> timeline
-          </li>
-        </Link>
-        <Link style={{ textDecoration: "none" }} to="/edit">
-          <li>
-            <EditIcon /> Edit profile
-          </li>
-        </Link>
-        <Link style={{ textDecoration: "none" }} to="/Album">
-          <li>
-            <PhotoAlbumIcon /> Album
-          </li>
-        </Link>
-        <Link style={{ textDecoration: "none" }} to="/Followers">
-          <li>
-            <PeopleIcon /> Followers
-          </li>
-        </Link>
-      </ul>
+        <div className="img_name">
+          <img src={profimg} alt=""/>
+          <span>{nameUser}</span>
+        </div>
+        <ul className="listIcon">
+        <Link style={{textDecoration:"none"}} to="/Home"><li><RssFeedIcon/> timeline</li></Link>
+            <Link style={{textDecoration:"none"}} to="/edit"><li><EditIcon/> Edit profile</li></Link>
+            <Link style={{textDecoration:"none"}} to="/Album"><li><PhotoAlbumIcon/> Album</li></Link>
+            <Link style={{textDecoration:"none"}} to="/Followers"><li><PeopleIcon/> Followers</li></Link>
+        </ul>
     </div>
-  );
+    )
 };
 export default LeftSideBar;
