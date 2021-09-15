@@ -15,9 +15,12 @@ const Post = () => {
   const formatter = buildFormatter(frenchStrings);
   const [posts, setPosts] = useState([]);
   const { value, setValue } = useContext(postContext);
-  const { token } = useContext(AuthContext);
   const [openCModal, setOpenCModal] = useState(false);
   const [postComments, setpostComments] = useState();
+  const {token ,userId} = useContext(AuthContext);
+  const [nameUser, setNameUser] = useState("");
+  
+
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -71,6 +74,27 @@ const Post = () => {
     }
   }
 
+  const getNameInPost = async () => {
+
+    try {
+        const res = await axios.get(`http://localhost:5000/users/${userId}`,
+        {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }}
+        )
+        console.log(res.data.posts.firstName);
+        setNameUser(res.data.posts.firstName)
+
+    } catch (error) {
+        console.log(error);
+    }
+  
+}; 
+useEffect(() => {
+  getNameInPost();
+  }, []);
+
   return (
     <>
     <div className="colreverse">
@@ -85,8 +109,10 @@ const Post = () => {
                       src="/assets/avatar3.png"
                       alt=""
                     />
-                    <span className="postUsername">NAif</span>
+
+                    <span className="postUsername">{nameUser}</span>
                     <span className="postDate"><TimeAgo date={p.date} formatter={formatter} /></span>
+
                   </div>
                   <div className="postTopRight">
                     <span className="postDate">
