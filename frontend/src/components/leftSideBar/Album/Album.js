@@ -8,6 +8,7 @@ import axios from "axios";
 const Album = () => {
     const [selectedImg, setSelectedImg]= useState(Images[0])
     const [avatarImg, setavatarImg]= useState([])
+    const [album,setAlbum]= useState(Images)
     let { userId,token } = useContext(AuthContext);
     const {setImg} = useContext(imgContext)
 
@@ -49,7 +50,7 @@ const ChangeProfPhoto = async ()=>{
                 </div>
                 <br/>
                 <div className="imgContainer">
-                    {Images.map((img, index)=> (
+                    {album&&album.map((img, index)=> (
                         <img className="imgu"
                         width= "250px"
                         height="250px"
@@ -58,7 +59,9 @@ const ChangeProfPhoto = async ()=>{
                         src = {img}
                         alt = "test" 
                         onClick={()=> {setSelectedImg(img) 
-                            setImg(img)}
+                            setImg(img)
+                            setAlbum([...album,img])
+                        }
                         }  
                         />
                     ))}
