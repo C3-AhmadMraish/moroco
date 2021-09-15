@@ -30,13 +30,15 @@ const LeftSideBar = () => {
   
   useEffect(() => {
     getNameUser();
-  }, []);
+  }, [profimg]);
         
+
   return (
     <div className="leftSideBar">
         <div className="img_name">
           <img src={profimg} alt=""/>
           <span>{nameUser}</span>
+
         </div>
         <ul className="listIcon">
         <Link style={{textDecoration:"none"}} to="/Home"><li><RssFeedIcon/> timeline</li></Link>

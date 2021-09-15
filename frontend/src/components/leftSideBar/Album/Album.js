@@ -9,6 +9,7 @@ const Album = () => {
     const [selectedImg, setSelectedImg]= useState(Images[0])
     const [avatarImg, setavatarImg]= useState([])
     let { userId,token } = useContext(AuthContext);
+    const {setImg} = useContext(imgContext)
 
 useEffect(()=>{
     axios.get(`http://localhost:5000/users/${userId}`, {
@@ -43,7 +44,7 @@ const ChangeProfPhoto = async ()=>{
                 <div className="perant">
                 
                     <div className='Child'>
-                <img onClick={()=> ChangeProfPhoto()} src = {selectedImg} width= "1400px" height="700px" alt="Selected" ClassName="selected"/>
+                <img onClick={()=> ChangeProfPhoto()} src = {selectedImg} width= "1400px" height="700px" alt="Selected" className="selected"/>
                 </div>
                 </div>
                 <br/>
@@ -56,7 +57,9 @@ const ChangeProfPhoto = async ()=>{
                         key = {index}
                         src = {img}
                         alt = "test" 
-                        onClick={()=> setSelectedImg(img)}  
+                        onClick={()=> {setSelectedImg(img) 
+                            setImg(img)}
+                        }  
                         />
                     ))}
                 </div>
