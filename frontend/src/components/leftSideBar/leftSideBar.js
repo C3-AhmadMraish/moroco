@@ -11,7 +11,7 @@ import { AuthContext } from "../../contexts/context";
 const LeftSideBar = () => {
     const {token ,userId} = useContext(AuthContext);
     const [nameUser, setNameUser] = useState("");
-    const [profimg, setProfimg] = useState();
+    const [profimg, setProfimg] = useState({});
 
     const getNameUser = async () => {
 
@@ -33,7 +33,7 @@ const LeftSideBar = () => {
     }; 
     useEffect(() => {
         getNameUser();
-      }, []);
+      }, [profimg]);
 
     return (
         <div className="leftSideBar">
@@ -43,9 +43,9 @@ const LeftSideBar = () => {
             </div>
             <ul className="listIcon">
             <Link style={{textDecoration:"none"}} to="/Home"><li><RssFeedIcon/> timeline</li></Link>
-                <Link style={{textDecoration:"none"}} to="/edit"><li><EditIcon/> Edit profile</li></Link>
-                <Link style={{textDecoration:"none"}} to="/Album"><li><PhotoAlbumIcon/> Album</li></Link>
-                <Link style={{textDecoration:"none"}} to="/Followers"><li><PeopleIcon/> Followers</li></Link>
+            <Link style={{textDecoration:"none"}} to="/edit"><li><EditIcon/> Edit profile</li></Link>
+             <Link style={{textDecoration:"none"}} to="/Album"><li><PhotoAlbumIcon/> Album</li></Link>
+             <Link style={{textDecoration:"none"}} to="/Followers"><li><PeopleIcon/> Followers</li></Link>
             </ul>
         </div>
     )
