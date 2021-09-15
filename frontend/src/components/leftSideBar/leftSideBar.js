@@ -24,17 +24,16 @@ const LeftSideBar = () => {
                   Authorization: `Bearer ${token}`,
                 }}
             )
-            console.log(res.data.posts.firstName);
             setNameUser(res.data.posts.firstName)
             setProfimg(res.data.posts.album)
         } catch (error) {
-            console.log(error);
+            console.log("hi",error);
         }
       
     }; 
     useEffect(() => {
         getNameUser();
-      }, [profimg]);
+      }, []);
 
     return (
         <div className="leftSideBar">

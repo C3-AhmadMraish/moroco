@@ -16,10 +16,6 @@ useEffect(()=>{
           Authorization: `Bearer ${token}`,
         }})
     .then(result=>{
-        console.log("result",result)
-        // setavatarImg(result.data.posts.album)
-        console.log("avatar",result.data.posts.avatar)
-        console.log("album",result.data.posts.album)
     })
     .catch(err=>console.log(err))
 },[])
@@ -45,14 +41,12 @@ const ChangeProfPhoto = async ()=>{
         <div className="Album">
             <div className="container">
                 <div className="perant">
+                
                     <div className='Child'>
-                <img src = {selectedImg} width= "1400px" height="700px" alt="Selected" ClassName="selected"/>
+                <img onClick={()=> ChangeProfPhoto()} src = {selectedImg} width= "1400px" height="700px" alt="Selected" ClassName="selected"/>
                 </div>
                 </div>
                 <br/>
-                {/* <button>Upload Image</button> */}
-                <button  onClick={()=> ChangeProfPhoto()} >Change Profile Photo</button>
-                {/* <button>Change Cover Photo</button> */}
                 <div className="imgContainer">
                     {Images.map((img, index)=> (
                         <img className="imgu"
@@ -62,7 +56,7 @@ const ChangeProfPhoto = async ()=>{
                         key = {index}
                         src = {img}
                         alt = "test" 
-                        onClick={()=> setSelectedImg(img)}
+                        onClick={()=> setSelectedImg(img)}  
                         />
                     ))}
                 </div>

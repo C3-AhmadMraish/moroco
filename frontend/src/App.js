@@ -19,7 +19,7 @@ import Album from "./components/leftSideBar/Album/Album";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
-export const imgContext = createContext()
+export const imgContext = createContext({})
 
 const App = () => {
   let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
