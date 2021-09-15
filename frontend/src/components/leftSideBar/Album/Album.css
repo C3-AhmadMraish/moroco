@@ -3,26 +3,29 @@
     width: 100%;
     min-height: 50vh;
     display: flex;
+     
 }
 img{
+    
     /* display:block; */
     cursor: pointer;
 }
 .container{
      margin: auto;
+     
     /* object-fit: contain;  */
 }
 
 .container .selected{
     margin: 0 auto;
-    border: 4px solid blue;
+    border: 1px solid yellow;
 }
 
 .container .imgContainer{
     display: flex;
     justify-items: center;
     flex-wrap: wrap;
-    
+   
 }
 
 .imgu {
@@ -30,11 +33,12 @@ img{
 }
 
  .perant{ 
-      position: relative; 
      
-    
+     position: relative;
+     
  } 
 .Child{
+    opacity: 0.9;
     top: 0;
     left: 0;
     width: 100%;

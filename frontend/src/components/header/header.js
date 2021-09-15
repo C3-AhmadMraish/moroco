@@ -5,14 +5,14 @@ import { searchContext } from "../../App";
 import { AuthContext } from "../../contexts/context";
 import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import { imgContext } from "../../App";
 import "./header.css";
 
 const Header = () => {
   const history = useHistory();
   const { setsValue } = useContext(searchContext);
   const { token,logout } = useContext(AuthContext);
-
+  const {img} = useContext(imgContext)
   const [data, setData] = useState("");
   const [error, setError] = useState("");
   // useState for userName
@@ -79,7 +79,7 @@ const Header = () => {
         {/*-------------------------------search---------------------------------*/}
       </div>
       <div className="rightHeader">
-        <img src="/assets/avatar3.png" alt="" />
+        <img src={img} alt="" />
         <div className="dropdown-content">
           <Link className="logout" onClick={logout} >LogOut</Link>
         </div>
