@@ -1,21 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
 import "./post.css";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-
 import axios from "axios";
 import { postContext } from "../../App";
 import { AuthContext } from "../../contexts/context";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import TimeAgo from "react-timeago";
+import frenchStrings from "react-timeago/lib/language-strings/en";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import CommentIcon from "@material-ui/icons/Comment";
-// import Comments from "../comments/Comments";
-
+import Comments from "../comments/Comments";
+import { Link, useHistory } from "react-router-dom";
 const Post = () => {
+  const formatter = buildFormatter(frenchStrings);
   const [posts, setPosts] = useState([]);
   const { value, setValue } = useContext(postContext);
   const { token } = useContext(AuthContext);
   const [openCModal, setOpenCModal] = useState(false);
   const [postComments, setpostComments] = useState();
-  
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -84,7 +86,7 @@ const Post = () => {
                       alt=""
                     />
                     <span className="postUsername">NAif</span>
-                    <span className="postDate">3 hour ago</span>
+                    <span className="postDate"><TimeAgo date={p.date} formatter={formatter} /></span>
                   </div>
                   <div className="postTopRight">
                     <span className="postDate">
@@ -105,12 +107,9 @@ const Post = () => {
                   </div>
                   <div className="postBottomRight">
                     <span className="postCommentIcom">
-                      <CommentIcon
-                        onClick={() => {
-                          setOpenCModal(true);
-                          setpostComments(p._id);
-                        }}
-                      />
+                    <Link to={`/${p._id}/comments`}>
+                      <CommentIcon/>
+                      </Link>
                     </span>
                   </div>
                 </div>
@@ -118,8 +117,8 @@ const Post = () => {
             </div>
           ))}
          {/* {openCModal && (
-        <Comments closeModal={setOpenCModal} postId={postComments} /> */}
-         {/* )}   */}
+        <Comments closeModal={setOpenCModal} postId={postComments} />
+         )}   */}
     </div>
    </>
   );

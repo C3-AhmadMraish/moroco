@@ -1,6 +1,7 @@
 const Post = require("../../db/models/posts");
 const Comment = require("../../db/models/comments");
 const User = require("../../db/models/user");
+const { populate } = require("../../db/models/posts");
 
 const getAllFriendsPosts = async (req, res) => {
   const id = req.token.userId;
@@ -37,11 +38,11 @@ const getAllPosts = (req, res) => {
 };
 
 const createNewPost = (req, res) => {
-  const userId = req.token.userId;
+  const user = req.token.userId;
   const { body } = req.body;
   const newPost = new Post({
     body,
-    userId,
+    user,
   });
 
   newPost
@@ -105,7 +106,8 @@ const deletePostById = (req, res) => {
 const getPostById = (req, res) => {
   const _id = req.params.id;
   Post.findById(_id)
-   .populate("comments")
+   .populate({ path: 'comments', populate: { path: 'commenter' }})
+   .populate("user")
     .exec()
     .then((result) => {
       if (!result) {

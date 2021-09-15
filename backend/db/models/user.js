@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const defAvatart="https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg";
 const userSchema= mongoose.Schema({
     firstName:{type:String,required:true} ,
     lastName: {type:String}  ,
@@ -9,7 +9,7 @@ const userSchema= mongoose.Schema({
     age: {type:Number},
     email: {type:String,required:true} ,
     password: {type:String,required:true},
-    avatar:{type:String} ,
+    avatar:{type:String,default:defAvatart} ,
     cover:  {type:String},
     gender: {type:String},
     album: [{type:String}],
