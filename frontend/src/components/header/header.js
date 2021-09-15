@@ -12,14 +12,21 @@ const Header = () => {
   const history = useHistory();
   const { setsValue } = useContext(searchContext);
   const { token,logout } = useContext(AuthContext);
-  const {img} = useContext(imgContext)
+  const {img, setImg} = useContext(imgContext)
   const [data, setData] = useState("");
   const [error, setError] = useState("");
   // useState for userName
   // useState for userImg
+
+//get axios mn db
+// res..blablabla 
+// setImg(res....avatar)
+
+
+
+
   const searchSend = (e) => {
     //  e.preventDefault();
-
     axios
       .post(
         `http://localhost:5000/users/search?name=${data}`,

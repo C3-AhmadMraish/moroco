@@ -29,6 +29,10 @@ const App = () => {
   const [sValue, setsValue] = useState([]);
   const [img, setImg] = useState();
 
+
+
+
+  
   return (
     <>
       <div>
