@@ -1,6 +1,15 @@
 .leftSideBar{
     flex: 2;
-    height: 100vh;
+    height: 400px;
+    background-color: #fff;
+border-radius: 6px;
+margin: 10px;
+border: 2px solid #ccc;
+}
+ul{
+
+    margin-left: 14px;
+    padding:0px ;
 }
 .img_name{
     display: flex;
@@ -16,7 +25,7 @@
 }
 .listIcon{
     list-style: none;
-    margin-top: 10px;
+    margin-top: 19px;
 }
 .listIcon li{
     margin-bottom: 20px;

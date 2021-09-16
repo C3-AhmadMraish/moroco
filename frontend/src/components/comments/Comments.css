@@ -64,7 +64,9 @@
 }
 
 #cancelBtn {
-  background-color: crimson;
+  /* background-color: crimson;
+   */
+   color: #626262;
 }
 
 #cancelBtn:hover{
@@ -73,4 +75,54 @@
 
 .addNewCommentIcon:hover{
   cursor: pointer;
+}
+
+
+
+.postComment{
+  width: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 20px;
+  color: #626262;
+border: 2px solid #ccc;
+}
+
+.postdevid textarea{
+  width: 100%;
+  border: 0.5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 10px;
+  outline: 0;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  resize: none;
+  background: transparent;
+  color: black;
+  overflow: hidden;
+}
+
+.commentBottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.commentBottom .commentBottomLeft{
+  flex-basis: 95%;
+}
+
+.postTopRight #editIconn{
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+
+.postTopRight .deleteIconn{
+  font-size: 25px;
+  cursor: pointer;
+  color: red;
 }
