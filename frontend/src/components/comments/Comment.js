@@ -10,14 +10,14 @@ import { commentContext } from "../../App";
 const Comment = ({ c, postId }) => {
   const formatter = buildFormatter(frenchStrings);
   const { token, userId } = useContext(AuthContext);
-  const [NewBody, setNewBody] = useState(""); //For update
+  const [NewBody, setNewBody] = useState(c.comment); //For update
   const {setComment } = useContext(commentContext);
   const isAuthorized = c.commenter._id === userId;
 
   const updateComment = async (id) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/posts/comment/${id}`,
+        `http://localhost:5000/posts/${id}/comment/`,
         { body: NewBody },
         {
           headers: {
@@ -26,7 +26,8 @@ const Comment = ({ c, postId }) => {
         }
       );
 
-      setComment(res.date.comment)
+      console.log(res.data.comment);
+      setComment(res.data.comment)
 
     } catch (error) {
       console.log(error);
@@ -92,7 +93,7 @@ const Comment = ({ c, postId }) => {
                 setNewBody(e.target.value);
               }}
               style={{ background: "none", border: "none" }}
-              placeholder={c.comment}
+              value={NewBody}
             />
           </div>
         </div>
