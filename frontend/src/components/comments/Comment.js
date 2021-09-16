@@ -45,7 +45,9 @@ const Comment = ({ c, postId }) => {
         }
       );
 
-      setComment(res.date)
+      setComment(res.data)
+
+      
 
     } catch (error) {
       console.log(error);
