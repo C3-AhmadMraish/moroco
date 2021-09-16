@@ -17,7 +17,6 @@ const Login = () => {
         password,
       });
       if (res.data.success) {
-        
         setMessage("");
         saveToken(res.data.token);
         setIsLoggedIn(true);
@@ -33,21 +32,21 @@ const Login = () => {
   useEffect(() => {
     if (isLoggedIn) {
       // console.log("farhan",isLoggedIn)
-      
     }
   });
   return (
     <>
       {!isLoggedIn ? (
         <>
-          <div className="mainLogin"> {/*main container */}
-            <div className="divLogoLogin"> {/*logo container */}
-              <p className="logoName">Moroco</p>
-              <p>Comunicate with other people in your country!</p>
-            </div>  {/*end logo container */}
-
-            <div className="logIncontener">  {/*login container */}
+          <div className="logIncontener">
             <div className="logInleft">
+              <div className="leftcc">
+            <p><span className="logo">Moroco</span> helps you connect and share with the <br/>people in your life.</p>
+            <img width="80%" height="90%" src="assets\730_generated.jpg"></img>
+              </div>
+            </div>
+            <div className="logInright">
+              <div className="loginTest">
               <div className="login-form">
                 <form onSubmit={login}>
                   <h1>Login</h1>
@@ -83,61 +82,9 @@ const Login = () => {
                 </form>
               </div>
             </div>
-            {/*Trending */}
-            {/* <div className="logInright">
-              <div className="loginTest">
-              <h3>
-                Trinding post{" "}
-                <span>
-                  <img className="trindingIcon" src="/assets/popularity.png" />
-                </span>
-              </h3>
-              <div className="postLogin">
-                <div className="postdevid">
-                  <div className="postTop">
-                    <div className="postTopLeft">
-                      <img
-                        className="postProfileImg"
-                        src="/assets/avatar3.png"
-                        alt=""
-                      />
-                      <span className="postUsername">NAif</span>
-                      <span className="postDate">3 hour ago</span>
-                    </div>
-                  </div>
-                  <div className="postCenter">
-                    <span>My First Post :</span>
-                    <img className="postImg" src="/assets/jo.png" alt="" />
-                  </div>
-                </div>
-              </div>
-              <div className="postLogin">
-                <div className="postdevid">
-                  <div className="postTop">
-                    <div className="postTopLeft">
-                      <img
-                        className="postProfileImg"
-                        src="/assets/avatar3.png"
-                        alt=""
-                      />
-                      <span className="postUsername">NAif</span>
-                      <span className="postDate">3 hour ago</span>
-                    </div>
-                  </div>
-                  <div className="postCenter">
-                    <span>My First Post :</span>
-                    <img className="postImg" src="/assets/jo.png" alt="" />
-                  </div>
-                </div>
-              </div>
             </div>
-            </div>
-        */}
-       
-          </div> {/*end login container */}
-       
-          </div> {/*end main container */}
-           </>
+          </div>
+        </>
       ) : (
         history.push("/")
       )}
