@@ -5,13 +5,13 @@ import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/en";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import { AuthContext } from "../../contexts/context";
+import { commentContext } from "../../App";
 
 const Comment = ({ c }) => {
   const formatter = buildFormatter(frenchStrings);
   const { token, userId } = useContext(AuthContext);
-  const [post, setpost] = useState();
   const [NewBody, setNewBody] = useState(""); //For update
-  const [newComment, setnewComment] = useState();
+  const {setcomment } = useContext(commentContext);
   const isAuthorized = c.commenter._id === userId;
 
   const updateComment = async (id) => {
@@ -25,6 +25,9 @@ const Comment = ({ c }) => {
           },
         }
       );
+
+      setcomment(res.date.comment)
+
     } catch (error) {
       console.log(error);
     }
@@ -40,6 +43,8 @@ const Comment = ({ c }) => {
           },
         }
       );
+
+      
     } catch (error) {
       console.log(error);
     }

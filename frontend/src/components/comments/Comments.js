@@ -7,11 +7,13 @@ import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/en";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import Comment from './Comment'
+import Comment from "./Comment";
+import { commentContext } from "../../App";
 
 const Comments = () => {
   const formatter = buildFormatter(frenchStrings);
   const { token, userId } = useContext(AuthContext);
+  const {comment } = useContext(commentContext);
   const [post, setpost] = useState();
   const [comments, setComments] = useState(); // For create new
   const [newComment, setnewComment] = useState();
@@ -36,7 +38,7 @@ const Comments = () => {
 
   useEffect(() => {
     getAllComments();
-  }, []);
+  }, [comment]);
 
   const createNewComment = async () => {
     try {
@@ -90,7 +92,7 @@ const Comments = () => {
         <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
         {comments &&
           comments.map((c) => {
-            <Comment c={c} />;
+            return <Comment c={c} />;
           })}
       </div>
     </div>
