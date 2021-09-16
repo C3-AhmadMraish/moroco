@@ -12,32 +12,30 @@ import { commentContext } from "../../App";
 
 const Comments = () => {
   const formatter = buildFormatter(frenchStrings);
+
   const { token, userId } = useContext(AuthContext);
-  const {comment } = useContext(commentContext);
+  const {comment,setComment } = useContext(commentContext);
+
   const [post, setpost] = useState();
   const [comments, setComments] = useState(); // For create new
   const [newComment, setnewComment] = useState();
   const { postId } = useParams();
 
-  const getAllComments = () => {
-    axios
-      .get(`http://localhost:5000/posts/getpostbyid/${postId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((result) => {
-        setComments(result.data.post.comments);
-        setpost(result.data.post);
-      })
-      .catch((err) => {
-        setComments([]);
-        console.log("err" + err);
-      });
-  };
-
   useEffect(() => {
-    getAllComments();
+    axios
+    .get(`http://localhost:5000/posts/getpostbyid/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((result) => {
+      setComments(result.data.post.comments);
+      setpost(result.data.post);
+    })
+    .catch((err) => {
+      setComments([]);
+      console.log("err" + err);
+    });
   }, [comment]);
 
   const createNewComment = async () => {
@@ -52,7 +50,7 @@ const Comments = () => {
         }
       );
 
-      setComments([...comments, res.data.commentAdded]);
+      setComment( res.data.commentAdded);
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +90,7 @@ const Comments = () => {
         <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
         {comments &&
           comments.map((c) => {
-            return <Comment c={c} />;
+            return <Comment c={c} postId={postId} />;
           })}
       </div>
     </div>

@@ -28,7 +28,7 @@ const App = () => {
   const [value, setValue] = useState([]);
   const [sValue, setsValue] = useState([]);
   const [img, setImg] = useState();
-  const [comment, setcomment] = useState();
+  const [comment, setComment] = useState([]);
 
   return (
     <>
@@ -43,37 +43,37 @@ const App = () => {
         ) : (
           <>
             <searchContext.Provider value={{ sValue, setsValue }}>
-              <imgContext.Provider value={{ img, setImg }}>
-                <Header />
-                <div className="App">
-                  <LeftSideBar />
-                  <div className="main">
-                    <Switch>
-                      <Route exact path="/search">
-                        <Search />
-                      </Route>
-                      <Route exact path="/edit">
-                        <EditProfile />
-                      </Route>
-                      <Route exact path="/:postId/comments">
-                        <Comments />
-                      </Route>
-                      <Route exact path="/Album">
-                        <Album />
-                      </Route>
-                      <Route exact path="/Home">
-                        <postContext.Provider value={{ value, setValue }}>
-                          <commentContext.Provider value={{ comment,setcomment }}>
+              <commentContext.Provider value={{ comment, setComment }}>
+                <imgContext.Provider value={{ img, setImg }}>
+                  <Header />
+                  <div className="App">
+                    <LeftSideBar />
+                    <div className="main">
+                      <Switch>
+                        <Route exact path="/search">
+                          <Search />
+                        </Route>
+                        <Route exact path="/edit">
+                          <EditProfile />
+                        </Route>
+                        <Route exact path="/:postId/comments">
+                          <Comments />
+                        </Route>
+                        <Route exact path="/Album">
+                          <Album />
+                        </Route>
+                        <Route exact path="/Home">
+                          <postContext.Provider value={{ value, setValue }}>
                             <Feed />
                             <Post />
-                          </commentContext.Provider>
-                        </postContext.Provider>
-                      </Route>
-                    </Switch>
+                          </postContext.Provider>
+                        </Route>
+                      </Switch>
+                    </div>
+                    <RightSideBar />
                   </div>
-                  <RightSideBar />
-                </div>
-              </imgContext.Provider>
+                </imgContext.Provider>
+              </commentContext.Provider>
             </searchContext.Provider>
           </>
         )}
