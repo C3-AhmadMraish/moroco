@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import "./Comments.css";
 import TimeAgo from "react-timeago";
@@ -7,11 +7,11 @@ import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import { AuthContext } from "../../contexts/context";
 import { commentContext } from "../../App";
 
-const Comment = ({ c }) => {
+const Comment = ({ c, postId }) => {
   const formatter = buildFormatter(frenchStrings);
   const { token, userId } = useContext(AuthContext);
   const [NewBody, setNewBody] = useState(""); //For update
-  const {setcomment } = useContext(commentContext);
+  const {setComment } = useContext(commentContext);
   const isAuthorized = c.commenter._id === userId;
 
   const updateComment = async (id) => {
@@ -26,7 +26,7 @@ const Comment = ({ c }) => {
         }
       );
 
-      setcomment(res.date.comment)
+      setComment(res.date.comment)
 
     } catch (error) {
       console.log(error);
@@ -44,7 +44,8 @@ const Comment = ({ c }) => {
         }
       );
 
-      
+      setComment(res.date)
+
     } catch (error) {
       console.log(error);
     }
