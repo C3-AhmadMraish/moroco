@@ -11,11 +11,13 @@ const Comments = () => {
   const formatter = buildFormatter(frenchStrings);
   const { token, userId } = useContext(AuthContext);
   const [post, setpost] = useState();
-  const [NewBody, setNewBody] = useState("");
-  const [comments, setComments] = useState([]);
+  const [NewBody, setNewBody] = useState(""); //For update
+  const [comments, setComments] = useState(); // For create new
   const [newComment, setnewComment] = useState();
   const { postId } = useParams();
-  useEffect(() => {
+  
+  
+  const getAllComments = () => {
     axios
       .get(`http://localhost:5000/posts/getpostbyid/${postId}`, {
         headers: {
@@ -25,12 +27,18 @@ const Comments = () => {
       .then((result) => {
         setComments(result.data.post.comments);
         setpost(result.data.post);
-        // console.log();
       })
       .catch((err) => {
+        setComments([]);
         console.log("err" + err);
       });
+  };
+
+  useEffect(() => {
+    getAllComments();
   }, []);
+
+  
 
   const createNewComment = async () => {
     try {
@@ -44,7 +52,7 @@ const Comments = () => {
         }
       );
 
-      setComments([...post.comments, res.data.commentAdded]);
+      setComments([...comments, res.data.commentAdded]);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +61,7 @@ const Comments = () => {
   const updateComment = async (id) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/posts/${id}/comment`,
+        `http://localhost:5000/posts/comment/${id}`,
         { body: NewBody },
         {
           headers: {
@@ -62,9 +70,11 @@ const Comments = () => {
         }
       );
 
+      console.log(NewBody);
       console.log(res.data.comments);
 
-      setComments([...post.comments, ...res.data.comments]);
+      getAllComments();
+
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +91,7 @@ const Comments = () => {
         }
       );
 
-      setComments([...post.comments]);
+      getAllComments()
     } catch (error) {
       console.log(error);
     }
@@ -89,29 +99,41 @@ const Comments = () => {
 
   return (
     <div className="post">
-      {console.log(post)}
       <div className="postdevid">
         <div className="postTop">
           <div className="postTopLeft">
             <img className="postProfileImg" src="/assets/avatar3.png" alt="" />
             <span className="postUsername">{post && post.user.firstName}</span>
-            <span className="postDate"><TimeAgo date={post&&post.date} formatter={formatter} /></span>
+            <span className="postDate">
+              <TimeAgo date={post && post.date} formatter={formatter} />
+            </span>
           </div>
           <div className="postTopRight"></div>
         </div>
         <div className="postCenter">{post && post.body}</div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <textarea></textarea>
+            <textarea
+              onChange={(e) => {
+                setnewComment(e.target.value);
+              }}
+            ></textarea>
           </div>
           <div className="postBottomRight">
-            <AddCircleOutlineIcon />
+            <AddCircleOutlineIcon
+              className="addNewCommentIcon"
+              onClick={() => {
+                createNewComment();
+              }}
+            />
           </div>
         </div>
         <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
-        {comments.length &&
+        {comments &&
           comments.map((c) => {
-            return (
+            const isAuthorized = c.commenter._id === userId;
+
+            return isAuthorized ? (
               <div
                 key={c._id}
                 className="commentSection"
@@ -125,11 +147,63 @@ const Comments = () => {
                         src={c.commenter.avatar}
                         alt=""
                       />
-                      {console.log(c.comment)}
                       <span className="postUsername">
                         {c.commenter.firstName}
                       </span>
-                      {console.log(new Date().getDate())}
+                      <span className="postDate">
+                        <TimeAgo date={c.date} formatter={formatter} />
+                      </span>
+                    </div>
+                    <div className="postTopRight">
+                      <button
+                        onClick={() => {
+                          deleteComment(c._id);
+                        }}
+                      >
+                        Delete
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          updateComment(c._id);
+                        }}
+                      >
+                        Update
+                      </button>
+                    </div>
+                  </div>
+                  <div className="postCenter">
+                    <input
+                      type="text"
+                      onChange={(e) => {
+                        setNewBody(e.target.value);
+                      }}
+                      style={{ background: "none", border: "none" }}
+                      placeholder={c.comment}
+                    />
+                  </div>
+                </div>
+                <hr
+                  style={{ fontSize: "20px", color: "gray", marginTop: "30px" }}
+                />
+              </div>
+            ) : (
+              <div
+                key={c._id}
+                className="commentSection"
+                style={{ marginLeft: "70px", marginTop: "30px" }}
+              >
+                <div className="postdevid">
+                  <div className="postTop">
+                    <div className="postTopLeft">
+                      <img
+                        className="postProfileImg"
+                        src={c.commenter.avatar}
+                        alt=""
+                      />
+                      <span className="postUsername">
+                        {c.commenter.firstName}
+                      </span>
                       <span className="postDate">
                         <TimeAgo date={c.date} formatter={formatter} />
                       </span>
@@ -138,7 +212,6 @@ const Comments = () => {
                   </div>
                   <div className="postCenter">{c.comment}</div>
                 </div>
-
                 <hr
                   style={{ fontSize: "20px", color: "gray", marginTop: "30px" }}
                 />

@@ -30,7 +30,7 @@ const LeftSideBar = () => {
   
   useEffect(() => {
     getNameUser();
-  }, [profimg]);
+  }, []);
         
 
   return (
