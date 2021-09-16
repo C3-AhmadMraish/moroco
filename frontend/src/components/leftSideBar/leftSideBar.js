@@ -7,12 +7,14 @@ import PhotoAlbumIcon from "@material-ui/icons/PhotoAlbum";
 import PeopleIcon from "@material-ui/icons/People";
 import EditIcon from "@material-ui/icons/Edit";
 import { AuthContext } from "../../contexts/context";
+import { profimgContext } from "../../App";
 
 const LeftSideBar = () => {
 
   const {token ,userId} = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
-  const [profimg, setProfimg] = useState();
+const {profimg} = useContext(profimgContext)
+  //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
 
   const getNameUser = async () => {
     try {
@@ -22,7 +24,6 @@ const LeftSideBar = () => {
         },
       });
       setNameUser(res.data.posts.firstName);
-      setProfimg(res.data.posts.album)
     } catch (error) {
       console.log(error);
     }

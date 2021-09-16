@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from "react";
+import React, { useContext, useState, createContext, useEffect } from "react";
 import { useHistory, Route, Switch, useLocation } from "react-router-dom";
 import Header from "./components/header/header";
 import Search from "./components/search/search";
@@ -15,20 +15,42 @@ import "./App.css";
 import { AuthContext } from "./contexts/context";
 import Album from "./components/leftSideBar/Album/Album";
 import Comments from "./components/comments/Comments";
+import axios from "axios";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
-export const imgContext = createContext({});
+export const profimgContext = createContext({});   // main image
 export const commentContext = createContext({});
 
 const App = () => {
-  let { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
+  let { setIsLoggedIn, isLoggedIn, saveToken ,token,userId} = useContext(AuthContext);
   const location = useLocation();
   const history = useHistory();
   const [value, setValue] = useState([]);
   const [sValue, setsValue] = useState([]);
-  const [img, setImg] = useState();
+  const [profimg, setProfimg] = useState(""); //main image
   const [comment, setComment] = useState([]);
+  // const {token ,userId} =  useContext(AuthContext);
+
+  
+   //use
+                      // this function will run on page load and gets img from avatar field in the db
+                                   // if the user sets another image via album profile image change function it will update 
+                                    // the db field via put function THEN--->
+                                    // dependency will force the function to re-run and get the new updated img from db
+  useEffect(async() => {
+    try {
+      console.log("mai hi",userId,"",token)
+      // const userid = await token.userId
+      const res = await axios.get(`http://localhost:5000/users/${userId}`, {headers: {Authorization: `Bearer ${token}`,},});
+        console.log("mai res",res)
+      // setNameUser(res.data.posts.firstName);
+      setProfimg(res.data.posts.avatar) //check to know correct . . 
+    } catch (error) {
+      console.log(error);
+    }               
+  }, [userId]);
+
 
   return (
     <>
@@ -44,7 +66,7 @@ const App = () => {
           <>
             <searchContext.Provider value={{ sValue, setsValue }}>
               <commentContext.Provider value={{ comment, setComment }}>
-                <imgContext.Provider value={{ img, setImg }}>
+                <profimgContext.Provider value={{ profimg, setProfimg }}>      {/*  main image  */}
                   <Header />
                   <div className="App">
                     <LeftSideBar />
@@ -72,7 +94,7 @@ const App = () => {
                     </div>
                     <RightSideBar />
                   </div>
-                </imgContext.Provider>
+                </profimgContext.Provider>
               </commentContext.Provider>
             </searchContext.Provider>
           </>

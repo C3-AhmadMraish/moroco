@@ -11,13 +11,15 @@ import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import CommentIcon from "@material-ui/icons/Comment";
 import Comments from "../comments/Comments";
 import { Link, useHistory } from "react-router-dom";
+import { profimgContext } from "../../App";
+
 const Post = () => {
   const formatter = buildFormatter(frenchStrings);
   const [posts, setPosts] = useState([]);
   const { value, setValue } = useContext(postContext);
   const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
-
+  const {profimg, setProfimg} = useContext(profimgContext);
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -105,7 +107,7 @@ const Post = () => {
                   <div className="postTopLeft">
                     <img
                       className="postProfileImg"
-                      src="/assets/avatar3.png"
+                      src={profimg}
                       alt=""
                     />
 
