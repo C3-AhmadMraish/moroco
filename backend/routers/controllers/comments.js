@@ -57,7 +57,7 @@ const createNewComment = (req, res) => {
   const _id = req.params.id;
   const {body} = req.body
  
-  Comment.findByIdAndUpdate(_id, {body:body}, { new: true })
+  Comment.findByIdAndUpdate(_id, {comment:body}, { new: true })
     .then((result) => {
       if (!result) {
         return res.status(404).json({
