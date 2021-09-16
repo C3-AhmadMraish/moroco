@@ -70,3 +70,7 @@
 #cancelBtn:hover{
   cursor: pointer;
 }
+
+.addNewCommentIcon:hover{
+  cursor: pointer;
+}
