@@ -5,7 +5,7 @@ body{
 .headercontaner{
     height: 50px;
     width: 100%;
-    background-color: #4599FF;;
+    background-color: #007bff;;
     display: flex;
     align-items: center;
     position: sticky;
@@ -22,13 +22,13 @@ body{
     font-weight: bold;
     cursor: pointer;
     color: white;
-    margin-left: 8px;
+    margin-left: 12px;
 }
 .centerHeader{
-    flex:7
+    flex:6
 }
 .seachArea{
-    width: 100%;
+    width: 90%;
     height: 35px;
     background-color: white;
     border-radius: 30px;
@@ -37,7 +37,7 @@ body{
 }
 .seachArea input{
     border: none;
-    width: 70%;
+    width: 55%;
 }
 .searchIcon{
     font-size: 35px !important;
@@ -47,7 +47,7 @@ body{
     outline: none;
 }
 .rightHeader{
-    flex:3; 
+    flex:2; 
 }
 
 .rightHeader img{
@@ -57,7 +57,7 @@ body{
     float: right;
     object-fit: cover;
     cursor: pointer;
-    margin-right: 8px;
+    margin-right: 12px;
 }
 .dropdown-content {
     display: none;
