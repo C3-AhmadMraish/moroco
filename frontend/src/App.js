@@ -2,7 +2,7 @@ import React, { useContext, useState, createContext } from "react";
 import { useHistory, Route, Switch, useLocation } from "react-router-dom";
 import Header from "./components/header/header";
 import Search from "./components/search/search";
-import SignUp from "./components/auth/signUp/Signup";
+import SignUp from "./components/auth/signUp/Signup"
 import Login from "./components/auth/login/Login";
 import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
