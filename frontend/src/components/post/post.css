@@ -9,9 +9,7 @@
     padding: 20px;
     color: #626262;
     margin-top: 15px;
-    -webkit-box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
--moz-box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
-box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
+  border: 2px solid #ccc;
 }
 .postTop{
     display: flex;
