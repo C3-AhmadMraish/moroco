@@ -15,11 +15,8 @@ const Post = () => {
   const formatter = buildFormatter(frenchStrings);
   const [posts, setPosts] = useState([]);
   const { value, setValue } = useContext(postContext);
-  const [openCModal, setOpenCModal] = useState(false);
-  const [postComments, setpostComments] = useState();
-  const {token ,userId} = useContext(AuthContext);
+  const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
-  
 
   const choose = (body) => {
     const arraybody = body.split(" ");
@@ -61,43 +58,45 @@ const Post = () => {
       console.log(error);
     }
   };
-  const Likeit=async (id)=>{
+  const Likeit = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/posts/${id}/like`,{}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }).then(resu=>console.log(resu))
+      await axios
+        .put(
+          `http://localhost:5000/posts/${id}/like`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then((resu) => console.log(resu));
       getAllPosts();
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const getNameInPost = async () => {
-
     try {
-        const res = await axios.get(`http://localhost:5000/users/${userId}`,
-        {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }}
-        )
-        console.log(res.data.posts.firstName);
-        setNameUser(res.data.posts.firstName)
-
+      const res = await axios.get(`http://localhost:5000/users/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(res.data.posts.firstName);
+      setNameUser(res.data.posts.firstName);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-  
-}; 
-useEffect(() => {
-  getNameInPost();
+  };
+  useEffect(() => {
+    getNameInPost();
   }, []);
 
   return (
     <>
-    <div className="colreverse">
+      <div className="colreverse">
         {posts &&
           posts.map((p, i) => (
             <div key={i} className="post">
@@ -111,8 +110,9 @@ useEffect(() => {
                     />
 
                     <span className="postUsername">{nameUser}</span>
-                    <span className="postDate"><TimeAgo date={p.date} formatter={formatter} /></span>
-
+                    <span className="postDate">
+                      <TimeAgo date={p.date} formatter={formatter} />
+                    </span>
                   </div>
                   <div className="postTopRight">
                     <span className="postDate">
@@ -127,14 +127,16 @@ useEffect(() => {
                 <div className="postBottom">
                   <div className="postBottomLeft">
                     <span className="postLikeIcon">
-                      <ThumbUpAltIcon onClick={()=>Likeit(p._id)} />
+                      <ThumbUpAltIcon onClick={() => Likeit(p._id)} />
                     </span>
-                    <span className="postLikeCounter">{p.likes.length}  people like it</span>
+                    <span className="postLikeCounter">
+                      {p.likes.length} people like it
+                    </span>
                   </div>
                   <div className="postBottomRight">
                     <span className="postCommentIcom">
-                    <Link to={`/${p._id}/comments`}>
-                      <CommentIcon/>
+                      <Link to={`/${p._id}/comments`}>
+                        <CommentIcon />
                       </Link>
                     </span>
                   </div>
@@ -142,11 +144,8 @@ useEffect(() => {
               </div>
             </div>
           ))}
-         {/* {openCModal && (
-        <Comments closeModal={setOpenCModal} postId={postComments} />
-         )}   */}
-    </div>
-   </>
+      </div>
+    </>
   );
 };
 
