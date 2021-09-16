@@ -72,12 +72,13 @@ const Login = () => {
                     <b>or</b>
                   </div>
                   <div className="social-icon">
-                    <button type="button">Register</button>
+                    <button  onClick={()=> history.push("/register")} type="button">Register</button>
                   </div>
                 </form>
               </div>
             </div>
             <div className="logInright">
+              <div className="loginTest">
               <h3>
                 Trinding post{" "}
                 <span>
@@ -122,6 +123,7 @@ const Login = () => {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </>
