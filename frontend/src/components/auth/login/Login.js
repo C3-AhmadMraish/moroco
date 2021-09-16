@@ -40,7 +40,13 @@ const Login = () => {
     <>
       {!isLoggedIn ? (
         <>
-          <div className="logIncontener">
+          <div className="mainLogin"> {/*main container */}
+            <div className="divLogoLogin"> {/*logo container */}
+              <p className="logoName">Moroco</p>
+              <p>Comunicate with other people in your country!</p>
+            </div>  {/*end logo container */}
+
+            <div className="logIncontener">  {/*login container */}
             <div className="logInleft">
               <div className="login-form">
                 <form onSubmit={login}>
@@ -77,7 +83,8 @@ const Login = () => {
                 </form>
               </div>
             </div>
-            <div className="logInright">
+            {/*Trending */}
+            {/* <div className="logInright">
               <div className="loginTest">
               <h3>
                 Trinding post{" "}
@@ -125,8 +132,12 @@ const Login = () => {
               </div>
             </div>
             </div>
-          </div>
-        </>
+        */}
+       
+          </div> {/*end login container */}
+       
+          </div> {/*end main container */}
+           </>
       ) : (
         history.push("/")
       )}
