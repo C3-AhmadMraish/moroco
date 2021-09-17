@@ -4,8 +4,8 @@ import './rightSideBar.css';
 const RightSideBar = () => {
 
 /* 
-  example someone liked bashar post -----> bashar post like = 2
-          someone liked Abdullah post ----->Abdullah post like = 1
+  example someone liked bashar post two times  ----->  bashar post like = 2
+          someone liked Abdullah post one time ----->  Abdullah post like = 1
           no one liked Naif post 
           no one liked ahmad post
 
