@@ -55,15 +55,19 @@ const addNewAndDeleteOld = (req, res) => {
   const postId = req.params.id;
   //Check if post exists in trends
   Trend.findOne({ _id: postId })
+    .populate("post")
     .then(async (result) => {
       if (!result) {
-        const trends = await Trend.find({});
+        const trends = await Trend.find({}).populate('post');
         const post = await Post.findOne({ _id: postId });
-        trends.forEach((trend) => {
-          if (trend.likesCounter < post.likesCounter) {
-            Trend.deleteOne({ _id: trend._id });
+        trends.forEach(async(trend) => {
+          if (trend.post.likesCounter < post.likesCounter) {
+            const _id = await trend.post._id;
+            Trend.findByIdAndDelete(trend._id).then((result)=>{
+              console.log('delete'+result);
+            });
 
-            const newTrend = new Trend({ post: postId });
+            const newTrend = await new Trend({ post: postId });
             return newTrend.save();
           }
         });

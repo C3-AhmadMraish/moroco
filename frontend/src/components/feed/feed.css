@@ -1,35 +1,34 @@
-.post_area{
+.post_area {
   width: 90%;
   background-color: #fff;
   height: 170px;
   border-radius: 6px;
   padding: 20px;
   color: #626262;
-border: 2px solid #ccc;
-
+  border: 1px solid #ccc;
 }
 
-.user_Info_PA{
+.user_Info_PA {
   display: flex;
   align-items: center;
 }
 
-.user_Info_PA img{
+.user_Info_PA img {
   width: 40px;
   border-radius: 50%;
   margin-right: 10px;
 }
-.user_Info_PA small{
+.user_Info_PA small {
   font-size: 12px;
 }
 
-.post_input{
+.post_input {
   padding-left: 55px;
   padding-top: 35px;
   min-height: 80px;
 }
 
-.post_input textarea{
+.post_input textarea {
   width: 100%;
   border: 0;
   outline: 0;
@@ -39,8 +38,8 @@ border: 2px solid #ccc;
   color: black;
   overflow: hidden;
 }
-#create_post{
-  color:#1876f2;
+#create_post {
+  color: #1876f2;
   font-size: 25px;
   cursor: pointer;
   float: right;
