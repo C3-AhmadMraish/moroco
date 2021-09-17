@@ -10,6 +10,7 @@ const Followers = () => {
     //put followers in the setFollowers usestate
     //in return
     // map over followers and return follower name and follower img
+    
 return (
     <>
 {/*  map over follower Array (){
