@@ -1,5 +1,6 @@
 import { React, useContext, useEffect, useState } from "react";
 import { searchContext } from "../../App";
+import "./search.css"
 const Search = () => {
   const [ssValue, setssValue] = useState();
   const { sValue } = useContext(searchContext);
@@ -11,16 +12,15 @@ const Search = () => {
     test();
   }, [sValue]);
   return (
-    <div>
+    <div className="searchContainer">
       {sValue &&
         sValue.map((e, i) => {
-            console.log("x")
           return (
-            <div key={i}>
-              <img src={e.avatar} />
+            <div className="searchedUser" key={i}>
               <p>
                 {e.firstName} {e.lastName}
               </p>
+              <img height="250px" width="250px" src={e.avatar} alt=""/>
             </div>
           );
         })}
