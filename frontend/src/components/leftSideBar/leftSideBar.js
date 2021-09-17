@@ -41,6 +41,7 @@ const {profimg} = useContext(profimgContext)
           <span>{nameUser}</span>
 
         </div>
+        <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
         <ul className="listIcon">
         <Link style={{textDecoration:"none"}} to="/Home"><li><RssFeedIcon/> timeline</li></Link>
             <Link style={{textDecoration:"none"}} to="/edit"><li><EditIcon/> Edit profile</li></Link>

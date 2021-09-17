@@ -1,7 +1,7 @@
 .post_area{
   width: 90%;
   background-color: #fff;
-  height: 150px;
+  height: 170px;
   border-radius: 6px;
   padding: 20px;
   color: #626262;
@@ -25,7 +25,7 @@ border: 2px solid #ccc;
 
 .post_input{
   padding-left: 55px;
-  padding-top: 20px;
+  padding-top: 35px;
   min-height: 80px;
 }
 

@@ -6,6 +6,8 @@ import frenchStrings from "react-timeago/lib/language-strings/en";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import { AuthContext } from "../../contexts/context";
 import { commentContext } from "../../App";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import EditIcon from "@material-ui/icons/Edit";
 
 const Comment = ({ c, postId }) => {
   const formatter = buildFormatter(frenchStrings);
@@ -71,21 +73,22 @@ const Comment = ({ c, postId }) => {
               </span>
             </div>
             <div className="postTopRight">
-              <button
+            <HighlightOffIcon className="deleteIconn"
                 onClick={() => {
                   deleteComment(c._id);
                 }}
-              >
+              
                 Delete
-              </button>
+              />
 
-              <button
+              <EditIcon
+              id="editIconn"
                 onClick={() => {
                   updateComment(c._id);
                 }}
-              >
+              
                 Update
-              </button>
+              />
             </div>
           </div>
           <div className="postCenter">

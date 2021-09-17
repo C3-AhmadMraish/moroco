@@ -16,6 +16,8 @@ const Search = () => {
       {sValue &&
         sValue.map((e, i) => {
           return (
+            <div key={i}>
+              <img width="150px" height="150px" src={e.avatar} />
             <div className="searchedUser" key={i}>
               <p>
                 {e.firstName} {e.lastName}

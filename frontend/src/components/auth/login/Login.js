@@ -39,8 +39,11 @@ const Login = () => {
       {!isLoggedIn ? (
         <>
           <div className="logIncontener">
+            
             <div className="logInleft">
               <div className="leftcc">
+              <div className="textDevide">
+              </div>
             <p><span className="logo">Moroco</span> <br/> <span>Connect with friends and the world around you.</span> </p>
             <img width="80%" height="90%" src="assets\730_generated.jpg"></img>
               </div>
