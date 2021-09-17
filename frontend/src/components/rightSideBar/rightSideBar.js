@@ -6,15 +6,14 @@ import Trending from "./trending";
 const RightSideBar = () => {
   const [trends, setTrends] = useState([])
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/trends").then((res) => {
-      console.log(res.data.trends)
-      setTrends(res.data.trends);
-    }).catch((err)=>{
-      console.log(err);
-    });
-  }, []);
-
+    useEffect(() => {
+      axios.get("http://localhost:5000/trends").then((res) => {
+        setTrends(res.data.trends);
+      }).catch((err)=>{
+        console.log(err);
+      });
+    },[]);
+    
   return (
     <div className="rightSideBar">
       <h4>

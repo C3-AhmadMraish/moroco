@@ -63,7 +63,6 @@ const addNewAndDeleteOld = (req, res) => {
         trends.forEach(async(trend) => {
           if (trend.post.likesCounter < post.likesCounter) {
             const _id = await trend.post._id;
-            console.log(_id);
             Trend.findByIdAndDelete(trend._id).then((result)=>{
               console.log('delete'+result);
             });
