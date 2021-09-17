@@ -41,7 +41,17 @@ const Login = () => {
       {!isLoggedIn ? (
         <>
           <div className="logIncontener">
+            
             <div className="logInleft">
+              <div className="leftcc">
+              <div className="textDevide">
+              <span className="logo">Moroco</span><p> helps you connect and share with the <br/>people in your life.</p>
+            </div>
+            <img width="80%" height="90%" src="assets\730_generated.jpg"></img>
+              </div>
+            </div>
+            <div className="logInright">
+              <div className="loginTest">
               <div className="login-form">
                 <form onSubmit={login}>
                   <h1>Login</h1>
@@ -75,53 +85,6 @@ const Login = () => {
                     <button  onClick={()=> history.push("/register")} type="button">Register</button>
                   </div>
                 </form>
-              </div>
-            </div>
-            <div className="logInright">
-              <div className="loginTest">
-              <h3>
-                Trinding post{" "}
-                <span>
-                  <img className="trindingIcon" src="/assets/popularity.png" />
-                </span>
-              </h3>
-              <div className="postLogin">
-                <div className="postdevid">
-                  <div className="postTop">
-                    <div className="postTopLeft">
-                      <img
-                        className="postProfileImg"
-                        src="/assets/avatar3.png"
-                        alt=""
-                      />
-                      <span className="postUsername">NAif</span>
-                      <span className="postDate">3 hour ago</span>
-                    </div>
-                  </div>
-                  <div className="postCenter">
-                    <span>My First Post :</span>
-                    <img className="postImg" src="/assets/jo.png" alt="" />
-                  </div>
-                </div>
-              </div>
-              <div className="postLogin">
-                <div className="postdevid">
-                  <div className="postTop">
-                    <div className="postTopLeft">
-                      <img
-                        className="postProfileImg"
-                        src="/assets/avatar3.png"
-                        alt=""
-                      />
-                      <span className="postUsername">NAif</span>
-                      <span className="postDate">3 hour ago</span>
-                    </div>
-                  </div>
-                  <div className="postCenter">
-                    <span>My First Post :</span>
-                    <img className="postImg" src="/assets/jo.png" alt="" />
-                  </div>
-                </div>
               </div>
             </div>
             </div>

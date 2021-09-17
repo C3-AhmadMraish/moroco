@@ -17,7 +17,7 @@ const Search = () => {
             console.log("x")
           return (
             <div key={i}>
-              <img src={e.avatar} />
+              <img width="150px" height="150px" src={e.avatar} />
               <p>
                 {e.firstName} {e.lastName}
               </p>

@@ -57,7 +57,7 @@ const Comments = () => {
   };
 
   return (
-    <div className="post">
+    <div className="postComment">
       <div className="postdevid">
         <div className="postTop">
           <div className="postTopLeft">
@@ -72,14 +72,27 @@ const Comments = () => {
         <div className="postCenter">{post && post.body}</div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <textarea
+            
+          </div>
+          <div className="postBottomRight">
+
+          </div>
+        </div>
+        <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
+        <div className="commentBottom">
+          <div className="commentBottomLeft">
+          <textarea
+              placeholder="Enter your comment ..."
               onChange={(e) => {
                 setnewComment(e.target.value);
               }}
-            ></textarea>
+            >
+              
+            </textarea>
           </div>
-          <div className="postBottomRight">
-            <AddCircleOutlineIcon
+          <div className="commentBottomRight">
+          <AddCircleOutlineIcon
+              id="create_post"
               className="addNewCommentIcon"
               onClick={() => {
                 createNewComment();
@@ -87,7 +100,7 @@ const Comments = () => {
             />
           </div>
         </div>
-        <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
+        
         {comments &&
           comments.map((c) => {
             return <Comment c={c} postId={postId} />;

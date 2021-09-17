@@ -8,12 +8,27 @@ body {
     justify-content: center;
     width: 100%;
 }
+.leftcc{
+  display: flex;
+  flex-direction: column;
+}
 .logInleft{
-    flex: 8;
+    flex: 6;
+
 }
 .logInright{
-    flex: 4;
-    align-content: flex-end;
+    flex: 6;
+    /* align-content: flex-end; */
+}
+.leftcc p{
+  text-align: center;
+    margin-top: 60px;
+    margin-bottom: 2px;
+    font-size: 30px;
+}
+.leftcc .logo{
+  font-size: 60px;
+  color: #007bff;
 }
 .postLogin{
   width: 50%;

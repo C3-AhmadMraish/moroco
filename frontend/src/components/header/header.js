@@ -67,12 +67,13 @@ const Header = () => {
   return (
     <div className="headercontaner">
       <div className="leftHeader">
-        <span className="logo">Moroco</span>
+        {/* <span className="logo">Moroco</span> */}
+        <Link style={{textDecoration:"none"}} to="/Home"><span className="logo">Moroco</span></Link>
       </div>
       <div className="centerHeader">
         {/*-------------------------------search---------------------------------*/}
         <div className="seachArea">
-          <Search className="searchIcon" />
+          <Search  onClick={searchSend} className="searchIcon" />
           <input
             type="text"
             placeholder="Search..."
@@ -81,7 +82,7 @@ const Header = () => {
               setData(e.target.value);
             }}
           ></input>
-          <button type="button" onClick={searchSend}></button>
+          {/* <button type="button" onClick={searchSend}></button> */}
         </div>
         {/*-------------------------------search---------------------------------*/}
       </div>
