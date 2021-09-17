@@ -36,7 +36,7 @@ const Comments = () => {
       setComments([]);
       console.log("err" + err);
     });
-  }, [comment]);
+  }, [comment,postId,token]);
 
   const createNewComment = async () => {
     try {
