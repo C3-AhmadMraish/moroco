@@ -41,7 +41,7 @@ const Login = () => {
           <div className="logIncontener">
             <div className="logInleft">
               <div className="leftcc">
-            <p><span className="logo">Moroco</span> helps you connect and share with the <br/>people in your life.</p>
+            <p><span className="logo">Moroco</span> <br/> <span>Connect with friends and the world around you.</span> </p>
             <img width="80%" height="90%" src="assets\730_generated.jpg"></img>
               </div>
             </div>
