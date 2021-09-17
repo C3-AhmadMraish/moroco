@@ -10,10 +10,9 @@ import { AuthContext } from "../../contexts/context";
 import { profimgContext } from "../../App";
 
 const LeftSideBar = () => {
-
-  const {token ,userId} = useContext(AuthContext);
+  const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
-const {profimg} = useContext(profimgContext)
+  const { profimg } = useContext(profimgContext);
   //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
 
   const getNameUser = async () => {
@@ -28,27 +27,41 @@ const {profimg} = useContext(profimgContext)
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     getNameUser();
   }, []);
-        
 
   return (
     <div className="leftSideBar">
-        <div className="img_name">
-          <img src={profimg} alt=""/>
-          <span>{nameUser}</span>
-
-        </div>
-        <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
-        <ul className="listIcon">
-        <Link style={{textDecoration:"none"}} to="/Home"><li><RssFeedIcon/> timeline</li></Link>
-            <Link style={{textDecoration:"none"}} to="/edit"><li><EditIcon/> Edit profile</li></Link>
-            <Link style={{textDecoration:"none"}} to="/Album"><li><PhotoAlbumIcon/> Album</li></Link>
-            <Link style={{textDecoration:"none"}} to="/Followers"><li><PeopleIcon/> Followers</li></Link>
-        </ul>
+      <div className="img_name">
+        <img src={profimg} alt="" />
+        <span>{nameUser}</span>
+      </div>
+      <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
+      <ul className="listIcon">
+        <Link className="linkLeftSideBar" to="/Home">
+          <li>
+            <RssFeedIcon /> timeline
+          </li>
+        </Link>
+        <Link className="linkLeftSideBar" to="/edit">
+          <li>
+            <EditIcon /> Edit profile
+          </li>
+        </Link>
+        <Link className="linkLeftSideBar" to="/Album">
+          <li>
+            <PhotoAlbumIcon /> Album
+          </li>
+        </Link>
+        <Link className="linkLeftSideBar" to="/Followers">
+          <li>
+            <PeopleIcon /> Followers
+          </li>
+        </Link>
+      </ul>
     </div>
-    )
+  );
 };
 export default LeftSideBar;
