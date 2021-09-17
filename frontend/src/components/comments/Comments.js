@@ -19,6 +19,7 @@ const Comments = () => {
   const [post, setpost] = useState();
   const [comments, setComments] = useState(); // For create new
   const [newComment, setnewComment] = useState();
+  const [userimg,setUserImg] = useState();
   const { postId } = useParams();
 
   useEffect(() => {
@@ -49,8 +50,9 @@ const Comments = () => {
           },
         }
       );
-
+     
       setComment( res.data.commentAdded);
+      console.log("Mraish",res.data)
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +63,7 @@ const Comments = () => {
       <div className="postdevid">
         <div className="postTop">
           <div className="postTopLeft">
-            <img className="postProfileImg" src="/assets/avatar3.png" alt="" />
+            <img className="postProfileImg" src={userimg} alt="" />
             <span className="postUsername">{post && post.user.firstName}</span>
             <span className="postDate">
               <TimeAgo date={post && post.date} formatter={formatter} />

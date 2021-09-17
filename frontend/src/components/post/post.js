@@ -108,7 +108,7 @@ const Post = () => {
                     <img
                       className="postProfileImg"
                       src={profimg}
-                      alt=""
+                      alt={profimg}
                     />
 
                     <span className="postUsername">{nameUser}</span>
