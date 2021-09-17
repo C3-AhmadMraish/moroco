@@ -131,18 +131,19 @@ const getPostById = (req, res) => {
     });
 };
 
-const likeDislikeToPost = (req, res) => {
+const likeDislikeToPost = (req, res, next) => {
   const _id = req.params.id;
   const curruntuser = req.token.userId;;
   Post.findById(_id).then((result) => {
     if (!result.likes.includes(curruntuser)) {
-      Post.updateOne({ _id: _id }, { $push: { likes: curruntuser } }).exec();
+      Post.updateOne({ _id: _id }, { $push: { likes: curruntuser },likesCounter: result.likesCounter + 1}).exec();
       res.status(200).json("like sccesfully");
     } else {
-      Post.updateOne({ _id: _id }, { $pull: { likes: curruntuser } }).exec();
+      Post.updateOne({ _id: _id }, { $pull: { likes: curruntuser }, likesCounter: result.likesCounter - 1 }).exec();
       res.status(200).json("Dislike sccesfully");
     }
-  });
+    next();
+  });  
 };
 
 module.exports = {

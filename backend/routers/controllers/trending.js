@@ -51,11 +51,30 @@ const getTrends = (req, res) => {
     });
 };
 
-const addNewAndDeleteOld =(req,res) =>{
-  // get all trends 
+const addNewAndDeleteOld = (req, res) => {
+  const postId = req.params.id;
+  //Check if post exists in trends
+  Trend.findOne({ _id: postId })
+    .then(async (result) => {
+      if (!result) {
+        const trends = await Trend.find({});
+        const post = await Post.findOne({ _id: postId });
+        trends.forEach((trend) => {
+          if (trend.likesCounter < post.likesCounter) {
+            Trend.deleteOne({ _id: trend._id });
+
+            const newTrend = new Trend({ post: postId });
+            return newTrend.save();
+          }
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   // get post by id which is comming from req
   // loop over trends and compare each with post.likesCounter
   // if post.likesCounter > one of them >>> then replace them
-}
+};
 
-module.exports = { getTrends,addNewAndDeleteOld };
+module.exports = { getTrends, addNewAndDeleteOld };

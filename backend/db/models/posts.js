@@ -7,15 +7,13 @@ const postSchema= mongoose.Schema({
     date:{type:Date ,default:Date.now()},
     img:{type:String},
     likes:[{type:mongoose.Schema.Types.ObjectId,ref:"User"}],
-    likesCounter:{type:Number},
+    likesCounter:{type:Number, default:0},
     comments:[{type:mongoose.Schema.Types.ObjectId,ref:"Comment"}],
     commentsCounter:{type:Number},
 
 });
 
 
+
 module.exports=mongoose.model("Post",postSchema);
 
-postSchema.post("updateOne", async function () {
-    this.likesCounter = await likes.length;
-})
