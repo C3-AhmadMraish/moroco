@@ -19,9 +19,8 @@ const RightSideBar = () => {
           <img className="postImg" src="https://images.unsplash.com/photo-1601120103207-78398c2e8e6a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="" />
         </div>
       </div>
-    </div><br/>
-   {/* <hr style={{ zIndex:"9999999999999", fontSize: "20px", color: "gray", marginTop: "30px" }} /> */}
-    <br/>
+    </div>
+
     <div className="trindPost">
       <div className="postdevid">
         <div className="postTop">
@@ -37,7 +36,9 @@ const RightSideBar = () => {
         </div>
       </div>
     </div>
+
     {/* <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} /> */}
+    
     	<div className="trindPost">
       <div className="postdevid">
         <div className="postTop">
