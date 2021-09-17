@@ -88,7 +88,7 @@ const Header = () => {
       <div className="rightHeader">
         <img src={profimg} alt="" />
         <div className="dropdown-content">
-          <Link className="logout" onClick={logout} >LogOut</Link>
+          <Link className="logout"  onClick={logout} >LogOut</Link>
         </div>
       </div>
     </div>
