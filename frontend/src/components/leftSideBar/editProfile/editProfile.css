@@ -1,4 +1,8 @@
 .edit_info{
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
   width: 90%;
   background-color: #fff;
   border-radius: 6px;
@@ -6,15 +10,21 @@
   color: #626262;
   text-align:center;
   border: 2px solid #ccc;
+  height: 100vh
 }
 
 .edit_info .change_info{
-  background: #2ecc71;
+  background: #f0f0f7;
+  border-radius: 1rem;
   width: 90px;
   padding: 5px;
   margin: 10px;
   border: none;
   outline: none;
+  font-size: 15px;
+}
+.change_info:hover{
+  cursor: pointer;
 }
 .edit_info .cancel_change_info{
   background: #ec6b44;

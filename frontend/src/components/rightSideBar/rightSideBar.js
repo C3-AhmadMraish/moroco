@@ -17,7 +17,7 @@ const RightSideBar = () => {
   return (
     <div className="rightSideBar">
       <h4>
-        Trinding post{" "}
+        Trending Posts{" "}
         <span>
           <img className="trindingIcon" src="/assets/popularity.png" />
         </span>

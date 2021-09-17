@@ -46,7 +46,7 @@ const Feed = () => {
                     </div>
                 </div>
                 <div className="post_input">
-                    <textarea onChange={e=>setPostBody(e.target.value)} placeholder={ `whats on your mind ${nameUserFeed} `}  id="posts" rows="3">{nameUserFeed}</textarea>
+                    <textarea onChange={e=>setPostBody(e.target.value)} placeholder={ `What is on your mind ${nameUserFeed} ? `}  id="posts" rows="3">{nameUserFeed}</textarea>
                     <button onClick={Addpost} id="create_post"><AddCircleOutlineIcon/></button>
                 </div> 
             </div>

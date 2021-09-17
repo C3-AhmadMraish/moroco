@@ -34,6 +34,9 @@ const Post = () => {
       </span>
     );
   };
+  /*
+  
+  */
   const getAllPosts = async () => {
     try {
       const res = await axios.get("http://localhost:5000/posts");
