@@ -18,7 +18,7 @@ const SignUp = () => {
       })
       .catch((err) => {
         if (err.message) {
-          setError("Error happened while register, please try again");
+          setError("Error happened while registering, please try again");
         }
       });
   };
@@ -27,16 +27,16 @@ const SignUp = () => {
       <div className="logInleft">
         <div className="leftcc">
           <p>
-            <span className="logo">Moroco</span> helps you connect and share
-            with the <br />
-            people in your life.
+            <span className="logo">Moroco</span> <br />
+            <span>Join our Family Today!</span>
           </p>
           <img
             width="100%"
             style={{ marginLeft: "4%" }}
             height="90%"
             src="assets\Project_141-02.jpg"
-          ></img>
+            alt=""
+          />
         </div>
       </div>
       <div className="logInright">
