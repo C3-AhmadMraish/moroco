@@ -8,7 +8,7 @@ import Post from "./components/post/post";
 import Feed from "./components/feed/feed";
 import LeftSideBar from "./components/leftSideBar/leftSideBar";
 import RightSideBar from "./components/rightSideBar/rightSideBar";
-import EditProfile from "./components/editProfile/editProfile";
+import EditProfile from "./components/leftSideBar/editProfile/editProfile";
 import Main from "./components/main/main";
 import "./components/main/main.css";
 import "./App.css";
@@ -16,6 +16,7 @@ import { AuthContext } from "./contexts/context";
 import Album from "./components/leftSideBar/Album/Album";
 import Comments from "./components/comments/Comments";
 import axios from "axios";
+import Followers from "./components/leftSideBar/Followers/Followers";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
@@ -83,6 +84,9 @@ const App = () => {
                         </Route>
                         <Route exact path="/Album">
                           <Album />
+                        </Route>
+                        <Route exact path="/Followers">
+                          <Followers />
                         </Route>
                         <Route exact path="/Home">
                           <postContext.Provider value={{ value, setValue }}>
