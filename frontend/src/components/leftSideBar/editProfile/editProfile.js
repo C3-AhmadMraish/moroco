@@ -46,11 +46,17 @@ const EditProfile=()=>{
       }
     return (
         <div className="edit_info">
-        <input type="text" className="new_name"  onChange={(e)=>setLastName(e.target.value)} placeholder={lastName}/><br/><br/>
-        <input type="text" className="new_pass" onChange={(e)=>setAge(e.target.value)} placeholder={age}/><br/><br/>
-        <input type="text" className="new_pass" onChange={(e)=>setEmail(e.target.value)} placeholder={email}/><br/><br/>
+        <span>LastName</span>
+        <input type="text" placeholder={lastName} className="new_name"  onChange={(e)=>setLastName(e.target.value)}  /><br/><br/>
+        <span>Age</span>
+        <input type="text" placeholder={age} className="new_pass" onChange={(e)=>setAge(e.target.value)} /><br/><br/>
+        <span>Email</span>
+        <input type="text" placeholder={email} className="new_pass" onChange={(e)=>setEmail(e.target.value)} /><br/><br/>
+        
         {/* <input type="password" className="new_pass" onChange={(e)=>setPassword(e.target.value)} placeholder="***"/><br/><br/> */}
-        <input type="text" className="new_pass" onChange={(e)=>setGender(e.target.value)} placeholder={gender}/><br/><br/>
+        <span>Gender</span>
+        <input type="text" placeholder={gender}className="new_pass" onChange={(e)=>setGender(e.target.value)} /><br/><br/>
+        
         <button onClick={()=>{onSave()}} className="change_info">Change</button>
         {/* <button onclick={onSave} className="cancel_change_info">cancel</button> */}
         </div>
@@ -59,3 +65,5 @@ const EditProfile=()=>{
 }
 
 export default EditProfile;
+
+{/* <p>{choose(t.post.body)} <span>{t.post.likesCounter}</span></p> */}

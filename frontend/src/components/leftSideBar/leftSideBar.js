@@ -38,11 +38,11 @@ const LeftSideBar = () => {
         <img src={profimg} alt="" />
         <span>{nameUser}</span>
       </div>
-      <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
+      <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" , width: "300px" }} />
       <ul className="listIcon">
         <Link className="linkLeftSideBar" to="/Home">
           <li>
-            <RssFeedIcon /> timeline
+            <RssFeedIcon /> Timeline
           </li>
         </Link>
         <Link className="linkLeftSideBar" to="/edit">

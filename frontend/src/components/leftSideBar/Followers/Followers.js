@@ -28,17 +28,9 @@ const Followers = () => {
 
   return (
     <>
-      {/*  map over follower Array (){
-         //render res.data.follower
-         / <br/>
-         // re render
-
-  //todo tomorrow
-
-}*/}
 
     {followers.length&& followers.map((f,i)=>{
-       return <Follower key={i} f={f}/>
+       return <Follower className="Follower" key={i} f={f}/>
     })}
     </>
   );

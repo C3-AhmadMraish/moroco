@@ -5,6 +5,7 @@
   grid-row-gap: 56px;
   row-gap: 56px;
   column-gap: 50px;
+  height: 100vh;
 }
 
 .searchContainer .searchedUser {
