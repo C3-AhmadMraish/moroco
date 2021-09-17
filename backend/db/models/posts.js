@@ -15,3 +15,7 @@ const postSchema= mongoose.Schema({
 
 
 module.exports=mongoose.model("Post",postSchema);
+
+postSchema.post("updateOne", async function () {
+    this.likesCounter = await likes.length;
+})
