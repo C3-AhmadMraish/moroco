@@ -17,7 +17,6 @@ const Login = () => {
         password,
       });
       if (res.data.success) {
-        
         setMessage("");
         saveToken(res.data.token);
         setIsLoggedIn(true);
@@ -33,7 +32,6 @@ const Login = () => {
   useEffect(() => {
     if (isLoggedIn) {
       // console.log("farhan",isLoggedIn)
-      
     }
   });
   return (
@@ -45,8 +43,8 @@ const Login = () => {
             <div className="logInleft">
               <div className="leftcc">
               <div className="textDevide">
-              <span className="logo">Moroco</span><p> helps you connect and share with the <br/>people in your life.</p>
-            </div>
+              </div>
+            <p><span className="logo">Moroco</span> <br/> <span>Connect with friends and the world around you.</span> </p>
             <img width="80%" height="90%" src="assets\730_generated.jpg"></img>
               </div>
             </div>

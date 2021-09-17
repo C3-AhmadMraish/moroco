@@ -36,6 +36,7 @@ const register = (req, res) => {
 
 const getUserById = (req, res) => {
   const id = req.params.id;
+  console.log("mai id",id)
   User.findById({ _id: id })
     .populate("followers")
     .then((result) => {

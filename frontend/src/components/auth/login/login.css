@@ -14,7 +14,6 @@ body {
 }
 .logInleft{
     flex: 6;
-
 }
 .logInright{
     flex: 6;
@@ -29,6 +28,9 @@ body {
 .leftcc .logo{
   font-size: 60px;
   color: #007bff;
+  font-size: 80px;
+  color: #007BFF;
+  font-family: 'Berkshire Swash', cursive;
 }
 .postLogin{
   width: 50%;
@@ -44,7 +46,7 @@ box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
 .login-form h1 {
   font-size: 36px;
   text-align: center;
-  color: #007bff;;
+  color: #007BFF;;
   margin-bottom: 30px;
   font-weight: normal;
 }
@@ -81,7 +83,6 @@ box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
     font-size: 15px;
     padding-left: 75px;
    outline: none;
-
 }
 .login-form .form-group .input-icon {
     font-size: 15px;
@@ -99,20 +100,34 @@ box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
     color: #666;
 }
 .login-form .login-btn {
-  background: #007bff;;
+  background: #007BFF;;
   padding: 11px 50px;
-  border-color: #007bff;;
+  border-color: #007BFF;;
   color: #fff;
   text-align: center;
   margin: 0 auto;
   font-size: 20px;
-  border: 1px solid #007bff;;
+  border: 1px solid #007BFF;;
   border-radius: 44px;
   width: 100%;
   height: 56px;
   cursor: pointer;
-  
 }
+.login-btn:hover{
+  background: transparent;
+    border:3px solid #007bff;
+    border-radius: 30px;
+    padding:14px 14px;
+    color:black;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    outline: none;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+
+
 .login-form .reset-psw {
   float: left;
   width: 100%;
@@ -123,14 +138,14 @@ box-shadow: -2px 3px 24px -1px rgba(0,0,0,0.17);
   margin-top: 11px;
 }
 .login-form .social-icon button {
-  background: #007bff;;
+  background: #007BFF;;
   padding: 8px 10px;
-  border-color: #007bff;;
+  border-color: #007BFF;;
   color: #fff;
   text-align: center;
   margin: 0 auto;
   font-size: 20px;
-  border: 1px solid #007bff;;
+  border: 1px solid #007BFF;;
   border-radius: 44px;
   width: 100%;
   height: 56px;

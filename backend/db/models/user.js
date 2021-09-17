@@ -9,7 +9,7 @@ const userSchema= mongoose.Schema({
     age: {type:Number},
     email: {type:String,required:true} ,
     password: {type:String,required:true},
-    avatar:{type:String,default:defAvatart} ,
+    avatar:{type:String} ,
     cover:  {type:String},
     gender: {type:String},
     album: [{type:String}],
@@ -22,7 +22,10 @@ const userSchema= mongoose.Schema({
 userSchema.pre("save", async function () {
     this.email = this.email.toLowerCase();
     this.password = await bcrypt.hash(this.password, 10);
+    this.avatar = !this.avatar ? defAvatart : this.avatar 
   });
+
+
 
 module.exports=mongoose.model("User",userSchema);
 

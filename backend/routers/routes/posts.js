@@ -1,5 +1,7 @@
 const express = require("express");
-
+const {
+  addNewAndDeleteOld
+} = require("../controllers/trending")
 
 const {
   createNewPost,
@@ -29,7 +31,7 @@ postsRouter.get("/getpostbyid/:id",authentication, getPostById);
 postsRouter.post("/",authentication ,createNewPost);
 postsRouter.put("/:id",authentication, updatePostById);
 postsRouter.get("/timeline", authentication, getAllFriendsPosts);
-postsRouter.put("/:id/like",authentication, likeDislikeToPost);
+postsRouter.put("/:id/like",authentication, likeDislikeToPost, addNewAndDeleteOld);
 postsRouter.delete("/deletepost/:id",authentication, deletePostById);
 
 //edit the routes

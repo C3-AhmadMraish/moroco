@@ -9,13 +9,13 @@ import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import Comment from "./Comment";
 import { commentContext } from "../../App";
-
+import { profimgContext } from "../../App";
 const Comments = () => {
   const formatter = buildFormatter(frenchStrings);
 
   const { token, userId } = useContext(AuthContext);
   const {comment,setComment } = useContext(commentContext);
-
+  const {profimg, setProfimg} = useContext(profimgContext);
   const [post, setpost] = useState();
   const [comments, setComments] = useState(); // For create new
   const [newComment, setnewComment] = useState();
@@ -61,7 +61,7 @@ const Comments = () => {
       <div className="postdevid">
         <div className="postTop">
           <div className="postTopLeft">
-            <img className="postProfileImg" src="/assets/avatar3.png" alt="" />
+            <img className="postProfileImg" src={profimg} alt={profimg} />
             <span className="postUsername">{post && post.user.firstName}</span>
             <span className="postDate">
               <TimeAgo date={post && post.date} formatter={formatter} />

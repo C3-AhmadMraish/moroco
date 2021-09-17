@@ -5,6 +5,7 @@ const db = require("./db/db");
 //routers
 const postsRouter = require("./routers/routes/posts");
 const usersRouter = require("./routers/routes/users");
+const trendsRouter = require("./routers/routes/trending");
 //  const authRouter = require("./routers/routes/auth/login");
 
 
@@ -19,6 +20,7 @@ app.use(cors());
 //app routers
 app.use("/posts", postsRouter);
 app.use("/users", usersRouter);
+app.use("/trends", trendsRouter);
 // app.use(authRouter);
 
 // //Page not found 404 handler
