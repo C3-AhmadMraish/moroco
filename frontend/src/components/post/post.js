@@ -113,7 +113,7 @@ const Post = () => {
                   <div className="postTopLeft">
                     <img
                       className="postProfileImg"
-                      src={profimg}
+                      src={imgUser}
                       alt=""
                     />
 
