@@ -1,7 +1,7 @@
 .Album {
     display: flex;
     flex-direction: column;
-    height: max-content;
+    /* height: max-content; */
 }
 .Album img{
     cursor: pointer;
