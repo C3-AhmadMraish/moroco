@@ -33,7 +33,17 @@ Abdullah Naser
 
 ## Future work
 Refactor the entire project step by step after fully understanding react lifecycle, fix bugs related to bad rendering.
-Add extra features such as 
+Add extra features:
+-update post.
+-comment within comment.
+-External Api ussage.
+-Signup with google.
+-Signin with google.
+-Chat.
+-Messages/Dms.
+-Upload Images/videos.
+-Add more user info that can be edited via edit info section.
+
 ## Version History
 
 * 0.1
