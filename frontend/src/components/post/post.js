@@ -19,7 +19,9 @@ const Post = () => {
   const { value, setValue } = useContext(postContext);
   const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
+  const [imgUser, setImgUser] = useState("");
   const {profimg, setProfimg} = useContext(profimgContext);
+
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -91,6 +93,7 @@ const Post = () => {
       });
       console.log(res.data.posts.firstName);
       setNameUser(res.data.posts.firstName);
+      setImgUser(res.data.posts.avatar);
     } catch (error) {
       console.log(error);
     }
@@ -110,7 +113,7 @@ const Post = () => {
                   <div className="postTopLeft">
                     <img
                       className="postProfileImg"
-                      src={profimg}
+                      src={imgUser}
                       alt=""
                     />
 
