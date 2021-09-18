@@ -13,13 +13,13 @@ A simple social media project build using react,express and mongodb with full CR
 
 ### Installing : Please run NPM I before you execute the run commands
 
-* NPM I to install the required libraries
+* NPM i to install the required libraries
 
 ### Executing program
 
 * Open a terminal on the path ...\moroco\backend
 * Open a terminal on the path ...\moroco\frontend
-* excecute the commands bellow and wait for the project to run
+* Excecute the commands bellow and wait for the project to run...
 ```
 npm run dev in the backend folder.
 npm start in the frontend folder.
@@ -34,8 +34,8 @@ npm start in the frontend folder.
 ## Future work
 Refactor the entire project step by step after fully understanding react lifecycle, fix bugs related to bad rendering.
 Add extra features:
-* update post.
-* comment within comment.
+* Update post.
+* Comment within comment.
 * External Api ussage.
 * Signup with google.
 * Signin with google.
