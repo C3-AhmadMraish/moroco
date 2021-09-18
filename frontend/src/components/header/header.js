@@ -40,6 +40,7 @@ const Header = () => {
       .then((result) => {
 		  console.log("frontend",result.data.users)
         console.log(result.data.users.length);
+        console.log("123test",result.data.users);
         setsValue(result.data.users);
         // send query via axios to backend
       })

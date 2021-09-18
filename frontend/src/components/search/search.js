@@ -1,16 +1,43 @@
 import { React, useContext, useEffect, useState } from "react";
 import { searchContext } from "../../App";
 import "./search.css"
+import axios from "axios";
+import { AuthContext } from "../../contexts/context";
 const Search = () => {
+  const { token } = useContext(AuthContext);
   const [ssValue, setssValue] = useState();
   const { sValue } = useContext(searchContext);
-  console.log("ff",sValue)
+  // const [fname,setFname]= useContext();
+  const [follow,setFollow] = useState();
+
   useEffect(() => {
-    async function test() {
+    // console.log("eeeeee   "+e._id)
+     function test() {
       setssValue(sValue);
     }
     test();
   }, [sValue]);
+
+
+ const addFollower = async () => {
+  try {
+    
+    axios.put(`http://localhost:5000/users/${follow}/follow `, { headers: { Authorization: `Bearer ${token}`,}})
+      console.log("done")
+  } catch (error) {
+    console.log(error);
+  }
+  
+}
+
+// };
+
+/*
+/:id/follow    put
+
+*/
+
+
   return (
 
     <div className="searchContainer">
@@ -22,7 +49,11 @@ const Search = () => {
               <p>
                 {e.firstName} {e.lastName}
               </p>
-              <img height="250px" width="250px" src={e.avatar} alt=""/>
+              
+              <img  onClick={()=> {setFollow(e._id)}} height="250px" width="250px" src={e.avatar} alt=""/>
+
+              <button onClick={()=> {addFollower()}}> Follow </button>
+              {/*How to pass e._id to the above function ? */}
             </div>
             
 
