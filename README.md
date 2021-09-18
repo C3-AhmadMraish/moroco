@@ -8,8 +8,8 @@ A simple social media project build using react,express and mongodb with full CR
 
 ### Dependencies
 
-* The project was built using VS Code, ran and tested on Chrome Version 93.0.4577.82.
-* The project was built on Windows 10.
+* The project was built using VS Code ver 1.60.1, ran and tested on Chrome Version 93.0.4577.82.
+* The project was built on Windows 10 64bit.
 
 ### Installing : Please run NPM I before you execute the run commands
 
