@@ -19,7 +19,9 @@ const Post = () => {
   const { value, setValue } = useContext(postContext);
   const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
+  const [imgUser, setImgUser] = useState("");
   const {profimg, setProfimg} = useContext(profimgContext);
+
   const choose = (body) => {
     const arraybody = body.split(" ");
 
