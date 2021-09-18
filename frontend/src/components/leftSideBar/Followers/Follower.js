@@ -5,7 +5,7 @@ function Follower({f}) {
 
     return (
  
-        <div className="searchContainer">
+        
 
         <div className="searchedUser">
 
@@ -13,7 +13,7 @@ function Follower({f}) {
             <img height="250px" width="250px" alt="" src={f.avatar}/>
 
         </div>
-        </div>
+        
         
     )
 }

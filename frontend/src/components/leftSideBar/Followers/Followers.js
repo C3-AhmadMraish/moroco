@@ -28,11 +28,13 @@ const Followers = () => {
 
   return (
     <>
-
+<div className="searchContainer">
     {followers.length&& followers.map((f,i)=>{
        return <Follower className="Follower" key={i} f={f}/>
     })}
+    </div>
     </>
+    
   );
 };
 export default Followers;
