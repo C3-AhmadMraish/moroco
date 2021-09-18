@@ -93,6 +93,7 @@ const Post = () => {
       });
       console.log(res.data.posts.firstName);
       setNameUser(res.data.posts.firstName);
+      setImgUser(res.data.posts.avatar);
     } catch (error) {
       console.log(error);
     }
