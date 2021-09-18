@@ -31,7 +31,6 @@ const Login = () => {
   };
   useEffect(() => {
     if (isLoggedIn) {
-      // console.log("farhan",isLoggedIn)
     }
   });
   return (
