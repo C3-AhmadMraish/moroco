@@ -4,22 +4,20 @@ import "./Followers.css"
 function Follower({f}) {
 
     return (
+ 
         <div className="searchContainer">
 
         <div className="searchedUser">
 
-            <img height="250px" width="250px" alt="" src={f.avatar}/>
             <p>{f.firstName}</p>
+            <img height="250px" width="250px" alt="" src={f.avatar}/>
 
         </div>
         </div>
+        
     )
 }
-
 export default Follower
-
-
-
 {/* <div className="searchContainer">
       {sValue &&
         sValue.map((e, i) => {
