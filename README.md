@@ -52,5 +52,6 @@ Add extra features:
 ## Acknowledgments
 
 We thank everyone that contributed to our learning process, especially MERAKI ACADEMY. 
-Love. 
--Moroco Team
+
+#   Love. 
+## -Moroco Team
