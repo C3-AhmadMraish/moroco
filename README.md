@@ -25,7 +25,7 @@ npm run dev in the backend folder.
 npm start in the frontend folder.
 ```
 
-## Authors
+### Authors
 *Bashar Al-Zawahreh (Team Leader)
 *Ahmad Mraish
 *Naif Al-zrigat
