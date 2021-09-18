@@ -52,7 +52,7 @@ const Search = () => {
               
               <img  onClick={()=> {setFollow(e._id)}} height="250px" width="250px" src={e.avatar} alt=""/>
 
-              <button onClick={()=> {addFollower()}}> Follow </button>
+              {/* <button onClick={()=> {addFollower()}}> Follow </button> */}
               {/*How to pass e._id to the above function ? */}
             </div>
             
