@@ -3,6 +3,9 @@ import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/en";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import "./trending.css"
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+
 
 function Trending({ t }) {
   const formatter = buildFormatter(frenchStrings);
@@ -40,7 +43,7 @@ function Trending({ t }) {
         </div>
         <div className="postCenter1">
           <div>{choose(t.post.body)}</div>
-          <div><span>Likes: </span>{t.post.likesCounter}</div>
+          <div> <ThumbUpAltIcon className="iconLikeTrind"/> {t.post.likesCounter}</div>
         </div>
           <hr style={{ fontSize: "10px", color: "gray", marginTop: "10px" , width: "350px" }} />
       </div>

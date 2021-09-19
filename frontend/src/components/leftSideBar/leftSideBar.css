@@ -32,14 +32,15 @@ ul {
 
 .linkLeftSideBar {
   text-decoration: none;
+  color: #007bff;
 }
 .linkLeftSideBar:visited {
-  color: black;
+  color: #007bff;
 }
 
 .linkLeftSideBar:active {
-  color: black;
+  color: #007bff;
 }
 .linkLeftSideBar:hover {
-  color: black;
+  color: #007bff;
 }

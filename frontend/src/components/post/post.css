@@ -45,6 +45,7 @@
 
 .postCenter {
   margin: 20px 0;
+  color: black;
 }
 
 .postImg {
@@ -68,7 +69,9 @@
 .postLikeIcon {
   margin-right: 5px;
   cursor: pointer;
+  color: #007bff;
 }
+
 
 .postLikeCounter {
   font-size: 15px;
@@ -76,4 +79,8 @@
 }
 .postCommentIcom {
   cursor: pointer;
+}
+
+#post_user{
+  color: black;
 }
