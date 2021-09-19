@@ -75,6 +75,7 @@
 
 .addNewCommentIcon:hover{
   cursor: pointer;
+  font-size: 30px;
 }
 
 
@@ -89,13 +90,13 @@ border: 2px solid #ccc;
 }
 
 .postdevid textarea{
-  width: 100%;
+  width: 97%;
   border: 0.5;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 10px;
   outline: 0;
-  padding: 5px;
+  padding: 3px;
   border-bottom: 1px solid #ccc;
   resize: none;
   background: transparent;

@@ -10,6 +10,7 @@
   color: #626262;
   margin-top: 15px;
   border: 1px solid #ccc;
+
 }
 .postTop {
   display: flex;
@@ -33,10 +34,12 @@
   font-size: 15px;
   font-weight: 500;
   margin: 0 10px;
+  color: rgb(0, 0, 0);
 }
 
 .postDate {
   font-size: 12px;
+  
 }
 
 .deleteIcon {
@@ -79,6 +82,7 @@
 }
 .postCommentIcom {
   cursor: pointer;
+  
 }
 
 #post_user{
