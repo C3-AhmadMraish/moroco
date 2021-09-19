@@ -19,8 +19,9 @@ const Post = () => {
   const { value, setValue } = useContext(postContext);
   const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
+  const [imgUser, setImgUser] = useState("");
   const {profimg, setProfimg} = useContext(profimgContext);
-  
+
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -85,6 +86,7 @@ const Post = () => {
     }
   };
 
+
   // const getNameInPost = async () => {
   //   try {
   //     const res = await axios.get(`http://localhost:5000/users/${userId}`, {
@@ -102,6 +104,7 @@ const Post = () => {
   //   getNameInPost();
   // }, []);
 
+
   return (
     <>
       <div className="colreverse">
@@ -113,7 +116,9 @@ const Post = () => {
                   <div className="postTopLeft">
                     <img
                       className="postProfileImg"
+
                       src={p.user.avatar}
+
                       alt=""
                     />
 {/* inpostname inpostimg */}
