@@ -68,6 +68,7 @@
 .postLikeIcon {
   margin-right: 5px;
   cursor: pointer;
+  color: #007bff;
 }
 
 .postLikeCounter {
