@@ -20,6 +20,7 @@ const Post = () => {
   const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
   const {profimg, setProfimg} = useContext(profimgContext);
+  
   const choose = (body) => {
     const arraybody = body.split(" ");
 
@@ -40,8 +41,10 @@ const Post = () => {
   const getAllPosts = async () => {
     try {
       const res = await axios.get("http://localhost:5000/posts");
-      console.log(res.data.posts);
+      console.log("")
+      console.log("naif",res);
       setPosts(res.data.posts);
+      
     } catch (error) {
       setPosts([]);
       console.log(error);
@@ -82,22 +85,22 @@ const Post = () => {
     }
   };
 
-  const getNameInPost = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/users/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(res.data.posts.firstName);
-      setNameUser(res.data.posts.firstName);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getNameInPost();
-  }, []);
+  // const getNameInPost = async () => {
+  //   try {
+  //     const res = await axios.get(`http://localhost:5000/users/${userId}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     console.log(res.data.posts.firstName);
+  //     setNameUser(res.data.posts.firstName);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getNameInPost();
+  // }, []);
 
   return (
     <>
@@ -110,11 +113,11 @@ const Post = () => {
                   <div className="postTopLeft">
                     <img
                       className="postProfileImg"
-                      src={profimg}
+                      src={p.user.avatar}
                       alt=""
                     />
-
-                    <span className="postUsername">{nameUser}</span>
+{/* inpostname inpostimg */}
+                    <span className="postUsername">{p.user.firstName}</span>
                     <span className="postDate">
                       <TimeAgo date={p.date} formatter={formatter} />
                     </span>
