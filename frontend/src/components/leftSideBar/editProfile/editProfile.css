@@ -14,7 +14,8 @@
 }
 
 .edit_info .change_info{
-  background: #f0f0f7;
+  background: rgb(149, 149, 255);
+  color: #fff;
   border-radius: 1rem;
   width: 90px;
   padding: 5px;
