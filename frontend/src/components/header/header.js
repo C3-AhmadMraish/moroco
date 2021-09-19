@@ -73,7 +73,7 @@ const Header = () => {
     <div className="headercontaner">
       <div className="leftHeader">
         {/* <span className="logo">Moroco</span> */}
-        <Link style={{textDecoration:"none"}} to="/Home"><span className="logo">Moroco</span></Link>
+        <Link style={{textDecoration:"none"}} to="/Home"><span className="logo">M oroco</span></Link>
       </div>
       <div className="centerHeader">
         {/*-------------------------------search---------------------------------*/}

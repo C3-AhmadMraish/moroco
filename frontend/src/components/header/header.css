@@ -23,6 +23,7 @@ body{
     cursor: pointer;
     color: white;
     margin-left: 12px;
+    font-family: "Berkshire Swash", cursive;
 }
 .centerHeader{
     flex:5
