@@ -1,7 +1,6 @@
 .Album {
     display: flex;
     flex-direction: column;
-    /* height: max-content; */
 }
 .Album img{
     cursor: pointer;
@@ -38,7 +37,3 @@
     justify-content: center;
 }
 
-/* .perant:hover .Child{
-    display: block;
-    
-} */
