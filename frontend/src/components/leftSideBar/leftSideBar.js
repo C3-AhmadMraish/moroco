@@ -15,7 +15,7 @@ const LeftSideBar = () => {
   const { profimg } = useContext(profimgContext);
   //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
 
-  const getNameUser = async () => {
+  const getNameUser2 = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/users/${userId}`, {
         headers: {
@@ -29,7 +29,7 @@ const LeftSideBar = () => {
   };
 
   useEffect(() => {
-    getNameUser();
+    getNameUser2();
   }, []);
 
   return (
