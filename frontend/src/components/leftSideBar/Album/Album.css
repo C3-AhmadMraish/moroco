@@ -23,11 +23,13 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 30px;
    
 }
 
 .imgu {
     margin: 0px 25px 0px 0px;
+    padding: 10px;
 }
 
 .Child{
