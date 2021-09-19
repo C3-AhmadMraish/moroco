@@ -72,10 +72,15 @@
   color: #007bff;
 }
 
+
 .postLikeCounter {
   font-size: 15px;
   cursor: pointer;
 }
 .postCommentIcom {
   cursor: pointer;
+}
+
+#post_user{
+  color: black;
 }
