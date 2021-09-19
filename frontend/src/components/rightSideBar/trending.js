@@ -7,12 +7,14 @@ import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import axios from "axios";
 import { AuthContext } from "../../contexts/context";
+import { profimgContext } from "../../App";
 
 
 function Trending({ t }) {
   const formatter = buildFormatter(frenchStrings);
-  const [nameUser, setNameUser] = useState("");   //    
-  const { token, userId } = useContext(AuthContext);   //
+  const [nameUser, setNameUser] = useState("");      
+  const { token, userId } = useContext(AuthContext);   
+  const { profimg } = useContext(profimgContext);
 
   const getNameUser = async () => {
     try {
@@ -50,10 +52,10 @@ function Trending({ t }) {
     <div className="trindPost">
       <div className="postdevid">
         <div className="postTop">
-          <div className="postTopLeft">
+          <div className="postTopLeft">   {/* */}
             <img
               className="postProfileImg"
-              src="https://images.unsplash.com/photo-1601120103207-78398c2e8e6a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src={profimg}
               alt=""
             />
             <span className="postUsername">{nameUser}</span>
