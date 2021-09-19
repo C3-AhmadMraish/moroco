@@ -4,13 +4,14 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import axios from 'axios';
 import { AuthContext } from '../../contexts/context';
 import { postContext } from '../../App';
-
+import { profimgContext } from '../../App';
 const Feed = () => {
-  
+    
     const [postBody,setPostBody]=useState([]);
     const { validateToken, token, isLoggedIn , userId } = useContext(AuthContext);
     const [nameUserFeed, setNameUserFeed] = useState("");
     const {value,setValue}=useContext(postContext);
+    const {profimg, setProfimg} = useContext(profimgContext);
   
         const Addpost=()=>{
             axios.post("http://localhost:5000/posts",{body:postBody},{
@@ -40,7 +41,7 @@ const Feed = () => {
         <div className="post_area">
       
                 <div className="user_Info_PA">
-                    <img src="/assets/avatar3.png" alt=""/>
+                    <img src={profimg} alt=""/>
                     <div>
                         <p id="post_user">{nameUserFeed}</p>
                     </div>
