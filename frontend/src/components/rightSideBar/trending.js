@@ -43,7 +43,7 @@ function Trending({ t }) {
         </div>
         <div className="postCenter1">
           <div>{choose(t.post.body)}</div>
-          <div> <ThumbUpAltIcon/> {t.post.likesCounter}</div>
+          <div> <ThumbUpAltIcon className="iconLikeTrind"/> {t.post.likesCounter}</div>
         </div>
           <hr style={{ fontSize: "10px", color: "gray", marginTop: "10px" , width: "350px" }} />
       </div>
