@@ -58,7 +58,7 @@ function Trending({ t }) {
               src={profimg}
               alt=""
             />
-            <span className="postUsername">{nameUser}</span>
+            <span className="postUsername">Naif</span>
             <span className="postDate">
               <TimeAgo date={t.post.date} formatter={formatter} />
             </span>
