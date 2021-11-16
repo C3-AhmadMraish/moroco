@@ -12,7 +12,7 @@ const authentication = (req, res, next) => {
 
     jwt.verify(token, process.env.SECRET, (err, result) => {
 
-      console.log(result)
+      // console.log(result)
       if (err) {
         res.status(403).json({
           success: false,
