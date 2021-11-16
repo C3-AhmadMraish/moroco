@@ -79,7 +79,7 @@ const Post = () => {
             },
           }
         )
-        .then((resu) => console.log(resu));
+        .then((resu) => console.log("test 101 101",resu));
       getAllPosts();
     } catch (error) {
       console.log(error);

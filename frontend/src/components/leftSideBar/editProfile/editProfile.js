@@ -2,6 +2,13 @@ import React,{useState,useContext, useEffect} from "react";
 import './editProfile.css';
 import { AuthContext } from "../../../contexts/context";
 import axios from "axios";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+
+
+
+
 const EditProfile=()=>{
   let { userId,token } = useContext(AuthContext);
     const [lastName, setLastName] = useState('');
@@ -45,25 +52,77 @@ const EditProfile=()=>{
         }
       }
     return (
-        <div className="edit_info">
-        <span>LastName</span>
-        <input type="text" placeholder={lastName} className="new_name"  onChange={(e)=>setLastName(e.target.value)}  /><br/><br/>
-        <span>Age</span>
-        <input type="text" placeholder={age} className="new_pass" onChange={(e)=>setAge(e.target.value)} /><br/><br/>
-        <span>Email</span>
-        <input type="text" placeholder={email} className="new_pass" onChange={(e)=>setEmail(e.target.value)} /><br/><br/>
-        
-        {/* <input type="password" className="new_pass" onChange={(e)=>setPassword(e.target.value)} placeholder="***"/><br/><br/> */}
-        <span>Gender</span>
-        <input type="text" placeholder={gender}className="new_pass" onChange={(e)=>setGender(e.target.value)} /><br/><br/>
-        
-        <button onClick={()=>{onSave()}} className="change_info">Change</button>
-        {/* <button onclick={onSave} className="cancel_change_info">cancel</button> */}
+      <div className="Main-Edit-Profile">
+        <div className="container">
+          <h4>Account Settings </h4>
+          <hr></hr>
+          {/* <img src={img} alt= "no-img"/>  */}
+          <div>
+            {/* <p className="success-update"> {successUpdate}</p> */}
+            <Form onSubmit={onSave}>
+              <Row className="mb-3">
+              
+                <Form.Group as={Col} controlId="formGridPassword">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder={lastName}
+                    onChange={(e)=>setLastName(e.target.value)}
+                  />
+                </Form.Group>
+              </Row>
+  
+              <Form.Group className="mb-3" controlId="formGridAddress1">
+                <Form.Label>Age</Form.Label>
+                <Form.Control
+                  placeholder={age}
+                  type="text"
+                  onChange={(e)=>setAge(e.target.value)}
+                />
+              </Form.Group>
+  
+              <Form.Group className="mb-3" controlId="formGridAddress2">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  placeholder={email}
+                  type="text"
+                  onChange={(e)=>setEmail(e.target.value)}
+                />
+              </Form.Group>
+  
+              <Form.Group className="mb-3" controlId="formGridAddress1">
+                <Form.Label>Gender</Form.Label>
+                <Form.Control
+                  placeholder={gender}
+                  type="text"
+                  onChange={(e)=>setGender(e.target.value)}
+                />
+              </Form.Group>
+  
+  
+  
+              <Form.Group className="mb-3" controlId="formGridAddress3">
+                <Form.Label>Image</Form.Label>
+                <Form.Control
+                  placeholder="image"
+                  type="file"
+                  // onChange={handleUpload}
+                  // onChange={(e) => setImg(e.target.value)}
+                />
+              </Form.Group>
+              
+  
+            
+  
+              <button className="change_info" type="submit">
+                Save Change
+              </button>
+            </Form>
+          </div>
         </div>
-
-    )
-}
+      </div>
+    );
+  };
 
 export default EditProfile;
 
-{/* <p>{choose(t.post.body)} <span>{t.post.likesCounter}</span></p> */}
