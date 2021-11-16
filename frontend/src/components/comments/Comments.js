@@ -22,6 +22,7 @@ const Comments = () => {
   const { postId } = useParams();
 
   useEffect(() => {
+    console.log(comment,"comment")
     axios
     .get(`http://localhost:5000/posts/getpostbyid/${postId}`, {
       headers: {
@@ -36,7 +37,7 @@ const Comments = () => {
       setComments([]);
       console.log("err" + err);
     });
-  }, [comment,postId,token]);
+  }, []);
 
   const createNewComment = async () => {
     try {
@@ -49,8 +50,9 @@ const Comments = () => {
           },
         }
       );
-
-      setComment( res.data.commentAdded);
+         console.log(res.data.commentAdded," Mai test")
+      setComments(prev=> [...prev,res.data.commentAdded]);
+     
     } catch (error) {
       console.log(error);
     }

@@ -62,31 +62,32 @@ const addNewAndDeleteOld = (req, res) => {
     .then(async (result) => {
 
       if (!result) {
-
+        let i =0
         const trends = await Trend.find({}).populate("post");
         const post = await Post.findOne({ _id: postId });
-
-        trends.forEach(async (trend) => {
-
-          if (trend.post.likesCounter < post.likesCounter) {
-            const _id = await trend.post._id;
-            Trend.findByIdAndDelete(trend._id).then((result) => {
+       while (!trends.includes(postId) && i<3) {
+        console.log(isAdded,"isAdded")
+          if (trends[i].post.likesCounter < post.likesCounter) {
+            const _id = await trends[i].post._id;
+            Trend.findByIdAndDelete(_id).then((result) => {
               console.log("delete" + result);
             });
 
             const newTrend = await new Trend({ post: postId });
             
             newTrend.save();
+            trends.push(postId)
           }
-          isChanged=true;
+          i++
+          // isChanged=true;
           
+        };
+        return res.status(200).json({
+          success: true,
+          changedTrend: true,
         });
         
       }
-      return res.status(200).json({
-        success: true,
-        changedTrend: isChanged,
-      });
     })
     .catch((err) => {
       console.log(err);
