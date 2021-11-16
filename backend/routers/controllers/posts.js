@@ -79,7 +79,7 @@ const updatePostById = (req, res) => {
     });
 };
 
-const deletePostById = (req, res) => {
+const deletePostById = (req, res,next) => {
   const _id = req.params.id;
   Post.findByIdAndDelete(_id)
     .then((result) => {
@@ -93,6 +93,7 @@ const deletePostById = (req, res) => {
         success: true,
         message: `Deleted post with the id of:  ${_id}`,
       });
+      next();
     })
     .catch((err) => {
       res.status(500).json({
@@ -101,6 +102,7 @@ const deletePostById = (req, res) => {
         err: err,
       });
     });
+    
 };
 
 const getPostById = (req, res) => {
@@ -137,10 +139,10 @@ const likeDislikeToPost = (req, res, next) => {
   Post.findById(_id).then((result) => {
     if (!result.likes.includes(curruntuser)) {
       Post.updateOne({ _id: _id }, { $push: { likes: curruntuser },likesCounter: result.likesCounter + 1}).exec();
-      res.status(200).json("like sccesfully");
+      // res.status(200).json("like sccesfully");
     } else {
       Post.updateOne({ _id: _id }, { $pull: { likes: curruntuser }, likesCounter: result.likesCounter - 1 }).exec();
-      res.status(200).json("Dislike sccesfully");
+      // res.status(200).json("Dislike sccesfully");
     }
     next();
   });  

@@ -1,11 +1,13 @@
 const Trend = require("../../db/models/trending");
 const Post = require("../../db/models/posts");
+const { deleteOne } = require("../../db/models/trending");
 
 const getTrends = (req, res) => {
   Trend.find({})
     .populate("post")
-    .then((result) => {
+    .then( async(result) => {
       if (result.length < 3) {
+        await Trend.remove({})
         const trends = [];
         Post.find({})
           .sort({ likesCounter: -1 })
@@ -53,32 +55,75 @@ const getTrends = (req, res) => {
 
 const addNewAndDeleteOld = (req, res) => {
   const postId = req.params.id;
+  let isChanged = false;
   //Check if post exists in trends
-  Trend.findOne({ _id: postId })
+  Trend.findOne({ post: postId })
     .populate("post")
     .then(async (result) => {
+
       if (!result) {
-        const trends = await Trend.find({}).populate('post');
+
+        const trends = await Trend.find({}).populate("post");
         const post = await Post.findOne({ _id: postId });
-        trends.forEach(async(trend) => {
+
+        trends.forEach(async (trend) => {
+
           if (trend.post.likesCounter < post.likesCounter) {
             const _id = await trend.post._id;
-            Trend.findByIdAndDelete(trend._id).then((result)=>{
-              console.log('delete'+result);
+            Trend.findByIdAndDelete(trend._id).then((result) => {
+              console.log("delete" + result);
             });
 
             const newTrend = await new Trend({ post: postId });
-            return newTrend.save();
+            
+            newTrend.save();
           }
+          isChanged=true;
+          
         });
+        
       }
+      return res.status(200).json({
+        success: true,
+        changedTrend: isChanged,
+      });
     })
     .catch((err) => {
       console.log(err);
+      return res.status(500).json({
+        success: false,
+        message: `Eroor`,
+      });
     });
   // get post by id which is comming from req
   // loop over trends and compare each with post.likesCounter
   // if post.likesCounter > one of them >>> then replace them
 };
 
-module.exports = { getTrends, addNewAndDeleteOld };
+const shoshoDelete = (req, res) => {
+  console.log("we entered shosho");
+  // we enetered here
+  const _id = req.params.id;
+  console.log("shoshoDelete", _id);
+  Trend.findOne({post:_id})
+    .then((result) => {
+      console.log("bashar",result)
+      if (result) {
+        console.log("beforedeleteone",result)
+        Trend.deleteOne({ post: _id }).then((result) => {
+          // re-call getTrends   to replace deleted post
+          if (result){
+            console.log("after deleteone result", result)
+            getTrends()
+          }
+         ; //headers problem
+        });
+      }
+    })
+    // .catch
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+module.exports = { getTrends, addNewAndDeleteOld, shoshoDelete };
