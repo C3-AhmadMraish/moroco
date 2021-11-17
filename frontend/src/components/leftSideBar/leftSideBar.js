@@ -33,35 +33,48 @@ const LeftSideBar = () => {
   }, []);
 
   return (
-    <div className="leftSideBar">
-      <div className="img_name">
-        <img src={profimg} alt="" />
-        <span>{nameUser}</span>
-      </div>
-      <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" , width: "300px" }} />
-      <ul className="listIcon">
-        <Link className="linkLeftSideBar" to="/Home">
-          <li>
-            <RssFeedIcon /> Timeline
-          </li>
+    <div className="left">
+        <div className="pro">
+        <img src={profimg} alt="profimg"  className="profile" />
+      
+        <div className="handle">
+            <h4>{nameUser}</h4>
+            <p className="text">
+                @dai
+            </p>
+        </div>
+    </div>
+    <div className="side-bar">
+        <Link to="/Home" className="menue-item">
+            <span> <RssFeedIcon /></span><h3>Home</h3>
         </Link>
-        <Link className="linkLeftSideBar" to="/edit">
-          <li>
-            <EditIcon /> Edit profile
-          </li>
+        <Link to="/edit" className="menue-item">
+            <span> <EditIcon /> </span><h3>Edit</h3>
         </Link>
-        <Link className="linkLeftSideBar" to="/Album">
-          <li>
-            <PhotoAlbumIcon /> Album
-          </li>
+        <Link className="menue-item"  to="/Album">
+            <span><PhotoAlbumIcon /> </span><h3>Album</h3>
         </Link>
+        <Link className="menue-item" to="/Followers">
+            <span><PeopleIcon /> </span><h3>Followers</h3>
+        </Link>
+        {/* <Link className="menue-item">
+            <span> </span><h3>Settings</h3>
         <Link className="linkLeftSideBar" to="/Followers">
           <li>
             <PeopleIcon /> Followees
           </li>
         </Link>
-      </ul>
+        <Link className="menue-item">
+            <span> </span><h3>Settings</h3>
+        </Link> */}
+        <div className="btn2">
+            <button> Create Post</button>
+           
+        </div>  
+       
     </div>
-  );
+    
+    </div>
+      );
 };
 export default LeftSideBar;

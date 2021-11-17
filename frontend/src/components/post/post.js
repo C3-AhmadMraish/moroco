@@ -5,10 +5,15 @@ import axios from "axios";
 import { postContext } from "../../App";
 import { AuthContext } from "../../contexts/context";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import TimeAgo from "react-timeago";
 import frenchStrings from "react-timeago/lib/language-strings/en";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import CommentIcon from "@material-ui/icons/Comment";
+import { FaRegCommentDots } from 'react-icons/fa';
+import { FaShare } from 'react-icons/fa';
+import { BsBookmark } from 'react-icons/bs';
+
 import Comments from "../comments/Comments";
 import { Link, useHistory } from "react-router-dom";
 import { profimgContext } from "../../App";
@@ -30,7 +35,7 @@ const Post = () => {
       <span>
         {arraybody.map((x) => {
           if (x.startsWith("http")) {
-            return <img className="postImg" src={x} />;
+            return <img classNameName="postImg" src={x} />;
           }
           return x + " ";
         })}
@@ -62,10 +67,10 @@ const Post = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      let afterDelete = posts.filter((p)=>{
-        return p._id !== id
-      })
-      setPosts(afterDelete)
+      let afterDelete = posts.filter((p) => {
+        return p._id !== id;
+      });
+      setPosts(afterDelete);
       // getAllPosts();
     } catch (error) {
       console.log(error);
@@ -117,60 +122,107 @@ const Post = () => {
 
   return (
     <>
-      <div className="colreverse">
-        {posts &&
-          posts.map((p, i) => (
-            <div key={i} className="post">
-              <div className="postdevid">
-                <div className="postTop">
-                  <div className="postTopLeft">
-                    <img
-                      className="postProfileImg"
-                      src={p.user.avatar}
-                      alt=""
-                    />
-                    {/* {(new Date(p.date)) - (new Date(Date.now()))} */}
-                    {/* moment().startOf('hour').fromNow(); */}
-                    {/* <td>{moment({p.date}).format("llll")}</td> */}
-                    <span className="postUsername">{p.user.firstName}</span>
-                    <span className="postDate">
-                      <td>{moment(p.date).fromNow()}</td>
-                      
-                    </span>
-                  </div>
-                  <div className="postTopRight">
-                    <span className="postDate">
-                      <HighlightOffIcon
-                        onClick={() => deletePost(p._id)}
-                        className="deleteIcon"
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="postCenter">{choose(p.body)}</div>
-                <div className="postBottom">
-                  <div className="postBottomLeft">
-                    <span className="postLikeIcon">
-                      <ThumbUpAltIcon onClick={() => Likeit(p._id)} />
-                    </span>
-                    <span className="postLikeCounter">
-                      {p.likes.length} like
-                    </span>
-                  </div>
-                  <div className="postBottomRight">
-                    <span className="postCommentIcom">
-                      <Link to={`/${p._id}/comments`}>
-                        <CommentIcon />
-                      </Link>
-                    </span>
-                  </div>
-                </div>
+      <div className="feeds">
+      {posts &&
+    posts.map((p, i) => (
+        <div  key={i} className="feed">
+          <div className="head">
+            <div className="user">
+              <img src={p.user.avatar} alt="" className="profile" />
+
+              <div className="info">
+                <h3>{p.user.firstName}</h3>
+                <small><TimeAgo date={p.date} formatter={formatter} /></small>
               </div>
             </div>
-          ))}
+            <span className="edit">
+            <HighlightOffIcon
+                  onClick={() => deletePost(p._id)}
+                  classNameName="deleteIcon"
+                />
+            </span>
+          </div>
+
+          <div className="photo">
+            <img src="assets/b-2.jpg" alt="" width="100%" />
+          </div>
+
+          <div className="action">
+            <div className="interaction">
+              <span>
+              <FavoriteBorderIcon onClick={() => Likeit(p._id)} />{" "}
+                <small style={{marginRight:"10px"}}>
+              {p.likes.length}
+              </small >
+              </span>
+              <span>
+              <Link to={`/${p._id}/comments`}>
+                  <FaRegCommentDots style={{color:"#333",marginRight:"10px"}} />
+                </Link>
+              </span>
+              <span>
+                  <FaShare style={{color:"#333"}} />
+              </span>
+            </div>
+            <div className="mark">
+              <span>
+                  <BsBookmark style={{color:"#333"}} />
+              </span>
+            </div>
+          </div>
+          <div className="caption">
+            <p>
+            {choose(p.body)}
+            </p>
+          </div>
+        </div>
+    ))}
       </div>
     </>
   );
 };
 
 export default Post;
+// {/* <div classNameName="colreverse">
+//   {posts &&
+//     posts.map((p, i) => (
+//       <div key={i} classNameName="post">
+//         <div classNameName="postdevid">
+//           <div classNameName="postTop">
+//             <div classNameName="postTopLeft">
+//               <img classNameName="postProfileImg" src={p.user.avatar} alt="" />
+//               {/* inpostname inpostimg */}
+//               <span classNameName="postUsername">{p.user.firstName}</span>
+//               <span classNameName="postDate">
+//                 <TimeAgo date={p.date} formatter={formatter} />
+//               </span>
+//             </div>
+//             <div classNameName="postTopRight">
+//               <span classNameName="postDate">
+//                 <HighlightOffIcon
+//                   onClick={() => deletePost(p._id)}
+//                   classNameName="deleteIcon"
+//                 />
+//               </span>
+//             </div>
+//           </div>
+//           <div classNameName="postCenter">{choose(p.body)}</div>
+//           <div classNameName="postBottom">
+//             <div classNameName="postBottomLeft">
+//               <span classNameName="postLikeIcon">
+//                 <ThumbUpAltIcon onClick={() => Likeit(p._id)} />
+//               </span>
+//               <span classNameName="postLikeCounter">{p.likes.length} like</span>
+//             </div>
+//             <div classNameName="postBottomRight">
+//               <span classNameName="postCommentIcom">
+//                 <Link to={`/${p._id}/comments`}>
+//                   <CommentIcon />
+//                 </Link>
+//               </span>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     ))}
+// </div>; */}

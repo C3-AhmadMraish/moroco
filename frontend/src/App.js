@@ -17,6 +17,7 @@ import Album from "./components/leftSideBar/Album/Album";
 import Comments from "./components/comments/Comments";
 import axios from "axios";
 import Followers from "./components/leftSideBar/Followers/Followers";
+import Story from "./components/story/story";
 
 export const postContext = createContext({ value: [], setValue: () => {} });
 export const searchContext = createContext({});
@@ -69,8 +70,8 @@ const App = () => {
               <commentContext.Provider value={{ comment, setComment }}>
                 <profimgContext.Provider value={{ profimg, setProfimg }}>      {/*  main image  */}
                   <Header />
-                  <div className="cont">
                   <div className="App">
+                  <div class="container">
                     {/* <Main/> */}
                     <LeftSideBar />
                     <div className="main">
@@ -92,6 +93,7 @@ const App = () => {
                         </Route>
                         <Route exact path="/Home">
                           <postContext.Provider value={{ value, setValue }}>
+                            <Story/>
                             <Feed />
                             <Post />
                           </postContext.Provider>

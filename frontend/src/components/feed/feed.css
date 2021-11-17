@@ -1,4 +1,4 @@
-.post_area {
+/* .post_area {
   width: 90%;
   background-color: #fff;
   height: 200;
@@ -52,4 +52,41 @@
 
  #post_user {
    margin-left: 10px;
- }
+ } */
+
+ 
+ .create-post{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:1rem;
+  padding:1.0rem;
+  background-color:#fff;
+  border-radius:20px;
+}
+
+ .create-post input[type="text"]{
+  width:100%;
+  padding:1rem;
+  background:transparent; 
+  outline: none;
+}
+
+ .create-post .btn3{
+
+  width:130px;
+  height:40px;
+  padding:2% 4%; 
+  background-color:purple;
+  border-radius:2rem;
+  color:#fff;
+  cursor:pointer;
+}
+
+ .create-post  .profile1{
+  width:3rem;
+  height:2.5rem;
+  border-radius:50%;
+
+}
