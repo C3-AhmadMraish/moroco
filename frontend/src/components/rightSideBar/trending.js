@@ -11,6 +11,7 @@ import { profimgContext } from "../../App";
 
 
 function Trending({ t }) {
+  // console.log("Tea", t)
   const formatter = buildFormatter(frenchStrings);
   const [nameUser, setNameUser] = useState("");      
   const { token, userId } = useContext(AuthContext);   
@@ -35,10 +36,11 @@ function Trending({ t }) {
 
   const choose = (body) => {
     const arraybody = body.split(" ");
-
+     
     return (
       <span>
         {arraybody.map((x) => {
+        
           if (x.startsWith("http")) {
             return <img className="postImg" src={x} alt="" />;
           }
@@ -49,18 +51,20 @@ function Trending({ t }) {
   };
 
   return (
-
+    
       <div className="postdevid">
         <div className="postTop">
           <div className="postTopLeft">   {/* */}
+          {/* res.data.trends.user.avatar */}
             <img
               className="postProfileImg"
-              src={profimg}
+              src={t.post.user.avatar}
               alt=""
             />
-            <span className="postUsername">Naif</span>
+            <span className="postUsername">{t.post.user.firstName}</span>
             <span className="postDate">
               <TimeAgo date={t.post.date} formatter={formatter} />
+            {/* {console.log("date",t.post.date)} */}
             </span>
           </div>
         </div>
