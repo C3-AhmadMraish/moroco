@@ -20,7 +20,7 @@ const Post = () => {
   const { token, userId } = useContext(AuthContext);
   const [nameUser, setNameUser] = useState("");
   const [imgUser, setImgUser] = useState("");
-  const {profimg, setProfimg} = useContext(profimgContext);
+  const { profimg, setProfimg } = useContext(profimgContext);
 
   const choose = (body) => {
     const arraybody = body.split(" ");
@@ -42,10 +42,9 @@ const Post = () => {
   const getAllPosts = async () => {
     try {
       const res = await axios.get("http://localhost:5000/posts");
-      console.log("")
-      console.log("naif",res);
+      // console.log("")
+      // console.log("naif",res);
       setPosts(res.data.posts);
-      
     } catch (error) {
       setPosts([]);
       console.log(error);
@@ -79,13 +78,20 @@ const Post = () => {
             },
           }
         )
-        .then((resu) => console.log("test 101 101",resu));
-      getAllPosts();
+        //data.post.likescounter
+        .then((resu) => {
+          let newpost = resu.data.post;
+          const afterLiking = posts.map((post) => {
+            return post._id === id ? newpost : post;
+          });
+          setPosts(afterLiking);
+        });
+
+      //  getAllPosts();
     } catch (error) {
       console.log(error);
     }
   };
-
 
   // const getNameInPost = async () => {
   //   try {
@@ -104,9 +110,6 @@ const Post = () => {
   //   getNameInPost();
   // }, []);
 
-
-
-
   return (
     <>
       <div className="colreverse">
@@ -118,12 +121,10 @@ const Post = () => {
                   <div className="postTopLeft">
                     <img
                       className="postProfileImg"
-
                       src={p.user.avatar}
-
                       alt=""
                     />
-{/* inpostname inpostimg */}
+                    {/* inpostname inpostimg */}
                     <span className="postUsername">{p.user.firstName}</span>
                     <span className="postDate">
                       <TimeAgo date={p.date} formatter={formatter} />
@@ -145,7 +146,7 @@ const Post = () => {
                       <ThumbUpAltIcon onClick={() => Likeit(p._id)} />
                     </span>
                     <span className="postLikeCounter">
-                      {p.likes.length} like 
+                      {p.likes.length} like
                     </span>
                   </div>
                   <div className="postBottomRight">

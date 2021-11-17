@@ -14,7 +14,7 @@ const getAllFriendsPosts = async (req, res) => {
 };
 
 const getAllPosts = (req, res) => {
-  Post.find({})
+  Post.find({}).populate("user")
     .then((result) => {
       if (!result.length) {
         return res.status(404).json({
