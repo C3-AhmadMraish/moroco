@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "./login.css";
 import { AuthContext } from "../../../contexts/context";
+import GoogleLogin from 'react-google-login'
+
 const Login = () => {
   const { setIsLoggedIn, isLoggedIn, saveToken } = useContext(AuthContext);
   const history = useHistory();
@@ -29,6 +31,31 @@ const Login = () => {
       setMessage("Error happened while Login, please try again");
     }
   };
+  const  responsesuccessGoogle=(response)=>{
+    // console.log(response.profileObj);
+    axios.post("http://localhost:5000/users/googleLogin",{tokenId: response.tokenId})
+    .then((res) => {
+      console.log(res);
+      if (res.data) {
+        setMessage("");
+        saveToken(res.data.token);
+        setIsLoggedIn(true);
+        history.push("/Home");
+      } else throw Error;
+  }).catch((err) =>{
+      if(err.message){
+        setMessage("Error happened while Login, please try again");
+        console.log(message);
+      }
+  })
+    
+  }
+  const  responseErrorGoogle=(response)=>{
+    setMessage("responseErrorGoogle => Error happened while Login, please try again");
+    console.log(message);
+    
+    
+  }
   useEffect(() => {
     if (isLoggedIn) {
     }
@@ -74,6 +101,14 @@ const Login = () => {
                       <i className="fa fa-lock"></i>
                     </span>
                   </div>
+                  <GoogleLogin
+        clientId="748391034640-4faj5hc4s827b2h6k3c9cni55uq46djh.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={(response)=>responsesuccessGoogle(response)}
+        onFailure={(response)=>responseErrorGoogle(response)}
+        cookiePolicy={'single_host_origin'}
+        
+        />
                   <button className="login-btn">Login</button>
                   <div className="seperator">
                     <b>or</b>

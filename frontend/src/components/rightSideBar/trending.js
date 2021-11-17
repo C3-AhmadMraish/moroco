@@ -49,7 +49,7 @@ function Trending({ t }) {
   };
 
   return (
-    <div className="trindPost">
+
       <div className="postdevid">
         <div className="postTop">
           <div className="postTopLeft">   {/* */}
@@ -70,7 +70,6 @@ function Trending({ t }) {
         </div>
           <hr style={{ fontSize: "10px", color: "gray", marginTop: "10px" , width: "350px" }} />
       </div>
-    </div>
   );
 }
 

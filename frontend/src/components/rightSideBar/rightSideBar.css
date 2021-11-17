@@ -1,5 +1,5 @@
 .rightSideBar {
-  flex: 2.5;
+  /* flex-basis: calc(100%/3);
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -7,11 +7,14 @@
   top: 0;
   margin: 8px;
   background-color: #fff;
-  /* height: 1130px; */
+  height: 1130px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; */
+  flex: 3.5;
 }
-
+.trindPost h4{
+  text-align: center;
+}
 .trindingIcon {
   width: 22px;
   height: 22px;

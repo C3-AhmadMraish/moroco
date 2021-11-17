@@ -1,11 +1,17 @@
 .leftSideBar {
-  flex: 2;
+  /* flex-basis: calc(100%/3);
   height: 400px;
   background-color: #fff;
   border-radius: 6px;
   margin: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #ccc; */
+  flex: 3;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  position: sticky;
+  top: 50px;
 }
+
 ul {
   margin-left: 14px;
   padding: 0px;
