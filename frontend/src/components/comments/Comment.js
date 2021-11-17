@@ -9,12 +9,12 @@ import { commentContext } from "../../App";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import EditIcon from "@material-ui/icons/Edit";
 
-const Comment = ({ c, postId }) => {
+const Comment = ({ c, postId, setComments, comments }) => {
   const formatter = buildFormatter(frenchStrings);
   const { token, userId } = useContext(AuthContext);
   const [NewBody, setNewBody] = useState(c.comment); //For update
   const {setComment } = useContext(commentContext);
-  const isAuthorized = c.commenter._id === userId;
+   const isAuthorized =  c.commenter._id === userId;
 
   const updateComment = async (id) => {
     try {
@@ -37,6 +37,8 @@ const Comment = ({ c, postId }) => {
   };
 
   const deleteComment = async (id) => {
+    console.log("comment id",id)
+    console.log("post",postId)
     try {
       const res = await axios.delete(
         `http://localhost:5000/posts/${postId}/comment/${id}`,
@@ -46,7 +48,10 @@ const Comment = ({ c, postId }) => {
           },
         }
       );
-
+        let filteredComments = comments.filter((c)=>{
+          return c._id !== id
+        })
+        setComments(filteredComments)
       setComment(res.data)
 
       
@@ -59,7 +64,7 @@ const Comment = ({ c, postId }) => {
   if (isAuthorized) {
     return (
       <div
-        key={c._id}
+        
         className="commentSection"
         style={{ marginLeft: "70px", marginTop: "30px" }}
       >
@@ -75,6 +80,7 @@ const Comment = ({ c, postId }) => {
             <div className="postTopRight">
             <HighlightOffIcon className="deleteIconn"
                 onClick={() => {
+                  // console.log("hololooolo",c._id)
                   deleteComment(c._id);
                 }}
               

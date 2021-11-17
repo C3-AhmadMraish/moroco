@@ -10,6 +10,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import Comment from "./Comment";
 import { commentContext } from "../../App";
 import { profimgContext } from "../../App";
+
 const Comments = () => {
   const formatter = buildFormatter(frenchStrings);
 
@@ -22,7 +23,7 @@ const Comments = () => {
   const { postId } = useParams();
 
   useEffect(() => {
-    console.log(comment,"comment")
+    // console.log(comment,"comment")
     axios
     .get(`http://localhost:5000/posts/getpostbyid/${postId}`, {
       headers: {
@@ -30,6 +31,7 @@ const Comments = () => {
       },
     })
     .then((result) => {
+      // console.log("coments", result.data.post.comments)
       setComments(result.data.post.comments);
       setpost(result.data.post);
     })
@@ -51,7 +53,8 @@ const Comments = () => {
         }
       );
          console.log(res.data.commentAdded," Mai test")
-      setComments(prev=> [...prev,res.data.commentAdded]);
+      setComments(prev => [...prev,res.data.commentAdded]);
+      setnewComment("")
      
     } catch (error) {
       console.log(error);
@@ -84,6 +87,7 @@ const Comments = () => {
         <div className="commentBottom">
           <div className="commentBottomLeft">
           <textarea
+              value={newComment}
               placeholder="Enter your comment ..."
               onChange={(e) => {
                 setnewComment(e.target.value);
@@ -105,9 +109,9 @@ const Comments = () => {
         
         {comments &&
           comments.map((c) => {
-            console.log("c",c)
-            console.log("postid",postId)
-            return <Comment c={c} postId={postId} />;
+            // console.log("c",c)
+            // console.log("postid",postId)
+            return <Comment setComments={setComments} comments={comments} key={c._id} c={c} postId={postId} />;
           })}
       </div>
     </div>
