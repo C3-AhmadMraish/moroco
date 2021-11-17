@@ -59,6 +59,10 @@ const LeftSideBar = () => {
         </Link>
         {/* <Link className="menue-item">
             <span> </span><h3>Settings</h3>
+        <Link className="linkLeftSideBar" to="/Followers">
+          <li>
+            <PeopleIcon /> Followees
+          </li>
         </Link>
         <Link className="menue-item">
             <span> </span><h3>Settings</h3>

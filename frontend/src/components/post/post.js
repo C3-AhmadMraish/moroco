@@ -17,6 +17,7 @@ import { BsBookmark } from 'react-icons/bs';
 import Comments from "../comments/Comments";
 import { Link, useHistory } from "react-router-dom";
 import { profimgContext } from "../../App";
+import moment from "moment";
 
 const Post = () => {
   const formatter = buildFormatter(frenchStrings);
