@@ -61,7 +61,11 @@ const Post = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      getAllPosts();
+      let afterDelete = posts.filter((p)=>{
+        return p._id !== id
+      })
+      setPosts(afterDelete)
+      // getAllPosts();
     } catch (error) {
       console.log(error);
     }

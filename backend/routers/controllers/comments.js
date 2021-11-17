@@ -1,5 +1,6 @@
 const Comment =require("../../db/models/comments");
 const Post = require("../../db/models/posts");
+const User = require("../../db/models/user")
 
 const getCommentById = (req, res) => {
   const _id = req.params.id;
@@ -28,7 +29,7 @@ const getCommentById = (req, res) => {
 }
 
 
-const createNewComment = (req, res) => {
+const createNewComment = async (req, res) => {
   const commenter = req.token.userId;
   const id = req.params.id
   const { comment } = req.body;
@@ -36,15 +37,18 @@ const createNewComment = (req, res) => {
     comment,
     commenter,
   });
-  
+   const user = await User.findById(commenter)
   newComment
     .save()
     .then((result) =>Post.findByIdAndUpdate(id , {$push:{comments:result._id}}))
-    .then( res.status(201).json({ 
-      success: true,
-      message: "seccess add comment",
-      commentAdded: newComment
-     }))
+    .then(()=>{
+      let ayeshe = {comment:newComment.comment, commenter:user, date:newComment.date, _id:newComment._id} //populate bashar.com
+      res.status(201).json({ 
+        success: true,
+        message: "seccess add comment",
+        commentAdded: ayeshe,  
+       })
+    })
     .catch((err) =>
       res.status(404).json({ success: false, message: "something went wrong while creating a new comment" })
     );    
