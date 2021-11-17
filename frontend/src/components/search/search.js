@@ -4,7 +4,7 @@ import "./search.css"
 import axios from "axios";
 import { AuthContext } from "../../contexts/context";
 const Search = () => {
-  const { token } = useContext(AuthContext);
+  const { token,userId } = useContext(AuthContext);
   const [ssValue, setssValue] = useState();
   const { sValue } = useContext(searchContext);
   // const [fname,setFname]= useContext();
@@ -18,11 +18,15 @@ const Search = () => {
     test();
   }, [sValue]);
 
-
- const addFollower = async () => {
+  console.log("token",token)
+ const addFollower = async (id) => {
+   
   try {
     
-    axios.put(`http://localhost:5000/users/${follow}/follow `, { headers: { Authorization: `Bearer ${token}`,}})
+   await axios.put(`http://localhost:5000/users/test/${id}/follow `, {}, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }})
       console.log("done")
   } catch (error) {
     console.log(error);
@@ -30,10 +34,22 @@ const Search = () => {
   
 }
 
-// };
+
 
 /*
-/:id/follow    put
+ const addFollower = async()=> {  // no es6 @ farhan
+  console.log("hi")
+  try {
+    const res = await axios.put(`http://localhost:5000/users/${f._id}/follow`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(res,"addFollower")
+  } catch (error) {
+    console.log(error);
+  }
+ }
 
 */
 
@@ -50,7 +66,7 @@ const Search = () => {
                 {e.firstName} {e.lastName}
               </p>
               
-              <img  onClick={()=> {setFollow(e._id)}} height="250px" width="250px" src={e.avatar} alt=""/>
+              <img  onClick={()=> {addFollower(e._id)}} height="250px" width="250px" src={e.avatar} alt=""/>
 
               {/* <button onClick={()=> {addFollower()}}> Follow </button> */}
               {/*How to pass e._id to the above function ? */}

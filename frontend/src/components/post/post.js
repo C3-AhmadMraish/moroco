@@ -12,6 +12,7 @@ import CommentIcon from "@material-ui/icons/Comment";
 import Comments from "../comments/Comments";
 import { Link, useHistory } from "react-router-dom";
 import { profimgContext } from "../../App";
+import moment from "moment";
 
 const Post = () => {
   const formatter = buildFormatter(frenchStrings);
@@ -128,10 +129,13 @@ const Post = () => {
                       src={p.user.avatar}
                       alt=""
                     />
-                    {/* inpostname inpostimg */}
+                    {/* {(new Date(p.date)) - (new Date(Date.now()))} */}
+                    {/* moment().startOf('hour').fromNow(); */}
+                    {/* <td>{moment({p.date}).format("llll")}</td> */}
                     <span className="postUsername">{p.user.firstName}</span>
                     <span className="postDate">
-                      <TimeAgo date={p.date} formatter={formatter} />
+                      <td>{moment(p.date).fromNow()}</td>
+                      
                     </span>
                   </div>
                   <div className="postTopRight">
