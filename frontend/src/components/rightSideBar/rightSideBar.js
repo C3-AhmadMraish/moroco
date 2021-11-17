@@ -16,6 +16,7 @@ const RightSideBar = () => {
     
   return (
     <div className="rightSideBar">
+          <div className="trindPost">
       <h4>
         Trending Posts{" "}
         <span>
@@ -28,6 +29,7 @@ const RightSideBar = () => {
           return <Trending key={i} t={t}/>
         })
       }
+    </div>
     </div>
   );
 };

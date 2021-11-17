@@ -69,7 +69,9 @@ const App = () => {
               <commentContext.Provider value={{ comment, setComment }}>
                 <profimgContext.Provider value={{ profimg, setProfimg }}>      {/*  main image  */}
                   <Header />
+                  <div className="cont">
                   <div className="App">
+                    <main>
                     <LeftSideBar />
                     <div className="main">
                       <Switch>
@@ -97,6 +99,7 @@ const App = () => {
                       </Switch>
                     </div>
                     <RightSideBar />
+                  </div>
                   </div>
                 </profimgContext.Provider>
               </commentContext.Provider>
