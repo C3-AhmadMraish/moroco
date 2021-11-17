@@ -3,33 +3,39 @@ const Post = require("../../db/models/posts");
 const { deleteOne } = require("../../db/models/trending");
 
 let changedPost
-
+let maker
 const getTrends = (req, res) => {
-  Trend.find({})
-    .populate("post")
+  Trend.find({}).sort({ likesCounter: -1 })
+  
+    .populate("post").populate({ path: 'post', populate: { path: 'user' }}).populate("user")
     .then(async (result) => {
+      // let ayeshe = {comment:newComment.comment, commenter:user, date:newComment.date, _id:newComment._id}
       if (result.length < 3) {
         await Trend.remove({});
         const trends = [];
-        Post.find({})
+        Post.find({}).populate("user")
           .sort({ likesCounter: -1 })
           .limit(3)
           .then((resultP) => {
             trends.push(resultP[0]);
             trends.push(resultP[1]);
             trends.push(resultP[2]);
-
+          // console.log("trendsmraish", trends)
             const newtrend1 = new Trend({
               post: resultP[0]._id,
               likesCounter: resultP[0].likesCounter,
+              userAvatar: resultP[0].user.avatar
             });
+            // console.log("test",resultP[0].user.avatar)
             const newtrend2 = new Trend({
               post: resultP[1]._id,
               likesCounter: resultP[1].likesCounter,
+              userAvatar: resultP[1].user.avatar
             });
             const newtrend3 = new Trend({
               post: resultP[2]._id,
               likesCounter: resultP[2].likesCounter,
+              userAvatar: resultP[2].user.avatar
             });
 
             newtrend1.save();
@@ -50,7 +56,7 @@ const getTrends = (req, res) => {
       return res.status(200).json({
         success: true,
         message: `Trending posts.`,
-        trends: result,
+        trends: result
       });
     })
     .catch((err) => {
@@ -60,7 +66,8 @@ const getTrends = (req, res) => {
 
 const reGetTrends = (req, res) => {
   Trend.find({})
-    .populate("post")
+  
+  .populate("post").populate({ path: 'post', populate: { path: 'user' }}).populate("user")
     .then(async (result) => {
       await Trend.remove({});
       const trends = [];
@@ -77,14 +84,17 @@ const reGetTrends = (req, res) => {
           const newtrend1 = new Trend({
             post: resultP[0]._id,
             likesCounter: resultP[0].likesCounter,
+            userAvatar: resultP[0].user.avatar
           });
           const newtrend2 = new Trend({
             post: resultP[1]._id,
             likesCounter: resultP[1].likesCounter,
+            userAvatar: resultP[1].user.avatar
           });
           const newtrend3 = new Trend({
             post: resultP[2]._id,
             likesCounter: resultP[2].likesCounter,
+            userAvatar: resultP[2].user.avatar
           });
 
           newtrend1.save();
@@ -119,7 +129,7 @@ const addNewAndDeleteOld = (req, res) => {
   // let isChanged = false;
   //Check if post exists in trends
   Trend.findOne({ post: postId })
-    .populate("post")
+  .populate("post").populate({ path: 'post', populate: { path: 'user' }}).populate("user")
     .then(async (result) => {
       post = await Post.findOne({ _id: postId }).populate("user");
       if (!result) {
