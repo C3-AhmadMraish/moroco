@@ -51,30 +51,51 @@ function Trending({ t }) {
   };
 
   return (
-    
-      <div className="postdevid">
-        <div className="postTop">
-          <div className="postTopLeft">   {/* */}
-          {/* res.data.trends.user.avatar */}
-            <img
-              className="postProfileImg"
-              src={t.post.user.avatar}
-              alt=""
-            />
-            <span className="postUsername">{t.post.user.firstName}</span>
-            <span className="postDate">
-              <TimeAgo date={t.post.date} formatter={formatter} />
-            {/* {console.log("date",t.post.date)} */}
-            </span>
-          </div>
-        </div>
-        <div className="postCenter1">
-          <div>{choose(t.post.body)}</div>
-          <div> <ThumbUpAltIcon className="iconLikeTrind"/> {t.post.likesCounter}</div>
-        </div>
-          <hr style={{ fontSize: "10px", color: "gray", marginTop: "10px" , width: "350px" }} />
+    <div class="friends">
+<div class="friend" >
+  
+    <div class="info">
+      <div>
+        <img src={t.post.user.avatar} alt=""  class="profile" />
       </div>
+        <div class="handle">
+            <h4>{t.post.user.firstName}</h4>
+        </div>
+    </div>
+            <p class="text" >
+            {/* {choose(t.post.body)} */}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt nemo et sequi placeat cum accusantium dolor natus molestiae officiis sint ducimus expedita quaerat corrupti aspernatur repudiandae harum totam, deserunt ea.               
+            </p>
+            <div style={{textAlign:"right"}}> <ThumbUpAltIcon  className="iconLikeTrind"/> {t.post.likesCounter}</div>
+</div>
+
+
+
+</div>
   );
 }
 
 export default Trending;
+
+// <div className="postdevid">
+// <div className="postTop">
+//   <div className="postTopLeft">   {/* */}
+//   {/* res.data.trends.user.avatar */}
+//     {/* <img
+//       className="postProfileImg"
+//       src={t.post.user.avatar}
+//       alt=""
+//     /> */}
+//     <span className="postUsername">{t.post.user.firstName}</span>
+//     <span className="postDate">
+//       <TimeAgo date={t.post.date} formatter={formatter} />
+//     {/* {console.log("date",t.post.date)} */}
+//     </span>
+//   </div>
+// </div>
+// <div className="postCenter1">
+//   <div>{choose(t.post.body)}</div>
+//   <div> <ThumbUpAltIcon className="iconLikeTrind"/> {t.post.likesCounter}</div>
+// </div>
+//   <hr style={{ fontSize: "10px", color: "gray", marginTop: "10px" , width: "350px" }} />
+// </div>

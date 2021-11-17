@@ -17,9 +17,9 @@ const RightSideBar = () => {
     },[]);
     
   return (
-    <div className="rightSideBar">
+    <div class="right">
           <div className="trindPost">
-      <h4>
+      <h4 class="fri-name">
         Trending Posts{" "}
         <span>
           <img className="trindingIcon" src="/assets/popularity.png" />

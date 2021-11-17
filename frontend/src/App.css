@@ -1,4 +1,4 @@
-.cont{
+/* .cont{
   display: flex;
   width: 90%;
   margin: 0 auto;
@@ -11,10 +11,10 @@
    font-family: 'Bungee Inline', cursive;
    font-size: 20px;
   padding-top: 20px;
-   /* height: max-content; */
+   height: max-content;
 }
 
-/* @media (min-width:500px){
+@media (min-width:500px){
   .rightSideBar{
     display: none;
   }
@@ -23,7 +23,7 @@
   .rightSideBar{
     display: flex;
   }
-} */
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -57,4 +57,37 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  border:none
+  
+}
+:root{
+    --color:#333;
+}
+body{
+    background-color: #efefef;
+    color:var(--color)
+}
+
+.container{
+  width:80%;
+  margin: 0 auto;
+}
+.App{
+  position:relative;
+  top:5.5rem;
+
+}
+.App .container{
+  display:grid;
+  grid-template-columns:17vw auto 20vw;
+  column-gap:2rem;
+  position:relative;
 }

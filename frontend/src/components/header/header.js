@@ -70,34 +70,24 @@ const Header = () => {
   
   //------------------------------------------------------------------------------------------------
   return (
-    <div className="headercontaner">
-      <div className="leftHeader">
-        {/* <span className="logo">Moroco</span> */}
-        <Link style={{textDecoration:"none"}} to="/Home"><span className="logo">M oroco</span></Link>
-      </div>
-      <div className="centerHeader">
-        {/*-------------------------------search---------------------------------*/}
-        <div className="seachArea">
-          <Search  onClick={searchSend} className="searchIcon" />
-          <input
-            type="text"
-            placeholder="Search..."
-            className="searchInput"
-            onChange={(e) => {
-              setData(e.target.value);
-            }}
-          ></input>
-          {/* <button type="button" onClick={searchSend}></button> */}
+    <nav>
+<div className="container">
+        <h2 classNameName="logo">
+        <Link style={{textDecoration:"none"}} to="/Home">Moroco</Link>
+        </h2>
+            <div className="search-box">
+            <Search style={{marginTop:"10px"}}  onClick={searchSend} classNameName="searchIcon" /> <input
+                  onChange={(e) => {
+                    setData(e.target.value);
+                  }}
+            type="search" placeholder="Search" />
+            </div>
+            <div className="btn">
+                <button onClick={logout}> LOGOUT</button>
+                <img src={profimg} alt="profimg" className="profile"/>
+            </div>
         </div>
-        {/*-------------------------------search---------------------------------*/}
-      </div>
-      <div className="rightHeader">
-        <img src={profimg} alt="" />
-        <div className="dropdown-content">
-          <Link className="logout"  onClick={logout} >LogOut</Link>
-        </div>
-      </div>
-    </div>
+    </nav>
   );
 };
 export default Header;
