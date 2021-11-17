@@ -20,7 +20,7 @@ usersRouter.post("/googleLogin",loginWithGoogle);
 usersRouter.get("/:idU/:idF", authentication, checkIsFollower)
 usersRouter.post("/search", authentication, searchUsersByName);
 usersRouter.get("/:id", authentication, getUserById);
-usersRouter.put("/:id/follow", authentication, follwoUnfollwo);
+usersRouter.put("/test/:id/follow", authentication, follwoUnfollwo); 
 usersRouter.put("/:id",authentication, updateUserById);
 
 

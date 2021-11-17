@@ -56,19 +56,24 @@ const getUserById = (req, res) => {
 };
 
 const follwoUnfollwo = (req, res) => {
+  // console.log("request",req,"request")
+  console.log("we entered follow")
   const _id = req.params.id;
+ 
   const curruntuser =  req.token.userId;
-  User.findById(_id).then((result) => {
-    if (!result.followers.includes(curruntuser)) {
+  
+  User.findById(curruntuser).then((result) => {
+    console.log(result,"res follow")
+    if (!result.followers.includes(_id)) {
       User.updateOne(
-        { _id: _id },
-        { $push: { followers: curruntuser } }
+        { _id: curruntuser },
+        { $push: { followers: _id } }
       ).exec();
       res.status(200).json("follow sccesfully");
     } else {
       User.updateOne(
-        { _id: _id },
-        { $pull: { followers: curruntuser } }
+        { _id: curruntuser },
+        { $pull: { followers: _id } }
       ).exec();
       res.status(200).json("unfollow sccesfully");
     }
