@@ -105,6 +105,8 @@ const Comments = () => {
         
         {comments &&
           comments.map((c) => {
+            console.log("c",c)
+            console.log("postid",postId)
             return <Comment c={c} postId={postId} />;
           })}
       </div>

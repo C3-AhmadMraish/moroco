@@ -71,7 +71,7 @@ const App = () => {
                   <Header />
                   <div className="cont">
                   <div className="App">
-                    <main>
+                    {/* <Main/> */}
                     <LeftSideBar />
                     <div className="main">
                       <Switch>
@@ -99,6 +99,7 @@ const App = () => {
                       </Switch>
                     </div>
                     <RightSideBar />
+                    
                   </div>
                   </div>
                 </profimgContext.Provider>

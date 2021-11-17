@@ -2,6 +2,8 @@ const Trend = require("../../db/models/trending");
 const Post = require("../../db/models/posts");
 const { deleteOne } = require("../../db/models/trending");
 
+let changedPost
+
 const getTrends = (req, res) => {
   Trend.find({})
     .populate("post")
@@ -62,13 +64,15 @@ const reGetTrends = (req, res) => {
     .then(async (result) => {
       await Trend.remove({});
       const trends = [];
-      Post.find({})
+      Post.find({}).populate("user")
         .sort({ likesCounter: -1 })
         .limit(3)
         .then((resultP) => {
           trends.push(resultP[0]);
           trends.push(resultP[1]);
           trends.push(resultP[2]);
+
+          changedPost = resultP.find((p) => { return p._id === req.params.id })
 
           const newtrend1 = new Trend({
             post: resultP[0]._id,
@@ -91,6 +95,7 @@ const reGetTrends = (req, res) => {
             success: true,
             message: `Trending posts.`,
             trends: trends,
+            post: changedPost
           });
         })
         .catch((err) => {
@@ -110,26 +115,38 @@ const reGetTrends = (req, res) => {
 
 const addNewAndDeleteOld = (req, res) => {
   const postId = req.params.id;
+  let post
   // let isChanged = false;
   //Check if post exists in trends
   Trend.findOne({ post: postId })
     .populate("post")
     .then(async (result) => {
+      post = await Post.findOne({ _id: postId }).populate("user");
       if (!result) {
+        // console.log("we entered the unknown",result)
         const trends = await Trend.find({}).populate("post");
-        const post = await Post.findOne({ _id: postId });
-        for (let i = 0; i < trends.length; i++) {
+        console.log("trends",trends)
+        for (let i = 0; i < 3; i++) {
+          console.log("momo",trends[i])
           if (trends[i].post.likesCounter < post.likesCounter) {
             return reGetTrends(req, res);
             // console.log("before break")
             // break;
           }
         }
+        return res.status(200).json({
+          success: true,
+          changedTrend: false,
+          xx: "flfafel",
+          post: post
+        });
       } else {
         // console.log("status 4" + res.status);
         return res.status(201).json({
           success: true,
           changedTrend: false,
+          xx: "batata",
+          post: post
         });
       }
     })
