@@ -76,7 +76,7 @@ const Header = () => {
         <Link style={{textDecoration:"none"}} to="/Home">Moroco</Link>
         </h2>
             <div className="search-box">
-            <Search style={{marginTop:"10px"}}  onClick={searchSend} classNameName="searchIcon" /> <input
+            <Search style={{marginRight:"10px"}}  onClick={searchSend} classNameName="searchIcon" /> <input
                   onChange={(e) => {
                     setData(e.target.value);
                   }}

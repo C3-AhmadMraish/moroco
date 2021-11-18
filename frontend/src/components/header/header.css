@@ -134,6 +134,7 @@ nav .search-box{
     background-color: #efefef;
     border-radius:2rem;
     padding:0.6rem 1rem;
+    display: flex;
 }
 
 nav .search-box input[type="search"] {
