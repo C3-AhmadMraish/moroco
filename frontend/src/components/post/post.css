@@ -89,7 +89,11 @@
 
   */
 
-  
+  .feeds{
+  display: flex;
+
+    flex-direction: column-reverse;
+  }
  .feeds .feed{
   background-color:#fff;
   border-radius:3%;
