@@ -9,20 +9,20 @@ import EditIcon from "@material-ui/icons/Edit";
 import { AuthContext } from "../../contexts/context";
 import { profimgContext } from "../../App";
 import Modal  from "../Modal/Modal";
-const LeftSideBar = ({name}) => {
+const LeftSideBar = () => {
   const { token, userId } = useContext(AuthContext);
-  const [nameUser, setNameUser] = useState(name);
+  const [nameUser, setNameUser] = useState("");
   const { profimg } = useContext(profimgContext);
   const [show, setShow] = useState(false);
   //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
 
   const getNameUser2 = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/users/${userId}`, {
+      await axios.get(`http://localhost:5000/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }).then(()=>{
+      }).then((res)=>{
 
         setNameUser(res.data.posts.firstName);
       });
