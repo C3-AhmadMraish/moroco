@@ -56,7 +56,7 @@ function Trending({ t }) {
   
     <div class="info">
       <div>
-        <img src={t.post.user.avatar} alt=""  class="profile" />
+        <img src=  {userId===t.post.user._id?profimg: t.post.user.avatar} alt=""  class="profile" />
       </div>
         <div class="handle">
             <h4>{t.post.user.firstName}</h4>

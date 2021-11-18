@@ -57,13 +57,11 @@ const getUserById = (req, res) => {
 
 const follwoUnfollwo = (req, res) => {
   // console.log("request",req,"request")
-  console.log("we entered follow")
   const _id = req.params.id;
- 
-  const curruntuser =  req.token.userId;
-  
+
+  const curruntuser = req.token.userId;
+
   User.findById(curruntuser).then((result) => {
-    console.log(result,"res follow")
     if (!result.followers.includes(_id)) {
       User.updateOne(
         { _id: curruntuser },
@@ -80,37 +78,47 @@ const follwoUnfollwo = (req, res) => {
   });
 };
 
-
 const checkIsFollower = (req, res) => {
-  const _idU =  req.token.userId;
-  const _idF = req.params.idF
-  User.findById(_idU ).then ((result) => {
-    if(result.followers.includes(_idF)){
-    return  res.status(200).json({
-        success: true,
-        message:`User of id: ${_idF} is following User of id: ${_idU}`
-      })
-    }
-    res.status(201).json(
-      {
+  const _idU = req.token.userId;
+  const _idF = req.params.idF;
+  User.findById(_idU)
+    .then((result) => {
+      if (result.followers.includes(_idF)) {
+        return res.status(200).json({
+          success: true,
+          message: `User of id: ${_idF} is following User of id: ${_idU}`,
+        });
+      }
+      res.status(201).json({
         success: false,
-        message:`User of id: ${_idF} is NOT FOLLOWING User of id: ${_idU}`
+        message: `User of id: ${_idF} is NOT FOLLOWING User of id: ${_idU}`,
       });
-  })
-  .catch((err) => {
-    res.status(500).json({
-      success: false,
-      message: `Server Error Mraish`,
-      err: err
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server Error Mraish`,
+        err: err,
+      });
     });
-  });
-  }
-
-
+};
+//// .findByIdAndUpdate(_id, req.body, { new: true }) .exec()
 const updateUserById = (req, res) => {
+  const { lastName, age, email, gender, avatar } = req.body;
+  console.log("reqbody",req.body)
   const _id = req.params.id;
-  User
-    .findByIdAndUpdate(_id, req.body, { new: true })
+  User.findByIdAndUpdate(
+    { _id: _id },
+    {
+      $push: { album: avatar },
+      avatar: avatar,
+      gender: gender,
+      email: email,
+      age: age,
+      lastName: lastName,
+    },
+    { new: true }
+  )
     .then((result) => {
       if (!result) {
         return res.status(404).json({
@@ -118,7 +126,8 @@ const updateUserById = (req, res) => {
           message: `The User => ${_id} not found`,
         });
       }
-     res.status(200).json({
+      console.log("mrs mai",result)
+      res.status(200).json({
         success: true,
         message: `The post with ${_id}`,
         post: result,
@@ -132,7 +141,6 @@ const updateUserById = (req, res) => {
       });
     });
 };
-
 
 const searchUsersByName = (req, res) => {
   const name = req.query.name;
@@ -172,5 +180,11 @@ const searchUsersByName = (req, res) => {
     });
 };
 
-
-module.exports = { getUserById, register, follwoUnfollwo, searchUsersByName,updateUserById,checkIsFollower };
+module.exports = {
+  getUserById,
+  register,
+  follwoUnfollwo,
+  searchUsersByName,
+  updateUserById,
+  checkIsFollower,
+};
