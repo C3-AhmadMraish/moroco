@@ -51,7 +51,7 @@ const ChangeProfPhoto = async ()=>{
               
               }
                 
-                } src = {selectedImg} width= "1400px" height="700px" alt="Selected" className="selected"/>
+                } src = {selectedImg} width= "400px" height="100px" alt="Selected" className="selected"/>
                 </div>
                 </div>
                 <br/>
