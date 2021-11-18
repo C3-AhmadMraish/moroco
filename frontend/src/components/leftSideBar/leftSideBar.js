@@ -9,9 +9,9 @@ import EditIcon from "@material-ui/icons/Edit";
 import { AuthContext } from "../../contexts/context";
 import { profimgContext } from "../../App";
 import Modal  from "../Modal/Modal";
-const LeftSideBar = () => {
+const LeftSideBar = ({name}) => {
   const { token, userId } = useContext(AuthContext);
-  const [nameUser, setNameUser] = useState("");
+  const [nameUser, setNameUser] = useState(name);
   const { profimg } = useContext(profimgContext);
   const [show, setShow] = useState(false);
   //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
@@ -22,8 +22,10 @@ const LeftSideBar = () => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+      }).then(()=>{
+
+        setNameUser(res.data.posts.firstName);
       });
-      setNameUser(res.data.posts.firstName);
     } catch (error) {
       console.log(error);
     }
@@ -40,9 +42,9 @@ const LeftSideBar = () => {
       
         <div className="handle">
             <h4>{nameUser}</h4>
-            <p className="text">
+            {/* <p className="text">
                 @dai
-            </p>
+            </p> */}
         </div>
     </div>
     <div className="side-bar">

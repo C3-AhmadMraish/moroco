@@ -2,9 +2,11 @@ import React, { useState, useContext, useEffect } from "react";
 import "./Followers.css"
 import { AuthContext } from "../../../contexts/context";
 import axios from "axios";
+import { purple } from "@material-ui/core/colors";
 
 function Follower({f}) {
   const { token, userId } = useContext(AuthContext);
+  const [isFollower, setisFollower] = useState(false);
 // console.log("f",f)
   // /:id/follow
   const addFollower = async (id) => {
@@ -15,7 +17,7 @@ function Follower({f}) {
       headers: {
         Authorization: `Bearer ${token}`,
       }})
-        console.log("done")
+      setisFollower((prev) => !prev);
     } catch (error) {
       console.log(error);
     }
@@ -26,16 +28,17 @@ function Follower({f}) {
 
     return (
  
-        
-
-        <div className="searchedUser">
-
-            <p>{f.firstName}</p>
-            <img onClick={()=> {addFollower(f._id)}}height="250px" width="250px" alt="" src={f.avatar}/>
-
+      <div className="pro">
+        <div className="momo">
+      <img style={{width:"70px",height:"70px"}} className="profile"  alt="" src={f.avatar}/>
+      <div className="handle">
+          <h4>{f.firstName}</h4>
+      </div>
         </div>
-        
-        
+  <div  style={{display:"flex",justifyContent:"flex-end",width:"55%"}}>
+      <button onClick={()=> {addFollower(f._id)}} className="btnF" >{isFollower?"Unfollow":"Follow"}</button>
+  </div> 
+  </div>      
     )
 }
 export default Follower
