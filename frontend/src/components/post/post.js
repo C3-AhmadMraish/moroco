@@ -122,6 +122,57 @@ const Post = () => {
 
   return (
     <>
+
+//       <div className="colreverse">
+//         {posts &&
+//           posts.map((p, i) => (
+//             <div key={i} className="post">
+//               <div className="postdevid">
+//                 <div className="postTop">
+//                   <div className="postTopLeft">
+//                     <img
+//                       className="postProfileImg"
+//                       src={p.user.avatar}
+//                       alt=""
+//                     />
+//                     {/* {(new Date(p.date)) - (new Date(Date.now()))} */}
+//                     {/* moment().startOf('hour').fromNow(); */}
+//                     {/* <td>{moment({p.date}).format("llll")}</td> */}
+//                     <span className="postUsername">{p.user.firstName}</span>
+//                     <span className="postDate">
+//                       {/* moment().fromNow() */}
+//                       <td>{ moment(p.date).fromNow()}</td>
+                      
+//                     </span>
+//                   </div>
+//                   <div className="postTopRight">
+//                     <span className="postDate">
+//                       <HighlightOffIcon
+//                         onClick={() => deletePost(p._id)}
+//                         className="deleteIcon"
+//                       />
+//                     </span>
+//                   </div>
+//                 </div>
+//                 <div className="postCenter">{choose(p.body)}</div>
+//                 <div className="postBottom">
+//                   <div className="postBottomLeft">
+//                     <span className="postLikeIcon">
+//                       <ThumbUpAltIcon onClick={() => Likeit(p._id)} />
+//                     </span>
+//                     <span className="postLikeCounter">
+//                       {p.likes.length} like
+//                     </span>
+//                   </div>
+//                   <div className="postBottomRight">
+//                     <span className="postCommentIcom">
+//                       <Link to={`/${p._id}/comments`}>
+//                         <CommentIcon />
+//                       </Link>
+//                     </span>
+//                   </div>
+//                 </div>
+
       <div className="feeds">
       {posts &&
     posts.map((p, i) => (
@@ -132,7 +183,8 @@ const Post = () => {
 
               <div className="info">
                 <h3>{p.user.firstName}</h3>
-                <small><TimeAgo date={p.date} formatter={formatter} /></small>
+                <small>{ moment(p.date).fromNow()}</small>
+
               </div>
             </div>
             <span className="edit">
@@ -157,6 +209,7 @@ const Post = () => {
               </span>
               <span>
               <Link to={`/${p._id}/comments`}>
+              
                   <FaRegCommentDots style={{color:"#333",marginRight:"10px"}} />
                 </Link>
               </span>

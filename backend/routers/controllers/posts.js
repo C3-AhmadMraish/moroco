@@ -38,11 +38,14 @@ const getAllPosts = (req, res) => {
 };
 
 const createNewPost = (req, res) => {
+ date = req.body.date
+ console.log(req.body,"Mai testing")
   const user = req.token.userId;
   const { body } = req.body;
   const newPost = new Post({
     body,
     user,
+    date
   });
 
   newPost

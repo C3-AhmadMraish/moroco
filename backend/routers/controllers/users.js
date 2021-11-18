@@ -91,7 +91,7 @@ const checkIsFollower = (req, res) => {
         message:`User of id: ${_idF} is following User of id: ${_idU}`
       })
     }
-    res.status(402).json(
+    res.status(201).json(
       {
         success: false,
         message:`User of id: ${_idF} is NOT FOLLOWING User of id: ${_idU}`
