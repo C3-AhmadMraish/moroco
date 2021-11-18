@@ -5,6 +5,9 @@ import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -31,6 +34,10 @@ const EditProfile=()=>{
             console.log(result.data)})
         .catch(err=>console.log(err))
     },[])
+
+    const handler2 = (e) => {
+      setGender(e.target.value);
+    };
 
     const onSave=async ()=>{
         console.log("here");
@@ -61,7 +68,6 @@ const EditProfile=()=>{
             {/* <p className="success-update"> {successUpdate}</p> */}
             <Form onSubmit={onSave}>
               <Row className="mb-3">
-              
                 <Form.Group as={Col} controlId="formGridPassword">
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
@@ -69,19 +75,20 @@ const EditProfile=()=>{
                     placeholder={lastName}
                     onChange={(e)=>setLastName(e.target.value)}
                   />
-                </Form.Group>
-              </Row>
-  
-              <Form.Group className="mb-3" controlId="formGridAddress1">
-                <Form.Label>Age</Form.Label>
+                   </Form.Group>
+                  <Form.Group as={Col} controlId="formGridPassword">
+                  <Form.Label>Age</Form.Label>
                 <Form.Control
                   placeholder={age}
                   type="text"
                   onChange={(e)=>setAge(e.target.value)}
                 />
-              </Form.Group>
+                </Form.Group>
+              </Row>
   
-              <Form.Group className="mb-3" controlId="formGridAddress2">
+
+              <Row className="mb-3">
+              <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   placeholder={email}
@@ -89,16 +96,21 @@ const EditProfile=()=>{
                   onChange={(e)=>setEmail(e.target.value)}
                 />
               </Form.Group>
-  
-              <Form.Group className="mb-3" controlId="formGridAddress1">
+
+              <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Gender</Form.Label>
-                <Form.Control
-                  placeholder={gender}
-                  type="text"
-                  onChange={(e)=>setGender(e.target.value)}
-                />
+                <Form.Select aria-label={gender}
+                onChange={handler2}> 
+                 <option hidden value='0'>{gender}</option>
+                 <option value='Male'>Male</option>
+                 <option value='Female'>Female</option>
+                 <option value='Rainbow'>Rainbow</option>
+                </Form.Select>
               </Form.Group>
-  
+
+              </Row>
+
+              
   
   
               <Form.Group className="mb-3" controlId="formGridAddress3">
@@ -111,13 +123,12 @@ const EditProfile=()=>{
                 />
               </Form.Group>
               
-  
-            
-  
               <button className="change_info" type="submit">
                 Save Change
               </button>
             </Form>
+            <>
+</>
           </div>
         </div>
       </div>

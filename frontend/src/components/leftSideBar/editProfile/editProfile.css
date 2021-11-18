@@ -4,11 +4,11 @@
 }
 
 .Main-Edit-Profile h4 {
-  color: #5da5f3;
+  color: #0dcaf0;
 }
 
 .Main-Edit-Profile h6 {
-  border-bottom: 3px solid #5da5f3;
+  border-bottom: 3px solid #0dcaf0;
   color: #666;
   display: inline-block;
   margin-bottom: 25px;
@@ -17,7 +17,7 @@
 .change_info {
   text-align: center;
   padding: 7px 50px;
-  background-color: #5da5f3;
+  background-color: #0dcaf0;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -27,7 +27,10 @@
   -o-border-radius: 3px;
 }
 
-
+/* .success-update {
+  color: #02a95c;
+  font-size: 25px;
+} */
 
 .Main-Edit-Profile img {
   border-radius: 50%;

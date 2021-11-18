@@ -5,6 +5,7 @@ import axios from 'axios';
 import { AuthContext } from '../../contexts/context';
 import { postContext } from '../../App';
 import { profimgContext } from '../../App';
+import moment from 'moment';
 const Feed = () => {
     
     const [postBody,setPostBody]=useState([]);
@@ -12,9 +13,12 @@ const Feed = () => {
     const [nameUserFeed, setNameUserFeed] = useState("");
     const {value,setValue}=useContext(postContext);
     const {profimg, setProfimg} = useContext(profimgContext);
-  
+    let date1 = new Date (Date.now())
+    date1= moment(date1).format('lll'); 
+    
         const Addpost=()=>{
-            axios.post("http://localhost:5000/posts",{body:postBody},{
+            console.log(date1,"date1")
+            axios.post("http://localhost:5000/posts",{body:postBody,date:date1},{
             headers: {
               Authorization: `Bearer ${token}`,
             }}).then(result=>setValue([...value,result]))

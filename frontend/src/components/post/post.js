@@ -134,7 +134,8 @@ const Post = () => {
                     {/* <td>{moment({p.date}).format("llll")}</td> */}
                     <span className="postUsername">{p.user.firstName}</span>
                     <span className="postDate">
-                      <td>{moment(p.date).fromNow()}</td>
+                      {/* moment().fromNow() */}
+                      <td>{ moment(p.date).fromNow()}</td>
                       
                     </span>
                   </div>

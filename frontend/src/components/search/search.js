@@ -3,6 +3,7 @@ import { searchContext } from "../../App";
 import "./search.css"
 import axios from "axios";
 import { AuthContext } from "../../contexts/context";
+import SearchedUser from "./SearchedUser";
 const Search = () => {
   const { token,userId } = useContext(AuthContext);
   const [ssValue, setssValue] = useState();
@@ -19,20 +20,8 @@ const Search = () => {
   }, [sValue]);
 
   console.log("token",token)
- const addFollower = async (id) => {
-   
-  try {
-    
-   await axios.put(`http://localhost:5000/users/test/${id}/follow `, {}, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    }})
-      console.log("done")
-  } catch (error) {
-    console.log(error);
-  }
-  
-}
+
+
 
 
 
@@ -59,19 +48,12 @@ const Search = () => {
     <div className="searchContainer">
       {sValue &&
         sValue.map((e, i) => {
+
           return (
 
-            <div className="searchedUser" key={i}>
-              <p>
-                {e.firstName} {e.lastName}
-              </p>
-              
-              <img  onClick={()=> {addFollower(e._id)}} height="250px" width="250px" src={e.avatar} alt=""/>
+           <SearchedUser e={e} key={i}/>
 
-              {/* <button onClick={()=> {addFollower()}}> Follow </button> */}
-              {/*How to pass e._id to the above function ? */}
-            </div>
-            
+           
 
           );
         })}
@@ -81,4 +63,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Search
