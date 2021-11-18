@@ -18,7 +18,8 @@ const Feed = () => {
     let date1 = new Date (Date.now())
     date1= moment(date1).format('lll'); 
     
-        const Addpost=()=>{
+        const Addpost=(e)=>{
+          e.preventDefault()
             console.log(date1,"date1")
             axios.post("http://localhost:5000/posts",{body:postBody,date:date1},{
             headers: {
@@ -44,14 +45,14 @@ const Feed = () => {
     nameUsersFeed();
   }, []);
   return (
-    <form className="create-post">
+    <form className="create-post" onSubmit={Addpost}>
       <img src={profimg}  alt="profimg" className="profile1" />
       <input type="text"
               value={postBody}
               onChange={(e) => setPostBody(e.target.value)}
       placeholder={`What's on your mind ${ nameUserFeed} ? `} />
 
-      <input type="submit" value="Post"  onClick={Addpost}  className="btn3" />
+      <input type="submit" value="Post"  className="btn3" />
     </form>
   );
 };
