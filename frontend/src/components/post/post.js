@@ -131,7 +131,7 @@ const Post = () => {
               <img src={p.user.avatar} alt="" className="profile" />
 
               <div className="info">
-                <h3>{p.user.firstName}</h3>
+                <h4>{p.user.firstName}</h4>
                 <small>{ moment(p.date).fromNow()}</small>
 
               </div>

@@ -32,6 +32,7 @@ const App = () => {
   const [sValue, setsValue] = useState([]);
   const [profimg, setProfimg] = useState(""); //main image
   const [comment, setComment] = useState([]);
+  const [nameUser1,setNameuser1] = useState('')
   // const {token ,userId} =  useContext(AuthContext);
 
   
@@ -48,6 +49,7 @@ const App = () => {
         console.log("mai res",res)
       // setNameUser(res.data.posts.firstName);
       setProfimg(res.data.posts.avatar) //check to know correct . . 
+      setNameuser1(res.data.posts.firstName)
     } catch (error) {
       console.log(error);
     }               
@@ -73,7 +75,7 @@ const App = () => {
                   <div className="App">
                   <div class="container">
                     {/* <Main/> */}
-                    <LeftSideBar />
+                    <LeftSideBar name={nameUser1}/>
                     <div className="main">
                       <Switch>
                         <Route exact path="/search">

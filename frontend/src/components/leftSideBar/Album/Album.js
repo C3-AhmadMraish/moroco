@@ -41,8 +41,44 @@ const ChangeProfPhoto = async ()=>{
   }
 
     return (
+      <div class="container-gallery">
+                        <div class="head">
+                            <h3>Gallery</h3>
+                            <div class="box1">
+                                <img src="assets/b-2.jpg" alt=""/>
+                            </div>
+                        </div>
+                        <div class="imgs-con">
+                            <div class="box">
+                                <img src="assets/b-2.jpg" alt=""/>
+                            </div>
+                            <div class="box">
+                              <img src="assets/b-2.jpg" alt=""/>
+                          </div>
+                          <div class="box">
+                              <img src="assets/b-2.jpg" alt=""/>
+                          </div>
+                          <div class="box">
+                              <img src="assets/b-2.jpg" alt=""/>
+                          </div>
+                          <div class="box">
+                              <img src="assets/b-2.jpg" alt=""/>
+                          </div>
+                          <div class="box">
+                              <img src="assets/b-2.jpg" alt=""/>
+                          </div>
+                        </div>
+                    </div>
 
-        <div className="Album">
+    )
+}
+
+export default Album
+
+
+
+
+{/* <div className="Album">
             <div className="container">
                 <div className="perant">
                 
@@ -71,23 +107,4 @@ const ChangeProfPhoto = async ()=>{
                     ))}
                 </div>
             </div>
-        </div> 
-    )
-}
-
-export default Album
-
-
-
-//To do make img overlay on top of selected image to show upload,change cover, change prof buttons
-// buttons will not render on image area
-// dont use vertical images!
-
- //  const getAllImgs = async () => {         // album
- //  const updateUserCover = async () => {   // cover
- //  const updateUserAvatar = async () => {  // avatar
- 
-
-
-
-//add on click events to buttons bellow and propper mapping to db
+        </div>  */}
