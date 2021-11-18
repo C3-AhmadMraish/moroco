@@ -25,11 +25,8 @@ const Feed = () => {
               Authorization: `Bearer ${token}`,
             }}).then(result=>setValue([...value,result]))
             setPostBody('')
-        }
-      )
-      .then((result) => setValue([...value, result]));
-    setPostBody("");
-  };
+          }
+
   const nameUsersFeed = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/users/${userId}`, {

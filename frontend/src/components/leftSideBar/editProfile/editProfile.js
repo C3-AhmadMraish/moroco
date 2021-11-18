@@ -2,12 +2,12 @@ import React,{useState,useContext, useEffect} from "react";
 import './editProfile.css';
 import { AuthContext } from "../../../contexts/context";
 import axios from "axios";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
+// import Form from "react-bootstrap/Form";
+// import Col from "react-bootstrap/Col";
+// import Row from "react-bootstrap/Row";
+// import Button from "react-bootstrap/Button";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -59,77 +59,31 @@ const EditProfile=()=>{
         }
       }
     return (
-      <div className="Main-Edit-Profile">
-        <div className="container">
-          <h4>Account Settings </h4>
-          <hr></hr>
-          {/* <img src={img} alt= "no-img"/>  */}
+<div className="cont">
+        <div className="formEdit">
+            <img src="https://th.bing.com/th/id/OIP.eIqbtcobXSQQKk07fCCGpQAAAA?pid=ImgDet&w=256&h=256&rs=1"/>
+            <h3>Edit Profile</h3>
+        <form onSubmit={onSave}>
+         <div className="container-form">
+          <input type="text"             placeholder={lastName}
+            onChange={(e)=>setLastName(e.target.value)}/>
+          <input type="text"           placeholder={age}
+          onChange={(e)=>setAge(e.target.value)}/>
+          <input type="text"           placeholder={email}
+          onChange={(e)=>setEmail(e.target.value)}/>
+          <select onChange={handler2}> 
+          
+          <option value='Choose Gender'>Choose Gender</option>
+          <option hidden value='0'>{gender}</option>
+         <option value='Male'>Male</option>
+         <option value='Female'>Female</option>
+          </select>
+          <input type="file"/>
           <div>
-            {/* <p className="success-update"> {successUpdate}</p> */}
-            <Form onSubmit={onSave}>
-              <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label>Last Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder={lastName}
-                    onChange={(e)=>setLastName(e.target.value)}
-                  />
-                   </Form.Group>
-                  <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label>Age</Form.Label>
-                <Form.Control
-                  placeholder={age}
-                  type="text"
-                  onChange={(e)=>setAge(e.target.value)}
-                />
-                </Form.Group>
-              </Row>
-  
-
-              <Row className="mb-3">
-              <Form.Group as={Col} className="mb-3" controlId="formGridAddress2">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  placeholder={email}
-                  type="text"
-                  onChange={(e)=>setEmail(e.target.value)}
-                />
-              </Form.Group>
-
-              <Form.Group as={Col} className="mb-3" controlId="formGridAddress1">
-                <Form.Label>Gender</Form.Label>
-                <Form.Select aria-label={gender}
-                onChange={handler2}> 
-                 <option hidden value='0'>{gender}</option>
-                 <option value='Male'>Male</option>
-                 <option value='Female'>Female</option>
-                 <option value='Rainbow'>Rainbow</option>
-                </Form.Select>
-              </Form.Group>
-
-              </Row>
-
-              
-  
-  
-              <Form.Group className="mb-3" controlId="formGridAddress3">
-                <Form.Label>Image</Form.Label>
-                <Form.Control
-                  placeholder="image"
-                  type="file"
-                  // onChange={handleUpload}
-                  // onChange={(e) => setImg(e.target.value)}
-                />
-              </Form.Group>
-              
-              <button className="change_info" type="submit">
-                Save Change
-              </button>
-            </Form>
-            <>
-</>
-          </div>
+              <button type="submit" className="signupbtn">save change</button>
+            </div>
+    </div>
+      </form>
         </div>
       </div>
     );
