@@ -1,4 +1,4 @@
-.rightSideBar {
+/* .rightSideBar { */
   /* flex-basis: calc(100%/3);
   display: flex;
   align-items: center;
@@ -10,8 +10,13 @@
   height: 1130px;
   border-radius: 6px;
   border: 1px solid #ccc; */
-  flex: 3.5;
-}
+  /* flex: 3.5; */
+/* } */
+.fri-name{
+
+  font-weight:600;
+  margin-bottom:20px
+  }
 .trindPost h4{
   text-align: center;
 }
@@ -20,11 +25,22 @@
   height: 22px;
 }
 
-.trindPost {
+/* .trindPost {
   width: 90%;
   background-color: #fff;
   border-radius: 6px;
   padding: 13px;
   color: #626262;
-  /* margin-top: 3px; */
+  margin-top: 3px;
+} */
+ .right {
+  position:sticky;
+  top:80px;
+  
+ height:max-content;
+ background-color:#fff;
+ border-radius:2%;
+ padding:10%;
+ width:100%
+
 }
