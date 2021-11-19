@@ -10,6 +10,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import Comment from "./Comment";
 import { commentContext } from "../../App";
 import { profimgContext } from "../../App";
+import Feed from "../feed/feed";
 
 const Comments = () => {
   const formatter = buildFormatter(frenchStrings);
@@ -41,7 +42,8 @@ const Comments = () => {
     });
   }, []);
 
-  const createNewComment = async () => {
+  const createNewComment = async (e) => {
+    e.preventDefault()
     try {
       const res = await axios.post(
         `http://localhost:5000/posts/${postId}/comment`,
@@ -62,50 +64,30 @@ const Comments = () => {
   };
 
   return (
-    <div className="postComment">
-      <div className="postdevid">
-        <div className="postTop">
-          <div className="postTopLeft">
-            <img className="postProfileImg" src={profimg} alt={profimg} />
-            <span className="postUsername">{post && post.user.firstName}</span>
-            <span className="postDate">
-              <TimeAgo date={post && post.date} formatter={formatter} />
-            </span>
-          </div>
-          <div className="postTopRight"></div>
-        </div>
-        <div className="postCenter">{post && post.body}</div>
-        <div className="postBottom">
-          <div className="postBottomLeft">
-            
-          </div>
-          <div className="postBottomRight">
-
+    <div className="feeds">
+  <div className="feed">
+  <div className="head">
+  <div className="user">
+            <img className="profile" src={profimg} alt={profimg} />
+            <div className="info">
+              <h4>{post && post.user.firstName}</h4>
+              <small><TimeAgo date={post && post.date} formatter={formatter} /></small>
+</div>
           </div>
         </div>
+        <div className="Comcaption">{post && post.body}</div>
         <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
-        <div className="commentBottom">
-          <div className="commentBottomLeft">
-          <textarea
+        <form className="create-post" onSubmit={createNewComment}>
+      <img src={profimg}  alt="profimg" className="profile1" />
+      <input type="text"
               value={newComment}
               placeholder="Enter your comment ..."
               onChange={(e) => {
                 setnewComment(e.target.value);
-              }}
-            >
-              
-            </textarea>
-          </div>
-          <div className="commentBottomRight">
-          <AddCircleOutlineIcon
-              id="create_post"
-              className="addNewCommentIcon"
-              onClick={() => {
-                createNewComment();
-              }}
-            />
-          </div>
-        </div>
+              }} />
+
+      <input type="submit" value="Comment"  className="btn3" />
+    </form>
         
         {comments &&
           comments.map((c) => {
