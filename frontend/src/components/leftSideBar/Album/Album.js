@@ -5,8 +5,8 @@ import { AuthContext } from "../../../contexts/context";
 import axios from "axios";
 import { profimgContext } from "../../../App";
 const Album = () => {
-    const [selectedImg, setSelectedImg]= useState(Images[0])
-    const [album,setAlbum]= useState(Images)
+    const [selectedImg, setSelectedImg]= useState()
+    const [album,setAlbum]= useState([])
     let { userId,token } = useContext(AuthContext);
     const {profimg, setProfimg} = useContext(profimgContext);
 
@@ -16,7 +16,8 @@ useEffect(()=>{
           Authorization: `Bearer ${token}`,
         }})
     .then(result=>{
-      console.log("farhan",result)
+      setAlbum(result.data.posts.album)
+      console.log(result.data.posts.album)
     })
     .catch(err=>console.log(err))
 },[])
@@ -45,29 +46,16 @@ const ChangeProfPhoto = async ()=>{
                         <div class="head">
                             <h3>Gallery</h3>
                             <div class="box1">
-                                <img src="assets/b-2.jpg" alt=""/>
+                                <img onClick={()=> {ChangeProfPhoto()}} src={selectedImg} alt=""/>
                             </div>
                         </div>
                         <div class="imgs-con">
-                            <div class="box">
-                                <img src="assets/b-2.jpg" alt=""/>
+                          {album.map((imgurl,i)=>{
+                            return <div key={i} class="box">
+                                <img onClick={()=>setSelectedImg(imgurl)} src={imgurl} alt=""/>
                             </div>
-                            <div class="box">
-                              <img src="assets/b-2.jpg" alt=""/>
+                          })}
                           </div>
-                          <div class="box">
-                              <img src="assets/b-2.jpg" alt=""/>
-                          </div>
-                          <div class="box">
-                              <img src="assets/b-2.jpg" alt=""/>
-                          </div>
-                          <div class="box">
-                              <img src="assets/b-2.jpg" alt=""/>
-                          </div>
-                          <div class="box">
-                              <img src="assets/b-2.jpg" alt=""/>
-                          </div>
-                        </div>
                     </div>
 
     )
