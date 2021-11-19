@@ -7,15 +7,16 @@ import PhotoAlbumIcon from "@material-ui/icons/PhotoAlbum";
 import PeopleIcon from "@material-ui/icons/People";
 import EditIcon from "@material-ui/icons/Edit";
 import { AuthContext } from "../../contexts/context";
-import { profimgContext } from "../../App";
+import { profimgContext, isNewLiked } from "../../App";
 import Modal  from "../Modal/Modal";
-const LeftSideBar = () => {
+const LeftSideBar = ({name}) => {
   const { token, userId } = useContext(AuthContext);
+
   const [nameUser, setNameUser] = useState("");
   const { profimg } = useContext(profimgContext);
   const [show, setShow] = useState(false);
   //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
-
+// console.log(object)
   const getNameUser2 = async () => {
     try {
       await axios.get(`http://localhost:5000/users/${userId}`, {
@@ -23,7 +24,7 @@ const LeftSideBar = () => {
           Authorization: `Bearer ${token}`,
         },
       }).then((res)=>{
-
+console.log("fname",res.data)
         setNameUser(res.data.posts.firstName);
       });
     } catch (error) {
@@ -41,7 +42,7 @@ const LeftSideBar = () => {
         <img src={profimg} alt="profimg"  className="profile" />
       
         <div className="handle">
-            <h4>{nameUser}</h4>
+            <h4>{nameUser || name}</h4>
             {/* <p className="text">
                 @dai
             </p> */}
