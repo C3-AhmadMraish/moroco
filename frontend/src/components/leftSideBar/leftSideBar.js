@@ -13,6 +13,7 @@ const LeftSideBar = ({name}) => {
   const { token, userId } = useContext(AuthContext);
 
   const [nameUser, setNameUser] = useState("");
+
   const { profimg } = useContext(profimgContext);
   const [show, setShow] = useState(false);
   //  const [profimg, setProfimg] = useState(profimgContext); // use what is being sent from app context
