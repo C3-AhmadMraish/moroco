@@ -26,7 +26,7 @@ const Header = () => {
 
 
   const searchSend = (e) => {
-    //  e.preventDefault();
+     e.preventDefault();
     axios
       .post(
         `http://localhost:5000/users/search?name=${data}`,
@@ -76,11 +76,15 @@ const Header = () => {
         <Link style={{textDecoration:"none"}} to="/Home">Moroco</Link>
         </h2>
             <div className="search-box">
-            <Search style={{marginRight:"10px"}}  onClick={searchSend} classNameName="searchIcon" /> <input
+              
+            <Search style={{marginRight:"10px"}} classNameName="searchIcon" />
+            <form onSubmit={searchSend}>
+             <input
                   onChange={(e) => {
                     setData(e.target.value);
                   }}
             type="search" placeholder="Search" />
+            </form>
             </div>
             <div className="btn">
                 <button onClick={logout}> LOGOUT</button>

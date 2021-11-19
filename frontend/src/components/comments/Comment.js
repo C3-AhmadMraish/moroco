@@ -60,22 +60,28 @@ const Comment = ({ c, postId, setComments, comments }) => {
       console.log(error);
     }
   };
+      // <div className="feeds">
+      //   <div className="feed">
+      //   <div className="head">
+      //       <div className="user">
+      //         <img className="profile"  src={c.commenter.avatar} alt="" />
+      //         <div className="info">
 
+      //         </div>
+      //       </div>
   if (isAuthorized) {
     return (
-      <div
-        
-        className="commentSection"
-        style={{ marginLeft: "70px", marginTop: "30px" }}
-      >
-        <div className="postdevid">
-          <div className="postTop">
-            <div className="postTopLeft">
-              <img className="postProfileImg" src={c.commenter.avatar} alt="" />
-              <span className="postUsername">{c.commenter.firstName}</span>
-              <span className="postDate">
+      <div className="feeds">
+        <div className="feed">
+        <div className="head">
+            <div className="user">
+              <img className="profile"  src={c.commenter.avatar} alt="" />
+              <div className="info">
+              <h4>{c.commenter.firstName}</h4>
+              <small>
                 <TimeAgo date={c.date} formatter={formatter} />
-              </span>
+              </small>
+              </div>
             </div>
             <div className="postTopRight">
             <HighlightOffIcon className="deleteIconn"
@@ -114,23 +120,21 @@ const Comment = ({ c, postId, setComments, comments }) => {
   }
 
   return (
-    <div
-      key={c._id}
-      className="commentSection"
-      style={{ marginLeft: "70px", marginTop: "30px" }}
-    >
-      <div className="postdevid">
-        <div className="postTop">
-          <div className="postTopLeft">
-            <img className="postProfileImg" src={c.commenter.avatar} alt="" />
-            <span className="postUsername">{c.commenter.firstName}</span>
-            <span className="postDate">
-              <TimeAgo date={c.date} formatter={formatter} />
-            </span>
+    <div className="feeds">
+    <div className="feed">
+    <div className="head">
+        <div className="user">
+          <img className="profile"  src={c.commenter.avatar} alt="" />
+          <div className="info">
+          <h4>{c.commenter.firstName}</h4>
+          <small>
+            <TimeAgo date={c.date} formatter={formatter} />
+          </small>
           </div>
+        </div>
           <div className="postTopRight"></div>
         </div>
-        <div className="postCenter">{c.comment}</div>
+        <div className="Comcaption">{c.comment}</div>
       </div>
       <hr style={{ fontSize: "20px", color: "gray", marginTop: "30px" }} />
     </div>
